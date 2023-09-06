@@ -1,0 +1,44 @@
+package com.luca.monopoly;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test; 
+
+public class MonopolyTest {
+	@Test
+	void test() {
+		Monopoly monopoly = new Monopoly();
+
+		assertNotNull(monopoly);
+
+		assertEquals(40, monopoly.getTabellone().getCaselle().size());
+
+		assertEquals("Via", monopoly.getTabellone().getCaselle().get(0).getTesto());
+		assertFalse(monopoly.getTabellone().getCaselle().get(0).isTerreno());
+		assertEquals(null, monopoly.getTabellone().getCaselle().get(0).getColore());
+		assertEquals("Vicolo Corto", monopoly.getTabellone().getCaselle().get(1).getTesto());
+		assertTrue(monopoly.getTabellone().getCaselle().get(1).isTerreno());
+		assertEquals("fucsia", monopoly.getTabellone().getCaselle().get(1).getColore());
+		
+
+		assertEquals(8, monopoly.getSegnalini());
+        assertEquals(Segnalini.CANE, monopoly.getSegnaliniNome(Segnalini.values()[0]));
+
+		assertEquals(28, monopoly.getContratti());
+
+		assertEquals(16, monopoly.getTabellone().getImprevisti().size());
+        assertEquals("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.", monopoly.getTabellone().getImprevisti().get(0));
+
+		assertEquals(16, monopoly.getTabellone().getProbabilità().size());
+		assertEquals("Ritornate al Vicolo Corto.", monopoly.getTabellone().getProbabilità().get(0));
+
+		assertEquals(32, monopoly.getCase());
+		assertEquals(12, monopoly.getAlberghi());
+		assertEquals(2, monopoly.getDadi());
+
+	
+
+
+	}
+}
