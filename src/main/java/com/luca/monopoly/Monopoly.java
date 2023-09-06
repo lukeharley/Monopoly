@@ -13,10 +13,6 @@ public class Monopoly {
 		return segnalino;
 	}
 
-	public int getContratti() {
-		return 28;
-	}
-
 	public int getCase() {
 		return 32;
 	}

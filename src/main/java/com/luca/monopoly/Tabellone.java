@@ -55,6 +55,7 @@ public class Tabellone {
 
 		List<Contratto> contratti = new ArrayList(); 
 
+
 		//TODO convertire da lire in euro 
 		contratti.add(new Contratto("Vicolo Corto", 200, 1000));
 		contratti.add(new Contratto("Vicolo Stretto", 400, 2000));

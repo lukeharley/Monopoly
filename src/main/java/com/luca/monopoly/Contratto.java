@@ -28,5 +28,9 @@ public class Contratto {
 		return renditaUnaCasa;
 	}
 
+    public int getRenditaDueCase() {
+      return renditaUnaCasa * 2; 
+    }
+
 
 }
