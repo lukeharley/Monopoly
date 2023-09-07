@@ -41,7 +41,7 @@ public class MonopolyTest {
 		assertEquals(32, monopoly.getCase().getNumeroCase());
 		assertEquals(12, monopoly.getCase().getNumeroAlberghi());
 		
-		assertEquals(2, monopoly.getDadi());
+		assertEquals(2, monopoly.getDadi().getNumeroDadi());
 
 
 	}

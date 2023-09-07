@@ -3,7 +3,8 @@ package com.luca.monopoly;
 public class Dado {
     private final int NUMERO_DADI = 2; 
 
-    public Dado() {
-        
+    public int getNumeroDadi() {
+        return NUMERO_DADI; 
     }
+
 }

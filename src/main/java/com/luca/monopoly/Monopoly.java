@@ -27,7 +27,7 @@ public class Monopoly {
 
 	}
 
-	public int getDadi() {
-		return 2;
+	public Dado getDadi() {
+		return new Dado(); 
 	}
 } 
