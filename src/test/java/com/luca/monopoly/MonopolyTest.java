@@ -42,9 +42,6 @@ public class MonopolyTest {
 		assertEquals(12, monopoly.getTabellone().getCase().getNumeroAlberghi());
 		
 		assertEquals(2, monopoly.getDadi());
-		//assertTrue(monopoly.getTabellone())
-
-	
 
 
 	}

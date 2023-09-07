@@ -12,9 +12,20 @@ public class Monopoly {
         return Arrays.asList(Segnalini.values());
     }
 
-	//public Casa getCase() {
-	//	return new Casa();
-//	}
+	public Casa getCase() {
+
+		Casa casa = new Casa(false); 		
+
+		return casa; 
+	}
+
+	public Casa getAlberghi() {
+
+		Casa albergo = new Casa(true); 
+
+		return albergo; 
+
+	}
 
 	public int getDadi() {
 		return 2;

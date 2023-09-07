@@ -1,6 +1,5 @@
 package com.luca.monopoly;
 import java.util.ArrayList;
-import com.luca.monopoly.Casa; 
 import java.util.List;
 public class Tabellone { 
 	
