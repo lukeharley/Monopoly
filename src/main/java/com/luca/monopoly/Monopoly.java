@@ -1,17 +1,16 @@
 package com.luca.monopoly;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Monopoly {
 	public Tabellone getTabellone() {
 		return new Tabellone();
 	}
-	
-	public int getSegnalini() {
-		return Segnalini.values().length;
-	}
 
-	public Segnalini getSegnaliniNome(Segnalini segnalino) {
-		return segnalino;
-	}
+    public List<Segnalini> getSegnalini() {
+        return Arrays.asList(Segnalini.values());
+    }
 
 	public int getCase() {
 		return 32;

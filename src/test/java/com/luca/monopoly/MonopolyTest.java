@@ -21,13 +21,13 @@ public class MonopolyTest {
 		assertTrue(monopoly.getTabellone().getCaselle().get(1).isTerreno());
 		assertEquals("fucsia", monopoly.getTabellone().getCaselle().get(1).getColore());
 		
-		assertEquals(8, monopoly.getSegnalini());
-        assertEquals(Segnalini.CANE, monopoly.getSegnaliniNome(Segnalini.values()[0]));
+		assertEquals(8, monopoly.getSegnalini().size());
+        assertEquals("Cane", Segnalini.CANE.getNome());
 
 		assertEquals(28, monopoly.getTabellone().getContratti().size());
 		assertEquals("Vicolo Corto", monopoly.getTabellone().getContratti().get(0).getNome());
-		assertEquals(400, monopoly.getTabellone().getContratti().get(1).getRenditaTerreno());
-		assertEquals(20000, monopoly.getTabellone().getContratti().get(27).getRenditaUnaCasa());
+		assertEquals(10, monopoly.getTabellone().getContratti().get(1).getRenditaTerreno());
+		assertEquals(500, monopoly.getTabellone().getContratti().get(27).getRenditaUnaCasa());
 
 		assertEquals(16, monopoly.getTabellone().getImprevisti().size());
         assertEquals("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.", monopoly.getTabellone().getImprevisti().get(0));

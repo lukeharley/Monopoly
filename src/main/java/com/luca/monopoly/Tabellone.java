@@ -53,38 +53,36 @@ public class Tabellone {
 
 	public List<Contratto> getContratti() {
 
-		List<Contratto> contratti = new ArrayList(); 
+		List<Contratto> contratti = new ArrayList<>(); 
 
-
-		//TODO convertire da lire in euro 
-		contratti.add(new Contratto("Vicolo Corto", 200, 1000));
-		contratti.add(new Contratto("Vicolo Stretto", 400, 2000));
+		contratti.add(new Contratto("Vicolo Corto", 5, 25));
+		contratti.add(new Contratto("Vicolo Stretto", 10, 50));
 		contratti.add(new Contratto("Stazione Sud", 0, 0));
-		contratti.add(new Contratto("Bastioni Gran Sasso", 600, 3000));
-		contratti.add(new Contratto("Viale Monterosa", 600, 3000));
-		contratti.add(new Contratto("Viale Vesuvio", 800, 4000));
-		contratti.add(new Contratto("Via Accademia", 1000, 5000));
+		contratti.add(new Contratto("Bastioni Gran Sasso", 15, 75));
+		contratti.add(new Contratto("Viale Monterosa", 15, 75));
+		contratti.add(new Contratto("Viale Vesuvio", 20, 100));
+		contratti.add(new Contratto("Via Accademia", 25, 125));
 		contratti.add(new Contratto("Società Elettrica", 0, 0));
-		contratti.add(new Contratto("Corso Ateneo", 1000, 5000));
-		contratti.add(new Contratto("Piazza Università", 1200, 6000));
+		contratti.add(new Contratto("Corso Ateneo", 25, 125));
+		contratti.add(new Contratto("Piazza Università", 30, 150));
 		contratti.add(new Contratto("Stazione Ovest", 0, 0));
-		contratti.add(new Contratto("Via Verdi", 1400, 7000));
-		contratti.add(new Contratto("Corso Raffaello", 1400, 7000));
-		contratti.add(new Contratto("Piazza Dante", 1600, 8000));
-		contratti.add(new Contratto("Via Marco Polo", 1800, 9000));
-		contratti.add(new Contratto("Corso Magellano", 1800, 9000));
-		contratti.add(new Contratto("Largo Colombo", 2000, 10000));
+		contratti.add(new Contratto("Via Verdi", 35, 175));
+		contratti.add(new Contratto("Corso Raffaello", 35, 175));
+		contratti.add(new Contratto("Piazza Dante", 40, 200));
+		contratti.add(new Contratto("Via Marco Polo", 45, 225));
+		contratti.add(new Contratto("Corso Magellano", 45, 225));
+		contratti.add(new Contratto("Largo Colombo", 50, 250));
 		contratti.add(new Contratto("Stazione Nord", 0, 0));
-		contratti.add(new Contratto("Viale Costantino", 2000, 10000));
-		contratti.add(new Contratto("Viale Traiano", 2200, 11000));
+		contratti.add(new Contratto("Viale Costantino", 50, 250));
+		contratti.add(new Contratto("Viale Traiano", 55, 275));
 		contratti.add(new Contratto("Società Acqua Potabile", 0, 0));
-		contratti.add(new Contratto("Piazza Giulio Cesare", 2400, 12000));
-		contratti.add(new Contratto("Via Roma", 2600, 13000));
-		contratti.add(new Contratto("Corso Impero", 2700, 14000));
-		contratti.add(new Contratto("Largo Augusto", 2800, 15000));
+		contratti.add(new Contratto("Piazza Giulio Cesare", 60, 300));
+		contratti.add(new Contratto("Via Roma", 65, 325));
+		contratti.add(new Contratto("Corso Impero", 70, 375));
+		contratti.add(new Contratto("Largo Augusto", 70, 375));
 		contratti.add(new Contratto("Stazione Est", 0, 0));
-		contratti.add(new Contratto("Viale dei Giardini", 3000, 17000));
-		contratti.add(new Contratto("Parco della Vittoria", 5000, 20000));
+		contratti.add(new Contratto("Viale dei Giardini", 75, 425));
+		contratti.add(new Contratto("Parco della Vittoria", 125, 500));
 		
 
 		return contratti; 
