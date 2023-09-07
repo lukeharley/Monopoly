@@ -28,6 +28,7 @@ public class MonopolyTest {
 		assertEquals("Vicolo Corto", monopoly.getTabellone().getContratti().get(0).getNome());
 		assertEquals(10, monopoly.getTabellone().getContratti().get(1).getRenditaTerreno());
 		assertEquals(500, monopoly.getTabellone().getContratti().get(27).getRenditaUnaCasa());
+		assertEquals(1000, monopoly.getTabellone().getContratti().get(13).getRenditaAlbergo()); 
 		assertEquals(65, monopoly.getTabellone().getContratti().get(2).getRenditaUnaStazione());
 		assertEquals(130, monopoly.getTabellone().getContratti().get(2).getRenditaDueStazioni());
 
@@ -37,9 +38,11 @@ public class MonopolyTest {
 		assertEquals(16, monopoly.getTabellone().getProbabilità().size());
 		assertEquals("Ritornate al Vicolo Corto.", monopoly.getTabellone().getProbabilità().get(0));
 
-		assertEquals(32, monopoly.getCase());
-		assertEquals(12, monopoly.getAlberghi());
+		assertEquals(32, monopoly.getTabellone().getCase().getNumeroCase());
+		assertEquals(12, monopoly.getTabellone().getCase().getNumeroAlberghi());
+		
 		assertEquals(2, monopoly.getDadi());
+		//assertTrue(monopoly.getTabellone())
 
 	
 

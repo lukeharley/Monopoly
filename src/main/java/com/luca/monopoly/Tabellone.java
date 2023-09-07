@@ -1,5 +1,6 @@
 package com.luca.monopoly;
 import java.util.ArrayList;
+import com.luca.monopoly.Casa; 
 import java.util.List;
 public class Tabellone { 
 	
@@ -137,6 +138,21 @@ public class Tabellone {
 		return probabilità;
 
 	} 
+
+	public Casa getCase() {
+
+		Casa casa = new Casa(false); 		
+
+		return casa; 
+	}
+
+	public Casa getAlberghi() {
+
+		Casa albergo = new Casa(true); 
+
+		return albergo; 
+
+	}
 }
 
 
