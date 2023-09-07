@@ -28,6 +28,8 @@ public class MonopolyTest {
 		assertEquals("Vicolo Corto", monopoly.getTabellone().getContratti().get(0).getNome());
 		assertEquals(10, monopoly.getTabellone().getContratti().get(1).getRenditaTerreno());
 		assertEquals(500, monopoly.getTabellone().getContratti().get(27).getRenditaUnaCasa());
+		assertEquals(65, monopoly.getTabellone().getContratti().get(2).getRenditaUnaStazione());
+		assertEquals(130, monopoly.getTabellone().getContratti().get(2).getRenditaDueStazioni());
 
 		assertEquals(16, monopoly.getTabellone().getImprevisti().size());
         assertEquals("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.", monopoly.getTabellone().getImprevisti().get(0));

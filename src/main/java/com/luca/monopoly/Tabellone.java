@@ -55,34 +55,34 @@ public class Tabellone {
 
 		List<Contratto> contratti = new ArrayList<>(); 
 
-		contratti.add(new Contratto("Vicolo Corto", 5, 25));
-		contratti.add(new Contratto("Vicolo Stretto", 10, 50));
-		contratti.add(new Contratto("Stazione Sud", 0, 0));
-		contratti.add(new Contratto("Bastioni Gran Sasso", 15, 75));
-		contratti.add(new Contratto("Viale Monterosa", 15, 75));
-		contratti.add(new Contratto("Viale Vesuvio", 20, 100));
-		contratti.add(new Contratto("Via Accademia", 25, 125));
-		contratti.add(new Contratto("Società Elettrica", 0, 0));
-		contratti.add(new Contratto("Corso Ateneo", 25, 125));
-		contratti.add(new Contratto("Piazza Università", 30, 150));
-		contratti.add(new Contratto("Stazione Ovest", 0, 0));
-		contratti.add(new Contratto("Via Verdi", 35, 175));
-		contratti.add(new Contratto("Corso Raffaello", 35, 175));
-		contratti.add(new Contratto("Piazza Dante", 40, 200));
-		contratti.add(new Contratto("Via Marco Polo", 45, 225));
-		contratti.add(new Contratto("Corso Magellano", 45, 225));
-		contratti.add(new Contratto("Largo Colombo", 50, 250));
-		contratti.add(new Contratto("Stazione Nord", 0, 0));
-		contratti.add(new Contratto("Viale Costantino", 50, 250));
-		contratti.add(new Contratto("Viale Traiano", 55, 275));
-		contratti.add(new Contratto("Società Acqua Potabile", 0, 0));
-		contratti.add(new Contratto("Piazza Giulio Cesare", 60, 300));
-		contratti.add(new Contratto("Via Roma", 65, 325));
-		contratti.add(new Contratto("Corso Impero", 70, 375));
-		contratti.add(new Contratto("Largo Augusto", 70, 375));
-		contratti.add(new Contratto("Stazione Est", 0, 0));
-		contratti.add(new Contratto("Viale dei Giardini", 75, 425));
-		contratti.add(new Contratto("Parco della Vittoria", 125, 500));
+		contratti.add(new Contratto("Vicolo Corto", 5, 25, 0));
+		contratti.add(new Contratto("Vicolo Stretto", 10, 50, 0));
+		contratti.add(new Contratto("Stazione Sud", 0, 0, 65));
+		contratti.add(new Contratto("Bastioni Gran Sasso", 15, 75, 0));
+		contratti.add(new Contratto("Viale Monterosa", 15, 75, 0));
+		contratti.add(new Contratto("Viale Vesuvio", 20, 100, 0));
+		contratti.add(new Contratto("Via Accademia", 25, 125, 0));
+		contratti.add(new Contratto("Società Elettrica", 0, 0, 50));
+		contratti.add(new Contratto("Corso Ateneo", 25, 125, 0));
+		contratti.add(new Contratto("Piazza Università", 30, 150, 0));
+		contratti.add(new Contratto("Stazione Ovest", 0, 0, 65));
+		contratti.add(new Contratto("Via Verdi", 35, 175, 0));
+		contratti.add(new Contratto("Corso Raffaello", 35, 175, 0));
+		contratti.add(new Contratto("Piazza Dante", 40, 200, 0));
+		contratti.add(new Contratto("Via Marco Polo", 45, 225, 0));
+		contratti.add(new Contratto("Corso Magellano", 45, 225, 0));
+		contratti.add(new Contratto("Largo Colombo", 50, 250, 0));
+		contratti.add(new Contratto("Stazione Nord", 0, 0, 65));
+		contratti.add(new Contratto("Viale Costantino", 50, 250, 0));
+		contratti.add(new Contratto("Viale Traiano", 55, 275, 0));
+		contratti.add(new Contratto("Società Acqua Potabile", 0, 0, 50));
+		contratti.add(new Contratto("Piazza Giulio Cesare", 60, 300, 0));
+		contratti.add(new Contratto("Via Roma", 65, 325, 0));
+		contratti.add(new Contratto("Corso Impero", 70, 375, 0));
+		contratti.add(new Contratto("Largo Augusto", 70, 375, 0));
+		contratti.add(new Contratto("Stazione Est", 0, 0, 65));
+		contratti.add(new Contratto("Viale dei Giardini", 75, 425, 0));
+		contratti.add(new Contratto("Parco della Vittoria", 125, 500, 0));
 		
 
 		return contratti; 
@@ -141,31 +141,8 @@ public class Tabellone {
 
 
 /* fonti: 
-
 tabellone: https://it.wikipedia.org/wiki/Monopoly#:~:text=Giochi%20(in%20euro)-,Posteggio%20gratuito,-Via%20Marco%20Polo 
-
 imprevisti e probabilità: https://answerprime.com/monopoli-elenco-imprevisti-probabilita10pt-2/ 
 contratti (campione): https://it.scribd.com/document/327938771/Contratti-Monopoli 
 https://www.giochi-da-tavolo.it/monpoli-istruzioni-regole/#:~:text=PAGARE%20RENDITE%20E%20AFFITTI
-
-
-VICOLO CORTO
-Questo contratto vale: 6.000 Rendita solo terreno: 200 Con 1 casa: 1.000 Con 2 case: 3.000 Con 3 case: 9.000 Con 4 case: 16.000 Con Albergo: 25.000 Se un giocattore possiedetutti i terrenid!uno stesso gruppo " colore #$ la rendita del solo terreno viene raddoppiata. Costo: di ogni casa: 5.000 di ogni albergo: 5.000 %alore ipotecario: 3.000
-VICOLO STRETTO
-Questo contratto vale: 6.000 Rendita solo terreno: 400 Con 1 casa: 2.000 Con 2 case: 6.000 Con 3 case: 1&.000 Con 4 case: 32.000 Con Albergo: 45.000 Se un giocattore possiedetutti i terrenid!uno stesso gruppo " colore #$ la rendita del solo terreno viene raddoppiata. Costo: di ogni casa: 5.000 di ogni albergo: 5.000 %alore ipotecario: 3.000
-STAZIONE SUD
-Questo contratto vale: 20.000 Rendita: 2.500 Se si possiedono 2 Sta'ioni: 5.000 Se si possiedono 3 Sta'ioni: 10.000 Se si possiedono 4 Sta'ioni: 20.000 %alore ipotecario: 10.000
-BASTIONI GRAN SASSO
-Questo contratto vale: 10.000 Rendita solo terreno: 600 Con 1 casa: 3.000 Con 2 case: 9.000 Con 3 case: 2(.000 Con 4 case: 40.000 Con Albergo: 55.000 Se un giocattore possiedetutti i terrenid!uno stesso gruppo " colore #$ la rendita del solo terreno viene raddoppiata. Costo: di ogni casa: 5.000 di ogni albergo: 5.000 %alore ipotecario: 5.000
-VIALE MONTEROSA
-Questo contratto vale: 10.000 Rendita solo terreno: 600 Con 1 casa: 3.000 Con 2 case: 9.000 Con 3 case: 2(.000 Con 4 case: 40.000 Con Albergo: 55.000 Se un giocattore possiedetutti i terrenid!uno stesso gruppo " colore #$ la rendita del solo terreno viene raddoppiata. Costo: di ogni casa: 5.000 di ogni albergo: 5.000 %alore ipotecario: 5.000
-VIALE VESUVIO
-Questo contratto vale: 12.000 Rendita solo terreno: &00 Con 1 casa: 4.000 Con 2 case: 10.000 Con 3 case: 30.000 Con 4 case: 45.000 Con Albergo: 60.000 Se un giocattore possiedetutti i terrenid!uno stesso gruppo " colore #$ la rendita del solo terreno viene raddoppiata. Costo: di ogni casa: 5.000 di ogni albergo: 5.000 %alore ipotecario: 6.000
-VIA ACCADEMIA
-Questo contratto vale: 14.000 Rendita solo terreno: 1.000 Con 1 casa: 5.000 Con 2 case: 15.000 Con 3 case: 45.000 Con 4 case: 62.000 Con Albergo: (5.000 Se un giocattore possiedetutti i terrenid!uno stesso gruppo " colore #$ la rendita del solo terreno viene raddoppiata. Costo: di ogni casa: 10.000 di ogni albergo: 10.000
-SOCIETA ELETTRICA
-Questo contratto vale: 15.000 Rendita: 2.000 Se si possiede anc)e l! Ac*ua +otabile: 10.000 %alore ipotecario: (.500
-CORSO ATENEO
-Questo contratto vale: 14.000 Rendita solo terreno: 1.000 Con 1 casa: 5.000 Con 2 case: 15.000 Con 3 case: 45.000 Con 4 case: 62.000 Con Albergo: (5.000 Se un giocattore possiedetutti i terrenid!uno stesso gruppo " colore #$ la rendita del solo terreno viene raddoppiata. Costo: di ogni casa: 10.000 di ogni albergo: 10.000
-
 */
