@@ -137,21 +137,6 @@ public class Tabellone {
 		return probabilità;
 
 	} 
-
-	public Casa getCase() {
-
-		Casa casa = new Casa(false); 		
-
-		return casa; 
-	}
-
-	public Casa getAlberghi() {
-
-		Casa albergo = new Casa(true); 
-
-		return albergo; 
-
-	}
 }
 
 

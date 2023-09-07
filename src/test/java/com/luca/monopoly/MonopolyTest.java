@@ -38,8 +38,8 @@ public class MonopolyTest {
 		assertEquals(16, monopoly.getTabellone().getProbabilità().size());
 		assertEquals("Ritornate al Vicolo Corto.", monopoly.getTabellone().getProbabilità().get(0));
 
-		assertEquals(32, monopoly.getTabellone().getCase().getNumeroCase());
-		assertEquals(12, monopoly.getTabellone().getCase().getNumeroAlberghi());
+		assertEquals(32, monopoly.getCase().getNumeroCase());
+		assertEquals(12, monopoly.getCase().getNumeroAlberghi());
 		
 		assertEquals(2, monopoly.getDadi());
 
