@@ -61,8 +61,6 @@ public class MonopolyTest {
 		assertEquals(Segnalini.DINOSAURO, giocatore2.getSegnalino());
 		assertEquals(0, giocatore2.getPosizione());
 
-		assertTrue((giocatore1.lanciaDadi())<=(numeroDadi * numeroFacce));
-
-
+		assertTrue((giocatore1.lanciaDadi())<=(numeroDadi * numeroFacce));			
 	}
 }
