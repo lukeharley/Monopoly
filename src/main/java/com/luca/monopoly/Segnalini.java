@@ -19,6 +19,4 @@ public enum Segnalini {
     public String getNome() {
         return nome; 
     }
-
-
 }

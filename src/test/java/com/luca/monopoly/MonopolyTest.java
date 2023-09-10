@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test; 
 
 public class MonopolyTest {
@@ -41,7 +42,26 @@ public class MonopolyTest {
 		assertEquals(32, monopoly.getCase().getNumeroCase());
 		assertEquals(12, monopoly.getCase().getNumeroAlberghi());
 		
-		assertEquals(2, monopoly.getDadi().getNumeroDadi());
+		int numeroDadi = monopoly.getDadi().getNumeroDadi();
+		assertEquals(2, numeroDadi);
+		int numeroFacce = monopoly.getDadi().getNumeroFacce();
+		assertEquals(6, numeroFacce);
+
+		String nome1 = "Antonio"; 
+		String nome2 = "Alessio"; 
+		Giocatore giocatore1 = new Giocatore(nome1, Segnalini.CANE); 
+		Giocatore giocatore2 = new Giocatore(nome2, Segnalini.DINOSAURO); 
+		assertNotNull(giocatore1);
+		assertNotNull(giocatore2);
+
+		assertEquals("Antonio", giocatore1.getNome());
+		assertEquals(Segnalini.CANE, giocatore1.getSegnalino());
+		assertEquals(0, giocatore1.getPosizione()); 
+		assertEquals("Alessio", giocatore2.getNome());
+		assertEquals(Segnalini.DINOSAURO, giocatore2.getSegnalino());
+		assertEquals(0, giocatore2.getPosizione());
+
+		assertTrue((giocatore1.lanciaDadi())<=(numeroDadi * numeroFacce));
 
 
 	}
