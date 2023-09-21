@@ -1,6 +1,9 @@
 # monopoly
 
 Fonti 
+Regolamento: 
+https://www.giochi-da-tavolo.it/monpoli-istruzioni-regole/ 
+
 Tabellone: 
 https://it.wikipedia.org/wiki/Monopoly#:~:text=Giochi%20(in%20euro)-,Posteggio%20gratuito,-Via%20Marco%20Polo 
 
