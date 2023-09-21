@@ -26,7 +26,7 @@ public class MonopolyTest {
         assertEquals("Cane", Segnalini.CANE.getNome());
 
 		assertEquals(28, monopoly.getTabellone().getContratti().size());
-		assertEquals("Vicolo Corto", monopoly.getTabellone().getContratti().get(0).getNome());
+		assertEquals("Vicolo Corto", monopoly.getTabellone().getContratti().get(0).getTesto());
 		assertEquals(10, monopoly.getTabellone().getContratti().get(1).getRenditaTerreno());
 		assertEquals(500, monopoly.getTabellone().getContratti().get(27).getRenditaUnaCasa());
 		assertEquals(1000, monopoly.getTabellone().getContratti().get(13).getRenditaAlbergo()); 

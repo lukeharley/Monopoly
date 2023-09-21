@@ -1,7 +1,7 @@
 package com.luca.monopoly;
 
 public class Contratto {
-    private String nome; 
+    private String testo; 
     private int renditaTerreno; 
     private int renditaUnaCasa; 
     private int renditaDueCase; 
@@ -14,8 +14,8 @@ public class Contratto {
     private int renditaQuattroStazioni; 
     
 
-    public Contratto(String nome, int renditaTerreno, int renditaUnaCasa, int renditaUnaStazione) {
-        this.nome = nome; 
+    public Contratto(String testo, int renditaTerreno, int renditaUnaCasa, int renditaUnaStazione) {
+        this.testo = testo; 
         this.renditaTerreno = renditaTerreno; 
         this.renditaUnaCasa = renditaUnaCasa; 
         this.renditaDueCase = renditaUnaCasa * 2;
@@ -29,8 +29,8 @@ public class Contratto {
 
     }
 
-    public String getNome() {
-		return nome;
+    public String getTesto() {
+		return testo;
 	}
 
     public int getRenditaTerreno() {

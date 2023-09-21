@@ -1,5 +1,8 @@
 package com.luca.monopoly;
 
+// import java.util.Collections;
+import java.util.List;
+
 public class Giocatore {
     private final static int NUMERO_MAX_GIOCATORI = 2; 
     private String nome; 
@@ -40,4 +43,15 @@ public class Giocatore {
         return turno; 
     }
 
-}
+    public <T> void pescaCarta(List<T> carte) {
+        if (!carte.isEmpty()) {
+            T cartaPescata = carte.remove(0);
+            System.out.println("Testo della carta pescata: " + cartaPescata);  
+        } 
+            /* else { 
+            rigenera un nuovo mazzo
+            Collections.shuffle(carte); 
+            String cartaPescata = carte.remove(0);
+            System.out.println("Testo della carta pescata: " + cartaPescata);  */
+        }
+    }
