@@ -24,16 +24,8 @@ public class Giocatore {
         return nome; 
     }
 
-    public void setNome(String nome) {
-        this.nome = nome; 
-    }
-
     public Segnalini getSegnalino() {
         return segnalino;
-    }
-
-    public void setSegnalino(Segnalini segnalino) {
-        this.segnalino = segnalino;
     }
 
     public int getPosizione() {
@@ -42,10 +34,6 @@ public class Giocatore {
 
     public int lanciaDadi() {
         return dado.getRisultatoLancioDadi();
-    }
-
-    public void setPosizione(int posizione) {
-        this.posizione = posizione; 
     }
 
     public int getTurno() {
