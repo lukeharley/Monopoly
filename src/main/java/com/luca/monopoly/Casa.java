@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Casa {
 
-    private static final int NUMERO_MAX_PEZZI_CASA = 32;
+    private final int NUMERO_MAX_PEZZI_CASA = 32;
 
     public Casa() {
     }

@@ -10,6 +10,7 @@ public class Albergo extends Casa {
     public Albergo() {
     }
 
+    @Override
     public List<Integer> getNumeroPezzi() {
 
         List<Integer> numeroPezzi = new ArrayList<>();

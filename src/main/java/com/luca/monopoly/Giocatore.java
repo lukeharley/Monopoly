@@ -1,6 +1,6 @@
 package com.luca.monopoly;
 
-// import java.util.Collections;
+import java.util.Collections;
 import java.util.List;
 
 public class Giocatore {
@@ -43,17 +43,16 @@ public class Giocatore {
         return turno;
     }
 
-    public <T> void pescaCarta(List<T> carte) {
-        if (!carte.isEmpty()) {
-            T cartaPescata = carte.remove(0);
+    public <T> void pescaCarta(List<T> mazzoCorrente, List<T> mazzoCartePescate) {
+        if (!mazzoCorrente.isEmpty()) {
+            T cartaPescata = mazzoCorrente.remove(0);
+            mazzoCartePescate.add(cartaPescata);
             System.out.println("Testo della carta pescata: " + cartaPescata);
+        } else {
+            Collections.shuffle(mazzoCartePescate);
+            mazzoCorrente.addAll(mazzoCartePescate);
+            mazzoCartePescate.clear();
         }
-        /*
-         * else {
-         * rigenera un nuovo mazzo
-         * Collections.shuffle(carte);
-         * String cartaPescata = carte.remove(0);
-         * System.out.println("Testo della carta pescata: " + cartaPescata);
-         */
+
     }
 }
