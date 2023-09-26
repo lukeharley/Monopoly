@@ -4,6 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Monopoly {
+
+	private int numeroCase = 32;
+    private int numeroAlberghi = 12; 
+
 	public Tabellone getTabellone() {
 		return new Tabellone();
 	}
@@ -12,19 +16,12 @@ public class Monopoly {
         return Arrays.asList(Segnalini.values());
     }
 
-	public Casa getCase() {
-
-		Casa casa = new Casa(false); 		
-
-		return casa; 
+	public int getNumeroCase() {
+		return numeroCase; 
 	}
 
-	public Casa getAlberghi() {
-
-		Casa albergo = new Casa(true); 
-
-		return albergo; 
-
+	public int getNumeroAlberghi() {
+		return numeroAlberghi; 
 	}
 
 	public Dado getDadi() {

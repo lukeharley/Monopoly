@@ -13,6 +13,4 @@ Contratti (Campione): https://it.scribd.com/document/327938771/Contratti-Monopol
 https://www.giochi-da-tavolo.it/monpoli-istruzioni-regole/#:~:text=PAGARE%20RENDITE%20E%20AFFITTI
 ricerca dei restanti contratti su Google Immagini e conversione dei valori da lire in euro
 
-
-
 # monopoly
