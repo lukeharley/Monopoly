@@ -10,14 +10,16 @@ public class Casella {
 		this.terreno = terreno;
 		this.colore = colore;
 	}
+
 	public String getTesto() {
 		return testo;
 	}
+
 	public boolean isTerreno() {
 		return terreno;
 	}
 
 	public String getColore() {
-		return colore; 
+		return colore;
 	}
 }

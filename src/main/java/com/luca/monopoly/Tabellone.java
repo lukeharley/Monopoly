@@ -1,12 +1,14 @@
 package com.luca.monopoly;
+
 import java.util.ArrayList;
 import java.util.List;
-public class Tabellone { 
-	
+
+public class Tabellone {
+
 	public List<Casella> getCaselle() {
-		
+
 		List<Casella> caselle = new ArrayList<>();
-		
+
 		caselle.add(new Casella("Via", false, null));
 		caselle.add(new Casella("Vicolo Corto", true, "fucsia"));
 		caselle.add(new Casella("Probabilità", false, null));
@@ -38,7 +40,7 @@ public class Tabellone {
 		caselle.add(new Casella("Società Acqua Potabile", false, null));
 		caselle.add(new Casella("Piazza Giulio Cesare", true, "giallo"));
 		caselle.add(new Casella("In prigione!", false, null));
-		caselle.add(new Casella("Via Roma", true, "verde"));		
+		caselle.add(new Casella("Via Roma", true, "verde"));
 		caselle.add(new Casella("Corso Impero", true, "verde"));
 		caselle.add(new Casella("Probabilità", false, null));
 		caselle.add(new Casella("Largo Augusto", true, "verde"));
@@ -53,7 +55,7 @@ public class Tabellone {
 
 	public List<Contratto> getContratti() {
 
-		List<Contratto> contratti = new ArrayList<>(); 
+		List<Contratto> contratti = new ArrayList<>();
 
 		contratti.add(new Contratto("Vicolo Corto", 5, 25, 0));
 		contratti.add(new Contratto("Vicolo Stretto", 10, 50, 0));
@@ -83,9 +85,8 @@ public class Tabellone {
 		contratti.add(new Contratto("Stazione Est", 0, 0, 65));
 		contratti.add(new Contratto("Viale dei Giardini", 75, 425, 0));
 		contratti.add(new Contratto("Parco della Vittoria", 125, 500, 0));
-		
 
-		return contratti; 
+		return contratti;
 	}
 
 	public List<String> getImprevisti() {
@@ -102,7 +103,8 @@ public class Tabellone {
 		imprevisti.add("Multa di 40€ per aver guidato senza patente.");
 		imprevisti.add("Andate fino al Parco della Vittoria.");
 		imprevisti.add("Matrimonio in famiglia: spese impreviste 375€.");
-		imprevisti.add("Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene (non si sa mai!) oppure venderlo.");
+		imprevisti.add(
+				"Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene (non si sa mai!) oppure venderlo.");
 		imprevisti.add("Maturano le cedole delle vostre cartelle di rendita, ritirate 375€.");
 		imprevisti.add("La banca vi paga gli interessi del vostro conto corrente, ritirate 125€.");
 		imprevisti.add("Andate avanti sino al Via.");
@@ -111,7 +113,7 @@ public class Tabellone {
 
 		return imprevisti;
 
-	} 
+	}
 
 	public List<String> getProbabilità() {
 
@@ -122,7 +124,8 @@ public class Tabellone {
 		probabilità.add("Rimborso tassa sul reddito: ritirate 50€ dalla banca.");
 		probabilità.add("Avete vinto il secondo premio in un concorso di bellezza: ritirate 25€.");
 		probabilità.add("Scade il vostro premio di assicurazione: pagate 125€.");
-		probabilità.add("Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene(non si sa mai!) oppure venderlo.");
+		probabilità.add(
+				"Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene(non si sa mai!) oppure venderlo.");
 		probabilità.add("Avete vinto un premio di consolazione alla lotteria di Merano: ritirate 250€.");
 		probabilità.add("Andate fino al Via.");
 		probabilità.add("Pagate una multa di 25€, oppure prendete un cartoncino dagli Imprevisti.");
@@ -130,11 +133,12 @@ public class Tabellone {
 		probabilità.add("Avete perso una causa: pagate 250€");
 		probabilità.add("Andate in prigione direttamente e senza passare dal Via.");
 		probabilità.add("È il vostro compleanno: ogni giocatore vi regala 25€.");
-		probabilità.add("Dovete pagare un contributo di miglioria stradale, 100€ per ogni Casa, 250€ per ogni Albergo che possedete.");
+		probabilità.add(
+				"Dovete pagare un contributo di miglioria stradale, 100€ per ogni Casa, 250€ per ogni Albergo che possedete.");
 		probabilità.add("Avete ceduto delle azioni: ricavate 125€.");
 		probabilità.add("Pagate il conto del dottore: 125€.");
 
 		return probabilità;
 
-	} 
+	}
 }
