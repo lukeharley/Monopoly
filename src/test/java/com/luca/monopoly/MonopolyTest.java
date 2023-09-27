@@ -41,10 +41,8 @@ public class MonopolyTest {
 		assertEquals(16, monopoly.getTabellone().getProbabilità().size());
 		assertEquals("Ritornate al Vicolo Corto.", monopoly.getTabellone().getProbabilità().get(0));
 
-		Casa casa = new Casa();
-		Albergo albergo = new Albergo();
-		assertEquals(32, casa.getNumeroPezzi());
-		assertEquals(12, albergo.getNumeroPezzi());
+		assertEquals(32, monopoly.getTabellone().getCase().size());
+		assertEquals(12, monopoly.getTabellone().getAlberghi().size());
 
 		int numeroDadi = monopoly.getDadi().getNumeroDadi();
 		assertEquals(2, numeroDadi);

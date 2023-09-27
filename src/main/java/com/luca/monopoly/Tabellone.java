@@ -1,9 +1,15 @@
 package com.luca.monopoly;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class Tabellone {
+
+	private final int NUMERO_MAX_PEZZI_CASA = 32;
+
+	private final int NUMERO_MAX_PEZZI_ALBERGO = 12;
 
 	public List<Casella> getCaselle() {
 
@@ -140,5 +146,27 @@ public class Tabellone {
 
 		return probabilità;
 
+	}
+
+	public List<Casa> getCase() {
+
+		List<Casa> listaDiCase = new ArrayList<>();
+
+		for (int i = 1; i <= NUMERO_MAX_PEZZI_CASA; i++) {
+			listaDiCase.add(new Casa());
+		}
+
+		return listaDiCase;
+	}
+
+	public List<Albergo> getAlberghi() {
+
+		List<Albergo> listaDiAlberghi = new ArrayList<>();
+
+		for (int i = 1; i <= NUMERO_MAX_PEZZI_ALBERGO; i++) {
+			listaDiAlberghi.add(new Albergo());
+		}
+
+		return listaDiAlberghi;
 	}
 }
