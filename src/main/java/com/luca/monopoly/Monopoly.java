@@ -1,5 +1,6 @@
 package com.luca.monopoly;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +14,14 @@ public class Monopoly {
 		return Arrays.asList(Segnalini.values());
 	}
 
-	public Dado getDadi() {
-		return new Dado();
+	public List<Dado> getDadi() {
+
+		List<Dado> dadi = new ArrayList<>();
+
+		for(int i = 1; i <= 2; i++) {
+			dadi.add(new Dado());
+		}
+
+		return dadi;
 	}
 }

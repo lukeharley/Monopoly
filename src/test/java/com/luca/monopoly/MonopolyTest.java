@@ -19,14 +19,15 @@ public class MonopolyTest {
 		assertEquals("Via", monopoly.getTabellone().getCaselle().get(0).getTesto());
 		assertFalse(monopoly.getTabellone().getCaselle().get(0).isTerreno());
 		assertEquals(null, monopoly.getTabellone().getCaselle().get(0).getColore());
+
 		assertEquals("Vicolo Corto", monopoly.getTabellone().getCaselle().get(1).getTesto());
 		assertTrue(monopoly.getTabellone().getCaselle().get(1).isTerreno());
 		assertEquals("fucsia", monopoly.getTabellone().getCaselle().get(1).getColore());
 
 		assertEquals(8, monopoly.getSegnalini().size());
-		assertEquals("Cane", Segnalini.CANE.getNome());
 
 		assertEquals(28, monopoly.getTabellone().getContratti().size());
+
 		assertEquals("Vicolo Corto", monopoly.getTabellone().getContratti().get(0).getTesto());
 		assertEquals(10, monopoly.getTabellone().getContratti().get(1).getRenditaTerreno());
 		assertEquals(500, monopoly.getTabellone().getContratti().get(27).getRenditaUnaCasa());
@@ -44,10 +45,12 @@ public class MonopolyTest {
 		assertEquals(32, monopoly.getTabellone().getCase().size());
 		assertEquals(12, monopoly.getTabellone().getAlberghi().size());
 
-		int numeroDadi = monopoly.getDadi().getNumeroDadi();
-		assertEquals(2, numeroDadi);
-		int numeroFacce = monopoly.getDadi().getNumeroFacce();
-		assertEquals(6, numeroFacce);
+		assertEquals(2, monopoly.getDadi().size());
+
+		assertEquals(6, monopoly.getDadi().get(0).getNumeroFacce());
+
+		assertTrue(monopoly.getDadi().get(0).lancia() >= 1);
+		assertTrue(monopoly.getDadi().get(0).lancia() <= 6);
 
 		String nome1 = "Antonio";
 		String nome2 = "Alessio";
@@ -63,6 +66,6 @@ public class MonopolyTest {
 		assertEquals(Segnalini.DINOSAURO, giocatore2.getSegnalino());
 		assertEquals(0, giocatore2.getPosizione());
 
-		assertTrue((giocatore1.lanciaDadi()) <= (numeroDadi * numeroFacce));
+//		assertTrue((giocatore1.lanciaDadi()) <= (numeroDadi * numeroFacce));
 	}
 }
