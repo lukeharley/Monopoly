@@ -49,8 +49,13 @@ public class MonopolyTest {
 
 		assertEquals(6, monopoly.getDadi().get(0).getNumeroFacce());
 
-		assertTrue(monopoly.getDadi().get(0).lancia() >= 1);
-		assertTrue(monopoly.getDadi().get(0).lancia() <= 6);
+		assertEquals(1500, monopoly.getGiocatore().getPortafoglio());
+
+		assertNotNull(monopoly.getGiocatore().getSegnalino());
+
+		assertTrue(monopoly.getGiocatore().lanciaDadi() >= 1);
+		assertTrue(monopoly.getGiocatore().lanciaDadi() <= 6);
+
 
 		String nome1 = "Antonio";
 		String nome2 = "Alessio";

@@ -20,7 +20,7 @@ Scopo del gioco:
 2) Quando un giocatore deve pagare più soldi di quelli posseduti va in bancarotta ed esce dal gioco. Quando rimane un solo giocatore, prima che siano trascorse le 3 ore, il giocatore rimasto VINCE.
 3) Rappresentare il contenuto della scatola del Monopoly: 1 tabellone, 8 segnalini, 28 contratti, 16 carte "Imprevisti", 16 carte "Probabilità", 32 case, 12 alberghi, 2 dadi.
    [FATTO]
-4) Conto di partenza di ogni giocatore (= Patrimonio): 2 * 500€ + 4 * 100€ + 50€ + 20€ + 2 * 10€ + 5€ + 5 * 1€. Per un totale di 1500€.
+4) Conto di partenza di ogni giocatore (= Patrimonio): 2 * 500€ + 4 * 100€ + 50€ + 20€ + 2 * 10€ + 5€ + 5 * 1€. Per un totale di 1500€. [FATTO]
 5) Ad ogni turno il giocatore lancia i dadi e ottiene un valore che fa muovere i segnalini dei giocatori (shift = valore ottenuto come risultato del lancio dei dadi).
    Terminate/oltrepassate le 40 posizioni del tabellone, si ottengono i 200€ del Via! e il giro ricomincia da 0)
    (Se si ottengono 2 numeri uguali per le 2 facce, il giocatore ripete il turno.

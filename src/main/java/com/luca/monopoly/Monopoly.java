@@ -24,4 +24,8 @@ public class Monopoly {
 
 		return dadi;
 	}
+
+	public Giocatore getGiocatore() {
+		return new Giocatore(Segnalini.CANE);
+	}
 }

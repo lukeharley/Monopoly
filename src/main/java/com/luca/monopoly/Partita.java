@@ -8,11 +8,11 @@ public class Partita {
 
         Tabellone tabellone = new Tabellone();
 
-        int nuovaPosizione1 = giocatore1.getPosizione() + giocatore1.lanciaDadi();
-        System.out.println(tabellone.getCaselle().get(nuovaPosizione1).getTesto());
-
-        int nuovaPosizione2 = giocatore2.getPosizione() + giocatore2.lanciaDadi();
-        System.out.println(tabellone.getCaselle().get(nuovaPosizione2).getTesto());
+//        int nuovaPosizione1 = giocatore1.getPosizione() + giocatore1.lanciaDadi();
+//        System.out.println(tabellone.getCaselle().get(nuovaPosizione1).getTesto());
+//
+//        int nuovaPosizione2 = giocatore2.getPosizione() + giocatore2.lanciaDadi();
+//        System.out.println(tabellone.getCaselle().get(nuovaPosizione2).getTesto());
 
     }
 }

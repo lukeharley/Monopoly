@@ -2,6 +2,7 @@ package com.luca.monopoly;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Giocatore {
     private final static int NUMERO_MAX_GIOCATORI = 2;
@@ -11,12 +12,18 @@ public class Giocatore {
     private Dado dado;
     private int turno;
 
+
+
     public Giocatore(String nome, Segnalini segnalino) {
         this.nome = nome;
         this.segnalino = segnalino;
         this.posizione = 0;
         this.dado = new Dado();
         this.turno = 0;
+    }
+
+    public Giocatore(Segnalini segnalino) {
+        this.segnalino = segnalino;
     }
 
     public static int getNumeroMaxGiocatori() {
@@ -35,10 +42,6 @@ public class Giocatore {
         return posizione;
     }
 
-    public int lanciaDadi() {
-        return dado.getRisultatoLancioDadi();
-    }
-
     public int getTurno() {
         return turno;
     }
@@ -54,5 +57,25 @@ public class Giocatore {
             mazzoCartePescate.clear();
         }
 
+    }
+
+    public int getPortafoglio() {
+        return 1500;
+    }
+
+    public int lanciaDadi() {
+
+        return generaNumeroCasuale(1, 6);
+
+    }
+
+    private int generaNumeroCasuale(int valoreMinimo, int valoreMassimo) {
+
+        if (valoreMinimo >= valoreMassimo) {
+            throw new IllegalArgumentException("il valore massimo deve essere maggiore del valore minimo");
+        }
+
+        final Random r = new Random();
+        return r.nextInt(valoreMassimo - valoreMinimo + 1) + valoreMinimo;
     }
 }
