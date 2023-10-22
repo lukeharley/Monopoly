@@ -70,7 +70,8 @@ public class MonopolyTest {
 
 		Casella casella1 = new Casella("Vicolo Corto", true, "fucsia");
 		giocatore1.acquistaCasella(casella1);
-		assertEquals(1, giocatore1.getCasellePossedute().size());
+		assertEquals(1, giocatore1.getCasellePosseduteDaTuttiIGiocatori().size());
+		assertFalse(giocatore1.casellaAcquistabile(casella1, monopoly.getTabellone().getContratti().get(1)));
 
 		/*
 		 * String nome1 = "Antonio";

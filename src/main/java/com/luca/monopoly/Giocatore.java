@@ -14,6 +14,7 @@ public class Giocatore {
     private int turno;
     private int portafoglio;
     private List<Casella> casellePossedute;
+    private static List<Casella> casellePosseduteDaTuttiIGiocatori;
 
     public Giocatore(String nome, Segnalini segnalino) {
         this.nome = nome;
@@ -61,6 +62,10 @@ public class Giocatore {
         return casellePossedute;
     }
 
+    public List<Casella> getCasellePosseduteDaTuttiIGiocatori() {
+        return casellePosseduteDaTuttiIGiocatori;
+    }
+
     public <T> void pescaCarta(List<T> mazzoCorrente, List<T> mazzoCartePescate) {
         if (!mazzoCorrente.isEmpty()) {
             T cartaPescata = mazzoCorrente.remove(0);
@@ -101,6 +106,11 @@ public class Giocatore {
 
     public void acquistaCasella(Casella casella) {
         casellePossedute.add(casella);
+    }
+
+    public boolean casellaAcquistabile(Casella casella, Contratto contratto) {
+        return !(casellePosseduteDaTuttiIGiocatori.contains(casella)) && casella.isTerreno()
+                && (portafoglio > contratto.getRenditaTerreno());
     }
 
 }

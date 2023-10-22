@@ -26,7 +26,7 @@ Scopo del gioco:
    (Se si ottengono 2 numeri uguali per le 2 facce, il giocatore ripete il turno. [POSTICIPATO]
    Dopo 3 volte che ciò accade, il giocatore finisce in prigione senza passare dal Via! [= senza ritirare i 200€, non vale il ricalcolo delle posizioni delle caselle].) [POSTICIPATO]
 6. In base alla casella su cui si arriva, si potranno effettuare le seguenti azioni:
-   a) Acquistare la proprietà/il terreno (se ancora disponibili) e, se si ottengono tutti i terreni di uno stesso colore, posizionare le case e quindi gli alberghi (se possibile): il costo (da saldare alla banca) è stabilito nelle carte dei Contratti.
+   a) Acquistare la proprietà/il terreno (se ancora disponibili) [FATTO] e, se si ottengono tutti i terreni di uno stesso colore, posizionare le case e quindi gli alberghi (se possibile): il costo (da saldare alla banca) è stabilito nelle carte dei Contratti.
    [Se si completa il numero di terreni dello stesso colore (= si ha un Monopolio) la rendita del solo terreno raddoppia e si sblocca la possibilità di posizionare case e poi alberghi]
    b) Pagare l'affitto/la rendita (se la proprietà è posseduta da un altro giocatore): il prezzo (da pagare alla banca) è stabilito nelle carte dei Contratti e dipende dal numero di case e alberghi
    c) Se la casella è di tipo imprevisto o probabilità (String.equals()). Pescare una carta "Imprevisti" o "Probabilità" e registrare l'effetto in base alle variabili cotenute nel testo della rispettiva carta.
