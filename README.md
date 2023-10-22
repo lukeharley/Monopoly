@@ -16,15 +16,15 @@ ricerca dei restanti contratti su Google Immagini e conversione dei valori da li
 Sviluppo del gioco Monopoly
 Scopo del gioco:
 
-1. Diventare il giocatore più ricco dopo un certo tempo: dal momento in cui comincia la partita, cominciare a calcolare il passare del tempo. Nel momento in cui sono state raggiunte le 3 ore di gioco, il gioco si interrompe e il giocatore con più soldi VINCE.
-2. Quando un giocatore deve pagare più soldi di quelli posseduti va in bancarotta ed esce dal gioco. Quando rimane un solo giocatore, prima che siano trascorse le 3 ore, il giocatore rimasto VINCE.
+1. Diventare il giocatore più ricco dopo un certo tempo: dal momento in cui comincia la partita, cominciare a calcolare il passare del tempo. Nel momento in cui sono state raggiunte le 3 ore di gioco, il gioco si interrompe e il giocatore con più soldi VINCE. [POSTICIPATO]
+2. Quando un giocatore deve pagare più soldi di quelli posseduti va in bancarotta ed esce dal gioco. Quando rimane un solo giocatore, prima che siano trascorse le 3 ore, il giocatore rimasto VINCE. [POSTICIPATO]
 3. Rappresentare il contenuto della scatola del Monopoly: 1 tabellone, 8 segnalini, 28 contratti, 16 carte "Imprevisti", 16 carte "Probabilità", 32 case, 12 alberghi, 2 dadi.
    [FATTO]
 4. Conto di partenza di ogni giocatore (= Patrimonio): 2 _ 500€ + 4 _ 100€ + 50€ + 20€ + 2 _ 10€ + 5€ + 5 _ 1€. Per un totale di 1500€. [FATTO]
 5. Ad ogni turno il giocatore lancia i dadi e ottiene un valore che fa muovere i segnalini dei giocatori (shift = valore ottenuto come risultato del lancio dei dadi). [FATTO]
    Terminate/oltrepassate le 40 posizioni del tabellone, si ottengono i 200€ del Via! e il giro ricomincia da 0) [FATTO]
-   (Se si ottengono 2 numeri uguali per le 2 facce, il giocatore ripete il turno.
-   Dopo 3 volte che ciò accade, il giocatore finisce in prigione senza passare dal Via! [= senza ritirare i 200€, non vale il ricalcolo delle posizioni delle caselle].)
+   (Se si ottengono 2 numeri uguali per le 2 facce, il giocatore ripete il turno. [POSTICIPATO]
+   Dopo 3 volte che ciò accade, il giocatore finisce in prigione senza passare dal Via! [= senza ritirare i 200€, non vale il ricalcolo delle posizioni delle caselle].) [POSTICIPATO]
 6. In base alla casella su cui si arriva, si potranno effettuare le seguenti azioni:
    a) Acquistare la proprietà/il terreno (se ancora disponibili) e, se si ottengono tutti i terreni di uno stesso colore, posizionare le case e quindi gli alberghi (se possibile): il costo (da saldare alla banca) è stabilito nelle carte dei Contratti.
    [Se si completa il numero di terreni dello stesso colore (= si ha un Monopolio) la rendita del solo terreno raddoppia e si sblocca la possibilità di posizionare case e poi alberghi]
@@ -50,6 +50,6 @@ Scopo del gioco:
 13. ottenendo un punteggio doppio con i dadi senza dover pagare nulla. In questo caso deve muovere il segnalino di un numero di caselle pari al punteggio ottenuto
 14. utilizzando uno dei cartoncini sui quali è scritto USCITE GRATIS DI PRIGIONE
     Ad ogni turno trascorso in Prigione, il giocatore deve comunque lanciare i dadi. Se esce un “doppio” esce, altrimenti no. Dopo 3 turni il giocatore è costretto a pagare € 125 di multa e uscire, utilizzando per il movimento l’ultimo punteggio ottenuto.
-15. (Dado Speedy)
+15. (Dado Speedy) [POSTICIPATO]
 
 # monopoly

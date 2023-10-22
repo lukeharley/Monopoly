@@ -12,6 +12,7 @@ public class Giocatore {
     private Dado dado;
     private int turno;
     private int portafoglio;
+    private boolean proprietario;
 
     public Giocatore(String nome, Segnalini segnalino) {
         this.nome = nome;
@@ -91,4 +92,9 @@ public class Giocatore {
         final Random r = new Random();
         return r.nextInt(valoreMassimo - valoreMinimo + 1) + valoreMinimo;
     }
+
+    public boolean isProprietario() {
+        return proprietario;
+    }
+
 }

@@ -65,6 +65,15 @@ public class MonopolyTest {
 		giocatore1.setNuovaPosizione(39, 6);
 		assertEquals(1700, giocatore1.getPortafoglio());
 
+		Giocatore giocatore2 = new Giocatore("Alberto", Segnalini.DINOSAURO);
+		giocatore2.setNuovaPosizione(giocatore2.getPosizione(), 1);
+		// assertTrue(monopoly.getTabellone().getCaselle().get(1).isTerreno());
+
+		// verificare che una volta assegnata la proprietà il proprietario sia
+		// effettivamente; risultato di acquistaProprietà è meno soldi in banca pari
+		// alla rendita del terreno e il terreno diventa di proprietà del giocatore
+		// oppure è il giocatore ad acquisire proprietà
+
 		/*
 		 * String nome1 = "Antonio";
 		 * String nome2 = "Alessio";
