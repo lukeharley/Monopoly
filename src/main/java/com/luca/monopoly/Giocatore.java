@@ -12,8 +12,6 @@ public class Giocatore {
     private Dado dado;
     private int turno;
 
-
-
     public Giocatore(String nome, Segnalini segnalino) {
         this.nome = nome;
         this.segnalino = segnalino;
@@ -42,6 +40,10 @@ public class Giocatore {
         return posizione;
     }
 
+    public Dado getDado() {
+        return dado;
+    }
+
     public int getTurno() {
         return turno;
     }
@@ -63,10 +65,13 @@ public class Giocatore {
         return 1500;
     }
 
+    public int setNuovaPosizione(int posizione, int risultatoDado) {
+        int nuovaPosizione = (posizione + risultatoDado) % 40;
+        return nuovaPosizione;
+    }
+
     public int lanciaDadi() {
-
         return generaNumeroCasuale(1, 6);
-
     }
 
     private int generaNumeroCasuale(int valoreMinimo, int valoreMassimo) {

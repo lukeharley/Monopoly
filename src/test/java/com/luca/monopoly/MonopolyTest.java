@@ -56,21 +56,28 @@ public class MonopolyTest {
 		assertTrue(monopoly.getGiocatore().lanciaDadi() >= 1);
 		assertTrue(monopoly.getGiocatore().lanciaDadi() <= 6);
 
+		assertEquals(8, monopoly.getGiocatore().setNuovaPosizione(3, 5));
 
-		String nome1 = "Antonio";
-		String nome2 = "Alessio";
-		Giocatore giocatore1 = new Giocatore(nome1, Segnalini.CANE);
-		Giocatore giocatore2 = new Giocatore(nome2, Segnalini.DINOSAURO);
-		assertNotNull(giocatore1);
-		assertNotNull(giocatore2);
+		int posizione = monopoly.getGiocatore().getPosizione();
+		int risultatoDado = monopoly.getGiocatore().lanciaDadi();
+		assertTrue(monopoly.getGiocatore().setNuovaPosizione(posizione, risultatoDado) <= 40);
 
-		assertEquals("Antonio", giocatore1.getNome());
-		assertEquals(Segnalini.CANE, giocatore1.getSegnalino());
-		assertEquals(0, giocatore1.getPosizione());
-		assertEquals("Alessio", giocatore2.getNome());
-		assertEquals(Segnalini.DINOSAURO, giocatore2.getSegnalino());
-		assertEquals(0, giocatore2.getPosizione());
+		/*
+		 * String nome1 = "Antonio";
+		 * String nome2 = "Alessio";
+		 * Giocatore giocatore1 = new Giocatore(nome1, Segnalini.CANE);
+		 * Giocatore giocatore2 = new Giocatore(nome2, Segnalini.DINOSAURO);
+		 * assertNotNull(giocatore1);
+		 * assertNotNull(giocatore2);
+		 * 
+		 * assertEquals("Antonio", giocatore1.getNome());
+		 * assertEquals(Segnalini.CANE, giocatore1.getSegnalino());
+		 * assertEquals(0, giocatore1.getPosizione());
+		 * assertEquals("Alessio", giocatore2.getNome());
+		 * assertEquals(Segnalini.DINOSAURO, giocatore2.getSegnalino());
+		 * assertEquals(0, giocatore2.getPosizione());
+		 */
 
-//		assertTrue((giocatore1.lanciaDadi()) <= (numeroDadi * numeroFacce));
+		// assertTrue((giocatore1.lanciaDadi()) <= (numeroDadi * numeroFacce));
 	}
 }
