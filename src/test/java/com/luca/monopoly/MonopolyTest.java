@@ -49,8 +49,6 @@ public class MonopolyTest {
 
 		assertEquals(6, monopoly.getDadi().get(0).getNumeroFacce());
 
-		assertEquals(1500, monopoly.getGiocatore().getPortafoglio());
-
 		assertNotNull(monopoly.getGiocatore().getSegnalino());
 
 		assertTrue(monopoly.getGiocatore().lanciaDadi() >= 1);
@@ -61,6 +59,11 @@ public class MonopolyTest {
 		int posizione = monopoly.getGiocatore().getPosizione();
 		int risultatoDado = monopoly.getGiocatore().lanciaDadi();
 		assertTrue(monopoly.getGiocatore().setNuovaPosizione(posizione, risultatoDado) <= 40);
+
+		Giocatore giocatore1 = new Giocatore("Saverio", Segnalini.CANE);
+		assertEquals(1500, giocatore1.getPortafoglio());
+		giocatore1.setNuovaPosizione(39, 6);
+		assertEquals(1700, giocatore1.getPortafoglio());
 
 		/*
 		 * String nome1 = "Antonio";

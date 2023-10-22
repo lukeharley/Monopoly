@@ -11,6 +11,7 @@ public class Giocatore {
     private int posizione;
     private Dado dado;
     private int turno;
+    private int portafoglio;
 
     public Giocatore(String nome, Segnalini segnalino) {
         this.nome = nome;
@@ -18,6 +19,7 @@ public class Giocatore {
         this.posizione = 0;
         this.dado = new Dado();
         this.turno = 0;
+        this.portafoglio = 1500;
     }
 
     public Giocatore(Segnalini segnalino) {
@@ -62,10 +64,15 @@ public class Giocatore {
     }
 
     public int getPortafoglio() {
-        return 1500;
+        return portafoglio;
     }
 
     public int setNuovaPosizione(int posizione, int risultatoDado) {
+
+        if ((posizione + risultatoDado) > 40) {
+            portafoglio = portafoglio + 200;
+        }
+
         int nuovaPosizione = (posizione + risultatoDado) % 40;
         return nuovaPosizione;
     }
