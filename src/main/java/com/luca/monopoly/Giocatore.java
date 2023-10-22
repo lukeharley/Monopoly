@@ -69,11 +69,12 @@ public class Giocatore {
 
     public int setNuovaPosizione(int posizione, int risultatoDado) {
 
+        int nuovaPosizione = (posizione + risultatoDado) % 40;
+
         if ((posizione + risultatoDado) > 40) {
             portafoglio = portafoglio + 200;
         }
 
-        int nuovaPosizione = (posizione + risultatoDado) % 40;
         return nuovaPosizione;
     }
 

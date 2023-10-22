@@ -22,7 +22,7 @@ Scopo del gioco:
    [FATTO]
 4. Conto di partenza di ogni giocatore (= Patrimonio): 2 _ 500€ + 4 _ 100€ + 50€ + 20€ + 2 _ 10€ + 5€ + 5 _ 1€. Per un totale di 1500€. [FATTO]
 5. Ad ogni turno il giocatore lancia i dadi e ottiene un valore che fa muovere i segnalini dei giocatori (shift = valore ottenuto come risultato del lancio dei dadi). [FATTO]
-   Terminate/oltrepassate le 40 posizioni del tabellone, si ottengono i 200€ del Via! e il giro ricomincia da 0)
+   Terminate/oltrepassate le 40 posizioni del tabellone, si ottengono i 200€ del Via! e il giro ricomincia da 0) [FATTO]
    (Se si ottengono 2 numeri uguali per le 2 facce, il giocatore ripete il turno.
    Dopo 3 volte che ciò accade, il giocatore finisce in prigione senza passare dal Via! [= senza ritirare i 200€, non vale il ricalcolo delle posizioni delle caselle].)
 6. In base alla casella su cui si arriva, si potranno effettuare le seguenti azioni:
