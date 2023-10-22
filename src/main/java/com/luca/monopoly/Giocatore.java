@@ -1,5 +1,6 @@
 package com.luca.monopoly;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -12,7 +13,7 @@ public class Giocatore {
     private Dado dado;
     private int turno;
     private int portafoglio;
-    private boolean proprietario;
+    private List<Casella> casellePossedute;
 
     public Giocatore(String nome, Segnalini segnalino) {
         this.nome = nome;
@@ -21,6 +22,7 @@ public class Giocatore {
         this.dado = new Dado();
         this.turno = 0;
         this.portafoglio = 1500;
+        this.casellePossedute = new ArrayList<>();
     }
 
     public Giocatore(Segnalini segnalino) {
@@ -51,6 +53,14 @@ public class Giocatore {
         return turno;
     }
 
+    public int getPortafoglio() {
+        return portafoglio;
+    }
+
+    public List<Casella> getCasellePossedute() {
+        return casellePossedute;
+    }
+
     public <T> void pescaCarta(List<T> mazzoCorrente, List<T> mazzoCartePescate) {
         if (!mazzoCorrente.isEmpty()) {
             T cartaPescata = mazzoCorrente.remove(0);
@@ -62,10 +72,6 @@ public class Giocatore {
             mazzoCartePescate.clear();
         }
 
-    }
-
-    public int getPortafoglio() {
-        return portafoglio;
     }
 
     public int setNuovaPosizione(int posizione, int risultatoDado) {
@@ -93,8 +99,8 @@ public class Giocatore {
         return r.nextInt(valoreMassimo - valoreMinimo + 1) + valoreMinimo;
     }
 
-    public boolean isProprietario() {
-        return proprietario;
+    public void acquistaCasella(Casella casella) {
+        casellePossedute.add(casella);
     }
 
 }
