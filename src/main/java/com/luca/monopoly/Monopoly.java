@@ -26,6 +26,6 @@ public class Monopoly {
 	}
 
 	public Giocatore getGiocatore() {
-		return new Giocatore(Segnalini.CANE);
+		return new Giocatore(Segnalini.CANE, 1500, 0);
 	}
 }

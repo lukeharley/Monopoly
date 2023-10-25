@@ -133,16 +133,49 @@ public class MonopolyTest {
 
 	@Order(10)
 	@Test
-	void test_giocatore() {
+	void test_giocatore_posizione() {
 
 		Giocatore giocatore = monopoly.getGiocatore();
 
 		assertNotNull(giocatore.getSegnalino());
 
-		assertTrue(giocatore.lanciaDadi() >= 1);
-		assertTrue(giocatore.lanciaDadi() <= 6);
+		assertEquals(0, giocatore.getPosizione());
+		assertEquals(1500, giocatore.getPortafoglio());
 
-		assertEquals(8, giocatore.setNuovaPosizione(3, 5));
+		assertTrue(giocatore.lanciaDadi() >= 2);
+		assertTrue(giocatore.lanciaDadi() <= 12);
+
+		giocatore.aggiornaPosizioneEPortafoglio(12);
+		assertEquals(12, giocatore.getPosizione());
+		assertEquals(1500, giocatore.getPortafoglio());
+
+		giocatore.aggiornaPosizioneEPortafoglio(12);
+		assertEquals(24, giocatore.getPosizione());
+		assertEquals(1500, giocatore.getPortafoglio());
+
+		giocatore.aggiornaPosizioneEPortafoglio(12);
+		assertEquals(36, giocatore.getPosizione());
+		assertEquals(1500, giocatore.getPortafoglio());
+
+		giocatore.aggiornaPosizioneEPortafoglio(12);
+		assertEquals(8, giocatore.getPosizione());
+		assertEquals(1700, giocatore.getPortafoglio());
 
 	}
+
+	@Order(11)
+	@Test
+	void test_giocatore_proprieta() {
+
+		Giocatore giocatore = monopoly.getGiocatore();
+		giocatore.aggiornaPosizioneEPortafoglio(3);
+
+		List<Contratto> contratti = monopoly.getTabellone().getContratti();
+		giocatore.compraProprieta(contratti, monopoly.getTabellone().getCaselle(),"Vicolo Stretto");
+		assertEquals(1350, giocatore.getPortafoglio());
+		assertEquals("Vicolo Stretto", giocatore.getContratti().get(0).getTesto());
+		assertEquals(27, contratti.size());
+
+	}
+
 }

@@ -13,46 +13,85 @@ public class Tabellone {
 
 		List<Casella> caselle = new ArrayList<>();
 
-		caselle.add(new Casella("Via", false, null));
-		caselle.add(new Casella("Vicolo Corto", true, "fucsia"));
-		caselle.add(new Casella("Probabilità", false, null));
-		caselle.add(new Casella("Vicolo Stretto", true, "fucsia"));
-		caselle.add(new Casella("Tassa Patrimoniale", false, null));
-		caselle.add(new Casella("Stazione Sud", false, null));
-		caselle.add(new Casella("Bastioni Gran Sasso", true, "azzurro"));
-		caselle.add(new Casella("Imprevisti", false, null));
-		caselle.add(new Casella("Viale Monterosa", true, "azzurro"));
-		caselle.add(new Casella("Viale Vesuvio", true, "azzurro"));
-		caselle.add(new Casella("Prigione/Transito", false, null));
-		caselle.add(new Casella("Via Accademia", true, "arancione"));
-		caselle.add(new Casella("Società Elettrica", false, null));
-		caselle.add(new Casella("Corso Ateneo", true, "arancione"));
-		caselle.add(new Casella("Piazza Università", true, "arancione"));
-		caselle.add(new Casella("Stazione Ovest", false, null));
-		caselle.add(new Casella("Via Verdi", true, "marrone"));
-		caselle.add(new Casella("Probabilità", false, null));
-		caselle.add(new Casella("Corso Raffaello", true, "marrone"));
-		caselle.add(new Casella("Piazza Dante", true, "marrone"));
-		caselle.add(new Casella("Posteggio Gratuito", false, null));
-		caselle.add(new Casella("Via Marco Polo", true, "rosso"));
-		caselle.add(new Casella("Imprevisti", false, null));
-		caselle.add(new Casella("Corso Magellano", true, "rosso"));
-		caselle.add(new Casella("Largo Colombo", true, "rosso"));
-		caselle.add(new Casella("Stazione Nord", false, null));
-		caselle.add(new Casella("Viale Costantino", true, "giallo"));
-		caselle.add(new Casella("Viale Traiano", true, "giallo"));
-		caselle.add(new Casella("Società Acqua Potabile", false, null));
-		caselle.add(new Casella("Piazza Giulio Cesare", true, "giallo"));
-		caselle.add(new Casella("In prigione!", false, null));
-		caselle.add(new Casella("Via Roma", true, "verde"));
-		caselle.add(new Casella("Corso Impero", true, "verde"));
-		caselle.add(new Casella("Probabilità", false, null));
-		caselle.add(new Casella("Largo Augusto", true, "verde"));
-		caselle.add(new Casella("Stazione Est", false, null));
-		caselle.add(new Casella("Imprevisti", false, null));
-		caselle.add(new Casella("Viale dei Giardini", true, "viola"));
-		caselle.add(new Casella("Tassa di Lusso", false, null));
-		caselle.add(new Casella("Parco della Vittoria", true, "viola"));
+		caselle.add(new Casella("Via", false, null, 0));
+		caselle.add(new Casella("Vicolo Corto", true, "fucsia", 0));
+
+		caselle.add(new Casella("Probabilità", false, null, 0));
+
+		caselle.add(new Casella("Vicolo Stretto", true, "fucsia", 150));
+
+		caselle.add(new Casella("Tassa Patrimoniale", false, null, 0));
+
+		caselle.add(new Casella("Stazione Sud", false, null, 0));
+
+		caselle.add(new Casella("Bastioni Gran Sasso", true, "azzurro", 0));
+
+		caselle.add(new Casella("Imprevisti", false, null, 0));
+
+		caselle.add(new Casella("Viale Monterosa", true, "azzurro", 0));
+
+		caselle.add(new Casella("Viale Vesuvio", true, "azzurro", 0));
+
+		caselle.add(new Casella("Prigione/Transito", false, null, 0));
+
+		caselle.add(new Casella("Via Accademia", true, "arancione", 0));
+
+		caselle.add(new Casella("Società Elettrica", false, null, 0));
+
+		caselle.add(new Casella("Corso Ateneo", true, "arancione", 0));
+
+		caselle.add(new Casella("Piazza Università", true, "arancione", 0));
+
+		caselle.add(new Casella("Stazione Ovest", false, null, 0));
+
+		caselle.add(new Casella("Via Verdi", true, "marrone", 0));
+
+		caselle.add(new Casella("Probabilità", false, null, 0));
+
+		caselle.add(new Casella("Corso Raffaello", true, "marrone", 0));
+
+		caselle.add(new Casella("Piazza Dante", true, "marrone", 0));
+
+		caselle.add(new Casella("Posteggio Gratuito", false, null, 0));
+
+		caselle.add(new Casella("Via Marco Polo", true, "rosso", 0));
+
+		caselle.add(new Casella("Imprevisti", false, null, 0));
+
+		caselle.add(new Casella("Corso Magellano", true, "rosso", 0));
+
+		caselle.add(new Casella("Largo Colombo", true, "rosso", 0));
+
+		caselle.add(new Casella("Stazione Nord", false, null, 0));
+
+		caselle.add(new Casella("Viale Costantino", true, "giallo", 0));
+
+		caselle.add(new Casella("Viale Traiano", true, "giallo", 0));
+
+		caselle.add(new Casella("Società Acqua Potabile", false, null, 0));
+
+		caselle.add(new Casella("Piazza Giulio Cesare", true, "giallo", 0));
+
+		caselle.add(new Casella("In prigione!", false, null, 0));
+
+		caselle.add(new Casella("Via Roma", true, "verde", 0));
+
+		caselle.add(new Casella("Corso Impero", true, "verde", 0));
+
+		caselle.add(new Casella("Probabilità", false, null, 0));
+
+		caselle.add(new Casella("Largo Augusto", true, "verde", 0));
+
+		caselle.add(new Casella("Stazione Est", false, null, 0));
+
+		caselle.add(new Casella("Imprevisti", false, null, 0));
+
+		caselle.add(new Casella("Viale dei Giardini", true, "viola", 0));
+
+		caselle.add(new Casella("Tassa di Lusso", false, null, 0));
+
+		caselle.add(new Casella("Parco della Vittoria", true, "viola", 0));
+
 
 		return caselle;
 	}

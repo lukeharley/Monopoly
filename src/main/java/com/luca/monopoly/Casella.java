@@ -5,10 +5,14 @@ public class Casella {
 	private boolean terreno;
 	private String colore;
 
-	public Casella(String testo, boolean terreno, String colore) {
+
+	private int costoProprieta;
+
+	public Casella(String testo, boolean terreno, String colore, int costoProprieta) {
 		this.testo = testo;
 		this.terreno = terreno;
 		this.colore = colore;
+		this.costoProprieta = costoProprieta;
 	}
 
 	public String getTesto() {
@@ -22,4 +26,25 @@ public class Casella {
 	public String getColore() {
 		return colore;
 	}
+
+	public void setTesto(String testo) {
+		this.testo = testo;
+	}
+
+	public void setTerreno(boolean terreno) {
+		this.terreno = terreno;
+	}
+
+	public void setColore(String colore) {
+		this.colore = colore;
+	}
+
+	public int getCostoProprieta() {
+		return costoProprieta;
+	}
+
+	public void setCostoProprieta(int costoProprieta) {
+		this.costoProprieta = costoProprieta;
+	}
+
 }
