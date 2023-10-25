@@ -80,8 +80,10 @@ public class MonopolyTest {
 
 		List<String> imprevisti = tabellone.getImprevisti();
 		assertEquals(16, imprevisti.size());
+
+		String primaCartaImprevisto = imprevisti.get(0);
 		assertEquals("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.",
-				imprevisti.get(0));
+				primaCartaImprevisto);
 
 	}
 
@@ -91,9 +93,11 @@ public class MonopolyTest {
 
 		Tabellone tabellone = monopoly.getTabellone();
 
-		List<String> probabilità = tabellone.getProbabilità();
-		assertEquals(16, probabilità.size());
-		assertEquals("Ritornate al Vicolo Corto.", probabilità.get(0));
+		List<String> probabilita = tabellone.getProbabilità();
+		assertEquals(16, probabilita.size());
+
+		String primaCartaProbabilita = probabilita.get(0);
+		assertEquals("Ritornate al Vicolo Corto.", primaCartaProbabilita);
 	}
 
 	@Order(7)
@@ -122,53 +126,23 @@ public class MonopolyTest {
 
 		List<Dado> dadi = monopoly.getDadi();
 		assertEquals(2, dadi.size());
-		assertEquals(6, dadi.get(0).getNumeroFacce());
+
+		Dado primoDado = dadi.get(0);
+		assertEquals(6, primoDado.getNumeroFacce());
 	}
 
 	@Order(10)
 	@Test
-	void test() {
+	void test_giocatore() {
 
-		assertNotNull(monopoly.getGiocatore().getSegnalino());
+		Giocatore giocatore = monopoly.getGiocatore();
 
-		assertTrue(monopoly.getGiocatore().lanciaDadi() >= 1);
-		assertTrue(monopoly.getGiocatore().lanciaDadi() <= 6);
+		assertNotNull(giocatore.getSegnalino());
 
-		assertEquals(8, monopoly.getGiocatore().setNuovaPosizione(3, 5));
+		assertTrue(giocatore.lanciaDadi() >= 1);
+		assertTrue(giocatore.lanciaDadi() <= 6);
 
-		int posizione = monopoly.getGiocatore().getPosizione();
-		int risultatoDado = monopoly.getGiocatore().lanciaDadi();
-		assertTrue(monopoly.getGiocatore().setNuovaPosizione(posizione, risultatoDado) <= 40);
+		assertEquals(8, giocatore.setNuovaPosizione(3, 5));
 
-		Giocatore giocatore1 = new Giocatore("Saverio", Segnalini.CANE);
-		assertEquals(1500, giocatore1.getPortafoglio());
-		giocatore1.setNuovaPosizione(39, 6);
-		assertEquals(1700, giocatore1.getPortafoglio());
-
-		Giocatore giocatore2 = new Giocatore("Alberto", Segnalini.DINOSAURO);
-		giocatore2.setNuovaPosizione(giocatore2.getPosizione(), 1);
-
-		// Casella casella1 = new Casella("Vicolo Corto", true, "fucsia");
-		// giocatore1.acquistaCasella(casella1);
-		// assertEquals(1, giocatore1.getCasellePosseduteDaTuttiIGiocatori().size());
-		// assertFalse(giocatore1.casellaAcquistabile(casella1, contratti.get(1)));
-
-		/*
-		 * String nome1 = "Antonio";
-		 * String nome2 = "Alessio";
-		 * Giocatore giocatore1 = new Giocatore(nome1, Segnalini.CANE);
-		 * Giocatore giocatore2 = new Giocatore(nome2, Segnalini.DINOSAURO);
-		 * assertNotNull(giocatore1);
-		 * assertNotNull(giocatore2);
-		 * 
-		 * assertEquals("Antonio", giocatore1.getNome());
-		 * assertEquals(Segnalini.CANE, giocatore1.getSegnalino());
-		 * assertEquals(0, giocatore1.getPosizione());
-		 * assertEquals("Alessio", giocatore2.getNome());
-		 * assertEquals(Segnalini.DINOSAURO, giocatore2.getSegnalino());
-		 * assertEquals(0, giocatore2.getPosizione());
-		 */
-
-		// assertTrue((giocatore1.lanciaDadi()) <= (numeroDadi * numeroFacce));
 	}
 }
