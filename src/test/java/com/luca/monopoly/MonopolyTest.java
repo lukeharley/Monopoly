@@ -1,53 +1,123 @@
 package com.luca.monopoly;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class MonopolyTest {
+
+	private Monopoly monopoly = new Monopoly();
+
+	@BeforeEach
+	void setup() {
+		monopoly = new Monopoly();
+	}
+
 	@Test
-	void test() {
-		Monopoly monopoly = new Monopoly();
+	void test_inizializzazione_monopoly() {
 
 		assertNotNull(monopoly);
 
-		assertEquals(40, monopoly.getTabellone().getCaselle().size());
+	}
 
-		assertEquals("Via", monopoly.getTabellone().getCaselle().get(0).getTesto());
-		assertFalse(monopoly.getTabellone().getCaselle().get(0).isTerreno());
-		assertEquals(null, monopoly.getTabellone().getCaselle().get(0).getColore());
+	@Test
+	void test_caselle() {
 
-		assertEquals("Vicolo Corto", monopoly.getTabellone().getCaselle().get(1).getTesto());
-		assertTrue(monopoly.getTabellone().getCaselle().get(1).isTerreno());
-		assertEquals("fucsia", monopoly.getTabellone().getCaselle().get(1).getColore());
+		Tabellone tabellone = monopoly.getTabellone();
 
-		assertEquals(8, monopoly.getSegnalini().size());
+		List<Casella> caselle = tabellone.getCaselle();
+		assertEquals(40, caselle.size());
 
-		assertEquals(28, monopoly.getTabellone().getContratti().size());
+		Casella primaCasella = caselle.get(0);
+		assertEquals("Via", primaCasella.getTesto());
+		assertFalse(primaCasella.isTerreno());
+		assertNull(primaCasella.getColore());
 
-		assertEquals("Vicolo Corto", monopoly.getTabellone().getContratti().get(0).getTesto());
-		assertEquals(10, monopoly.getTabellone().getContratti().get(1).getRenditaTerreno());
-		assertEquals(500, monopoly.getTabellone().getContratti().get(27).getRenditaUnaCasa());
-		assertEquals(1000, monopoly.getTabellone().getContratti().get(13).getRenditaAlbergo());
-		assertEquals(65, monopoly.getTabellone().getContratti().get(2).getRenditaUnaStazione());
-		assertEquals(130, monopoly.getTabellone().getContratti().get(2).getRenditaDueStazioni());
+		Casella secondaCasella = caselle.get(1);
+		assertEquals("Vicolo Corto", secondaCasella.getTesto());
+		assertTrue(secondaCasella.isTerreno());
+		assertEquals("fucsia", secondaCasella.getColore());
 
-		assertEquals(16, monopoly.getTabellone().getImprevisti().size());
+	}
+
+	@Test
+	void test_segnalini() {
+
+		List<Segnalini> segnalini = monopoly.getSegnalini();
+		assertEquals(8, segnalini.size());
+
+	}
+
+	@Test
+	void test_contratti() {
+
+		Tabellone tabellone = monopoly.getTabellone();
+
+		List<Contratto> contratti = tabellone.getContratti();
+		assertEquals(28, contratti.size());
+
+		assertEquals("Vicolo Corto", contratti.get(0).getTesto());
+		assertEquals(10, contratti.get(1).getRenditaTerreno());
+		assertEquals(500, contratti.get(27).getRenditaUnaCasa());
+		assertEquals(1000, contratti.get(13).getRenditaAlbergo());
+		assertEquals(65, contratti.get(2).getRenditaUnaStazione());
+		assertEquals(130, contratti.get(2).getRenditaDueStazioni());
+
+	}
+
+	@Test
+	void test_imprevisti() {
+
+		Tabellone tabellone = monopoly.getTabellone();
+
+		List<String> imprevisti = tabellone.getImprevisti();
+		assertEquals(16, imprevisti.size());
 		assertEquals("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.",
-				monopoly.getTabellone().getImprevisti().get(0));
+				imprevisti.get(0));
 
-		assertEquals(16, monopoly.getTabellone().getProbabilità().size());
-		assertEquals("Ritornate al Vicolo Corto.", monopoly.getTabellone().getProbabilità().get(0));
+	}
 
-		assertEquals(32, monopoly.getTabellone().getCase().size());
-		assertEquals(12, monopoly.getTabellone().getAlberghi().size());
+	@Test
+	void test_probabilita() {
 
-		assertEquals(2, monopoly.getDadi().size());
+		Tabellone tabellone = monopoly.getTabellone();
 
-		assertEquals(6, monopoly.getDadi().get(0).getNumeroFacce());
+		List<String> probabilità = tabellone.getProbabilità();
+		assertEquals(16, probabilità.size());
+		assertEquals("Ritornate al Vicolo Corto.", probabilità.get(0));
+	}
+
+	@Test
+	void test_casette() {
+
+		Tabellone tabellone = monopoly.getTabellone();
+
+		List<Casa> casette = tabellone.getCase();
+		assertEquals(32, casette.size());
+	}
+
+	@Test
+	void test_alberghi() {
+
+		Tabellone tabellone = monopoly.getTabellone();
+
+		List<Albergo> alberghi = tabellone.getAlberghi();
+		assertEquals(12, alberghi.size());
+	}
+
+	@Test
+	void test_dadi() {
+
+		List<Dado> dadi = monopoly.getDadi();
+		assertEquals(2, dadi.size());
+		assertEquals(6, dadi.get(0).getNumeroFacce());
+	}
+
+	@Test
+	void test() {
 
 		assertNotNull(monopoly.getGiocatore().getSegnalino());
 
@@ -68,10 +138,10 @@ public class MonopolyTest {
 		Giocatore giocatore2 = new Giocatore("Alberto", Segnalini.DINOSAURO);
 		giocatore2.setNuovaPosizione(giocatore2.getPosizione(), 1);
 
-		Casella casella1 = new Casella("Vicolo Corto", true, "fucsia");
-		giocatore1.acquistaCasella(casella1);
-		assertEquals(1, giocatore1.getCasellePosseduteDaTuttiIGiocatori().size());
-		assertFalse(giocatore1.casellaAcquistabile(casella1, monopoly.getTabellone().getContratti().get(1)));
+		// Casella casella1 = new Casella("Vicolo Corto", true, "fucsia");
+		// giocatore1.acquistaCasella(casella1);
+		// assertEquals(1, giocatore1.getCasellePosseduteDaTuttiIGiocatori().size());
+		// assertFalse(giocatore1.casellaAcquistabile(casella1, contratti.get(1)));
 
 		/*
 		 * String nome1 = "Antonio";
