@@ -1,12 +1,12 @@
 package com.luca.monopoly;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MonopolyTest {
 
 	private Monopoly monopoly = new Monopoly();
@@ -16,6 +16,7 @@ public class MonopolyTest {
 		monopoly = new Monopoly();
 	}
 
+	@Order(1)
 	@Test
 	void test_inizializzazione_monopoly() {
 
@@ -23,6 +24,7 @@ public class MonopolyTest {
 
 	}
 
+	@Order(2)
 	@Test
 	void test_caselle() {
 
@@ -43,6 +45,7 @@ public class MonopolyTest {
 
 	}
 
+	@Order(3)
 	@Test
 	void test_segnalini() {
 
@@ -51,6 +54,7 @@ public class MonopolyTest {
 
 	}
 
+	@Order(4)
 	@Test
 	void test_contratti() {
 
@@ -68,6 +72,7 @@ public class MonopolyTest {
 
 	}
 
+	@Order(5)
 	@Test
 	void test_imprevisti() {
 
@@ -80,6 +85,7 @@ public class MonopolyTest {
 
 	}
 
+	@Order(6)
 	@Test
 	void test_probabilita() {
 
@@ -90,6 +96,7 @@ public class MonopolyTest {
 		assertEquals("Ritornate al Vicolo Corto.", probabilità.get(0));
 	}
 
+	@Order(7)
 	@Test
 	void test_casette() {
 
@@ -99,6 +106,7 @@ public class MonopolyTest {
 		assertEquals(32, casette.size());
 	}
 
+	@Order(8)
 	@Test
 	void test_alberghi() {
 
@@ -108,6 +116,7 @@ public class MonopolyTest {
 		assertEquals(12, alberghi.size());
 	}
 
+	@Order(9)
 	@Test
 	void test_dadi() {
 
@@ -116,6 +125,7 @@ public class MonopolyTest {
 		assertEquals(6, dadi.get(0).getNumeroFacce());
 	}
 
+	@Order(10)
 	@Test
 	void test() {
 
