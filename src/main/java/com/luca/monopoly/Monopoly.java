@@ -6,8 +6,14 @@ import java.util.List;
 
 public class Monopoly {
 
+	private final Tabellone tabellone;
+
+	public Monopoly() {
+		this.tabellone = new Tabellone();
+	}
+
 	public Tabellone getTabellone() {
-		return new Tabellone();
+		return tabellone;
 	}
 
 	public List<Segnalini> getSegnalini() {

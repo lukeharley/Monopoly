@@ -9,6 +9,39 @@ public class Tabellone {
 
 	private final int NUMERO_MAX_PEZZI_ALBERGO = 12;
 
+	private final List<Contratto> contratti = new ArrayList<>();
+
+	public  Tabellone() {
+		contratti.add(new Contratto("Vicolo Corto", 5, 25, 0));
+		contratti.add(new Contratto("Vicolo Stretto", 10, 50, 0));
+		contratti.add(new Contratto("Stazione Sud", 0, 0, 65));
+		contratti.add(new Contratto("Bastioni Gran Sasso", 15, 75, 0));
+		contratti.add(new Contratto("Viale Monterosa", 15, 75, 0));
+		contratti.add(new Contratto("Viale Vesuvio", 20, 100, 0));
+		contratti.add(new Contratto("Via Accademia", 25, 125, 0));
+		contratti.add(new Contratto("Società Elettrica", 0, 0, 50));
+		contratti.add(new Contratto("Corso Ateneo", 25, 125, 0));
+		contratti.add(new Contratto("Piazza Università", 30, 150, 0));
+		contratti.add(new Contratto("Stazione Ovest", 0, 0, 65));
+		contratti.add(new Contratto("Via Verdi", 35, 175, 0));
+		contratti.add(new Contratto("Corso Raffaello", 35, 175, 0));
+		contratti.add(new Contratto("Piazza Dante", 40, 200, 0));
+		contratti.add(new Contratto("Via Marco Polo", 45, 225, 0));
+		contratti.add(new Contratto("Corso Magellano", 45, 225, 0));
+		contratti.add(new Contratto("Largo Colombo", 50, 250, 0));
+		contratti.add(new Contratto("Stazione Nord", 0, 0, 65));
+		contratti.add(new Contratto("Viale Costantino", 50, 250, 0));
+		contratti.add(new Contratto("Viale Traiano", 55, 275, 0));
+		contratti.add(new Contratto("Società Acqua Potabile", 0, 0, 50));
+		contratti.add(new Contratto("Piazza Giulio Cesare", 60, 300, 0));
+		contratti.add(new Contratto("Via Roma", 65, 325, 0));
+		contratti.add(new Contratto("Corso Impero", 70, 375, 0));
+		contratti.add(new Contratto("Largo Augusto", 70, 375, 0));
+		contratti.add(new Contratto("Stazione Est", 0, 0, 65));
+		contratti.add(new Contratto("Viale dei Giardini", 75, 425, 0));
+		contratti.add(new Contratto("Parco della Vittoria", 125, 500, 0));
+	}
+
 	public List<Casella> getCaselle() {
 
 		List<Casella> caselle = new ArrayList<>();
@@ -97,38 +130,6 @@ public class Tabellone {
 	}
 
 	public List<Contratto> getContratti() {
-
-		List<Contratto> contratti = new ArrayList<>();
-
-		contratti.add(new Contratto("Vicolo Corto", 5, 25, 0));
-		contratti.add(new Contratto("Vicolo Stretto", 10, 50, 0));
-		contratti.add(new Contratto("Stazione Sud", 0, 0, 65));
-		contratti.add(new Contratto("Bastioni Gran Sasso", 15, 75, 0));
-		contratti.add(new Contratto("Viale Monterosa", 15, 75, 0));
-		contratti.add(new Contratto("Viale Vesuvio", 20, 100, 0));
-		contratti.add(new Contratto("Via Accademia", 25, 125, 0));
-		contratti.add(new Contratto("Società Elettrica", 0, 0, 50));
-		contratti.add(new Contratto("Corso Ateneo", 25, 125, 0));
-		contratti.add(new Contratto("Piazza Università", 30, 150, 0));
-		contratti.add(new Contratto("Stazione Ovest", 0, 0, 65));
-		contratti.add(new Contratto("Via Verdi", 35, 175, 0));
-		contratti.add(new Contratto("Corso Raffaello", 35, 175, 0));
-		contratti.add(new Contratto("Piazza Dante", 40, 200, 0));
-		contratti.add(new Contratto("Via Marco Polo", 45, 225, 0));
-		contratti.add(new Contratto("Corso Magellano", 45, 225, 0));
-		contratti.add(new Contratto("Largo Colombo", 50, 250, 0));
-		contratti.add(new Contratto("Stazione Nord", 0, 0, 65));
-		contratti.add(new Contratto("Viale Costantino", 50, 250, 0));
-		contratti.add(new Contratto("Viale Traiano", 55, 275, 0));
-		contratti.add(new Contratto("Società Acqua Potabile", 0, 0, 50));
-		contratti.add(new Contratto("Piazza Giulio Cesare", 60, 300, 0));
-		contratti.add(new Contratto("Via Roma", 65, 325, 0));
-		contratti.add(new Contratto("Corso Impero", 70, 375, 0));
-		contratti.add(new Contratto("Largo Augusto", 70, 375, 0));
-		contratti.add(new Contratto("Stazione Est", 0, 0, 65));
-		contratti.add(new Contratto("Viale dei Giardini", 75, 425, 0));
-		contratti.add(new Contratto("Parco della Vittoria", 125, 500, 0));
-
 		return contratti;
 	}
 

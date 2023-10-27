@@ -170,11 +170,10 @@ public class MonopolyTest {
 		Giocatore giocatore = monopoly.getGiocatore();
 		giocatore.aggiornaPosizioneEPortafoglio(3);
 
-		List<Contratto> contratti = monopoly.getTabellone().getContratti();
-		giocatore.compraProprieta(contratti, monopoly.getTabellone().getCaselle(),"Vicolo Stretto");
+		giocatore.compraProprieta( monopoly.getTabellone().getContratti(), monopoly.getTabellone().getCaselle(),"Vicolo Stretto");
 		assertEquals(1350, giocatore.getPortafoglio());
 		assertEquals("Vicolo Stretto", giocatore.getContratti().get(0).getTesto());
-		assertEquals(27, contratti.size());
+		assertEquals(27,  monopoly.getTabellone().getContratti().size());
 
 	}
 
