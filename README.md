@@ -4,7 +4,7 @@ Fonti
 Regolamento:
 https://www.giochi-da-tavolo.it/monpoli-istruzioni-regole/
 
-Tabellone:
+Tabellone e costi delle singole proprietà:
 https://it.wikipedia.org/wiki/Monopoly#:~:text=Giochi%20(in%20euro)-,Posteggio%20gratuito,-Via%20Marco%20Polo
 
 Imprevisti e Probabilità: https://answerprime.com/monopoli-elenco-imprevisti-probabilita10pt-2/
