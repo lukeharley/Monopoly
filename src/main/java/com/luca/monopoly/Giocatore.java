@@ -16,7 +16,6 @@ public class Giocatore {
         this.segnalino = segnalino;
         this.portafoglio = portafoglio;
         this.posizione = posizione;
-
     }
 
     public Segnalini getSegnalino() {
@@ -35,19 +34,32 @@ public class Giocatore {
         this.portafoglio = portafoglio;
     }
 
-    public void aggiornaPosizioneEPortafoglio(int risultatoDado) {
+    public void aggiornaPosizioneEPortafoglio(int risultatoDado, List<Contratto> contratti, List<Casella> caselle) {
 
         this.posizione += risultatoDado;
 
         aggiornaPortafoglioSePassaDalVia();
-
+        aggiornaPortafoglioSePassaDaTerrenoInAffitto(contratti, caselle);
         this.posizione = this.posizione % 40;
+
     }
 
     private void aggiornaPortafoglioSePassaDalVia() {
         if (this.posizione > 40) {
-            this.portafoglio += 200;
+            this.portafoglio += 500;
         }
+    }
+
+    // Verificare questo punto
+    private void aggiornaPortafoglioSePassaDaTerrenoInAffitto(List<Contratto> contratti, List<Casella> caselle) {
+        Optional<Contratto> contrattoPossedutoOptional = contratti.stream()
+                .filter(contratto -> contratto.getTesto().equals(caselle.get(this.posizione).getTesto()))
+                .findFirst();
+
+        if (contrattoPossedutoOptional.isPresent()) {
+            this.portafoglio -= contrattoPossedutoOptional.get().getRenditaTerreno();
+        }
+
     }
 
     public int lanciaDadi() {
@@ -69,13 +81,14 @@ public class Giocatore {
     }
 
     public void compraProprieta(List<Contratto> contrattiDellaBanca, List<Casella> caselle, String nomeProprieta) {
-        Optional<Contratto> contrattoOptional =
-            contrattiDellaBanca.stream().filter(contratto -> contratto.getTesto().equals(nomeProprieta)).findFirst();
+        Optional<Contratto> contrattoOptional = contrattiDellaBanca.stream()
+                .filter(contratto -> contratto.getTesto().equals(nomeProprieta)).findFirst();
 
         if (contrattoOptional.isPresent()) {
             contratti.add(contrattoOptional.get());
             contrattiDellaBanca.remove(contrattoOptional.get());
-            portafoglio -= caselle.stream().filter(casella -> casella.getTesto().equals(nomeProprieta)).findFirst().get().getCostoProprieta();
+            portafoglio -= caselle.stream().filter(casella -> casella.getTesto().equals(nomeProprieta)).findFirst()
+                    .get().getCostoProprieta();
         }
     }
 
