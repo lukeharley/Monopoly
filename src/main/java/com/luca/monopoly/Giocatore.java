@@ -11,7 +11,6 @@ public class Giocatore {
     private int portafoglio;
     private int posizione;
     private final List<Contratto> contratti = new ArrayList<>();
-    private final List<Contratto> contrattiAltriGiocatori = new ArrayList<>();
 
     public Giocatore(Segnalini segnalino, int portafoglio, int posizione) {
         this.segnalino = segnalino;
