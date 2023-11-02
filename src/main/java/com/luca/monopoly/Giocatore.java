@@ -11,6 +11,7 @@ public class Giocatore {
     private int portafoglio;
     private int posizione;
     private final List<Contratto> contratti = new ArrayList<>();
+    private final List<Contratto> contrattiAltriGiocatori = new ArrayList<>();
 
     public Giocatore(Segnalini segnalino, int portafoglio, int posizione) {
         this.segnalino = segnalino;
@@ -34,12 +35,13 @@ public class Giocatore {
         this.portafoglio = portafoglio;
     }
 
-    public void aggiornaPosizioneEPortafoglio(int risultatoDado, List<Contratto> contratti, List<Casella> caselle) {
+    public void aggiornaPosizioneEPortafoglio(List<Giocatore> altriGiocatori, int risultatoDado,
+            List<Contratto> contratti, List<Casella> caselle) {
 
         this.posizione += risultatoDado;
 
         aggiornaPortafoglioSePassaDalVia();
-        aggiornaPortafoglioSePassaDaTerrenoInAffitto(contratti, caselle);
+        aggiornaPortafoglioSePassaDaTerrenoInAffitto(altriGiocatori, caselle);
         this.posizione = this.posizione % 40;
 
     }
@@ -50,9 +52,15 @@ public class Giocatore {
         }
     }
 
-    // Verificare questo punto
-    private void aggiornaPortafoglioSePassaDaTerrenoInAffitto(List<Contratto> contratti, List<Casella> caselle) {
-        Optional<Contratto> contrattoPossedutoOptional = contratti.stream()
+    private void aggiornaPortafoglioSePassaDaTerrenoInAffitto(List<Giocatore> altriGiocatori, List<Casella> caselle) {
+
+        List<Contratto> contrattiAltriGiocatori = new ArrayList<>();
+
+        for (Giocatore giocatoreCorrente : altriGiocatori) {
+            contrattiAltriGiocatori.addAll(giocatoreCorrente.getContratti(altriGiocatori));
+        }
+
+        Optional<Contratto> contrattoPossedutoOptional = contrattiAltriGiocatori.stream()
                 .filter(contratto -> contratto.getTesto().equals(caselle.get(this.posizione).getTesto()))
                 .findFirst();
 
@@ -94,5 +102,15 @@ public class Giocatore {
 
     public List<Contratto> getContratti() {
         return contratti;
+    }
+
+    public List<Contratto> getContratti(List<Giocatore> altriGiocatori) {
+        List<Contratto> contrattiAltriGiocatori = new ArrayList<>();
+
+        for (Giocatore giocatore : altriGiocatori) {
+            contrattiAltriGiocatori.addAll(giocatore.getContratti());
+        }
+
+        return contrattiAltriGiocatori;
     }
 }

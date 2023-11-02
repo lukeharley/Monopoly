@@ -24,7 +24,7 @@ public class Monopoly {
 
 		List<Dado> dadi = new ArrayList<>();
 
-		for(int i = 1; i <= 2; i++) {
+		for (int i = 1; i <= 2; i++) {
 			dadi.add(new Dado());
 		}
 

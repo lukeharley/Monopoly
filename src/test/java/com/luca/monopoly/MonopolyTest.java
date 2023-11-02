@@ -1,17 +1,25 @@
 package com.luca.monopoly;
 
 import org.junit.jupiter.api.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MonopolyTest {
 
-	private Monopoly monopoly = new Monopoly();
+	private Monopoly monopoly;
+	private List<Giocatore> giocatori;
 
 	@BeforeEach
 	void setup() {
 		monopoly = new Monopoly();
+
+		giocatori = new ArrayList<>();
+		giocatori.add(monopoly.getGiocatore());
+		giocatori.add(monopoly.getGiocatore());
+
 	}
 
 	@Order(1)
@@ -133,34 +141,34 @@ public class MonopolyTest {
 	@Test
 	void test_giocatore_posizione() {
 
-		Giocatore giocatore = monopoly.getGiocatore();
+		Giocatore giocatore1 = giocatori.get(0);
 
-		assertNotNull(giocatore.getSegnalino());
+		assertNotNull(giocatore1.getSegnalino());
 
-		assertEquals(0, giocatore.getPosizione());
-		assertEquals(1500, giocatore.getPortafoglio());
+		assertEquals(0, giocatore1.getPosizione());
+		assertEquals(1500, giocatore1.getPortafoglio());
 
-		assertTrue(giocatore.lanciaDadi() >= 2);
-		assertTrue(giocatore.lanciaDadi() <= 12);
+		assertTrue(giocatore1.lanciaDadi() >= 2);
+		assertTrue(giocatore1.lanciaDadi() <= 12);
 
 		List<Contratto> contratti = monopoly.getTabellone().getContratti();
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
-		// TODO Luca: Riverificare questi test
-		giocatore.aggiornaPosizioneEPortafoglio(12, contratti, caselle);
-		assertEquals(12, giocatore.getPosizione());
-		assertEquals(1500, giocatore.getPortafoglio());
 
-		giocatore.aggiornaPosizioneEPortafoglio(12, contratti, caselle);
-		assertEquals(24, giocatore.getPosizione());
-		assertEquals(1450, giocatore.getPortafoglio());
+		giocatore1.aggiornaPosizioneEPortafoglio(giocatori, 12, contratti, caselle);
+		assertEquals(12, giocatore1.getPosizione());
+		assertEquals(1500, giocatore1.getPortafoglio());
 
-		giocatore.aggiornaPosizioneEPortafoglio(12, contratti, caselle);
-		assertEquals(36, giocatore.getPosizione());
-		assertEquals(1450, giocatore.getPortafoglio());
+		giocatore1.aggiornaPosizioneEPortafoglio(giocatori, 12, contratti, caselle);
+		assertEquals(24, giocatore1.getPosizione());
+		assertEquals(1500, giocatore1.getPortafoglio());
 
-		giocatore.aggiornaPosizioneEPortafoglio(12, contratti, caselle);
-		assertEquals(8, giocatore.getPosizione());
-		assertEquals(1935, giocatore.getPortafoglio());
+		giocatore1.aggiornaPosizioneEPortafoglio(giocatori, 12, contratti, caselle);
+		assertEquals(36, giocatore1.getPosizione());
+		assertEquals(1500, giocatore1.getPortafoglio());
+
+		giocatore1.aggiornaPosizioneEPortafoglio(giocatori, 12, contratti, caselle);
+		assertEquals(8, giocatore1.getPosizione());
+		assertEquals(2000, giocatore1.getPortafoglio());
 
 	}
 
@@ -168,20 +176,19 @@ public class MonopolyTest {
 	@Test
 	void test_giocatore_proprieta_e_affitto() {
 
-		Giocatore giocatore1 = monopoly.getGiocatore();
 		List<Contratto> contratti = monopoly.getTabellone().getContratti();
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
-
-		giocatore1.aggiornaPosizioneEPortafoglio(3, contratti, caselle);
+		Giocatore giocatore1 = giocatori.get(0);
+		Giocatore giocatore2 = giocatori.get(1);
 
 		giocatore1.compraProprieta(contratti, caselle, "Vicolo Stretto");
-		assertEquals(1340, giocatore1.getPortafoglio());
+		assertEquals(1350, giocatore1.getPortafoglio());
+
 		assertEquals("Vicolo Stretto", giocatore1.getContratti().get(0).getTesto());
 		assertEquals(27, monopoly.getTabellone().getContratti().size());
 
-		Giocatore giocatore2 = monopoly.getGiocatore();
-		giocatore2.aggiornaPosizioneEPortafoglio(3, contratti, caselle);
-		assertEquals(1500, giocatore2.getPortafoglio());
+		giocatore2.aggiornaPosizioneEPortafoglio(giocatori, 3, contratti, caselle);
+		assertEquals(1490, giocatore2.getPortafoglio());
 
 	}
 
