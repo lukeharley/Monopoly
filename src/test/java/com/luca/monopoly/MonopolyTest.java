@@ -4,6 +4,8 @@ import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -152,42 +154,69 @@ public class MonopolyTest {
 		assertTrue(giocatore1.lanciaDadi() <= 12);
 
 		List<Contratto> contratti = monopoly.getTabellone().getContratti();
-		List<Casella> caselle = monopoly.getTabellone().getCaselle();
+		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
+		Map<String, Integer> numeroDiCasetteSullaCasella = monopoly.getTabellone().getNumeroDiCasetteSullaCasella();
 
-		giocatore1.aggiornaPosizioneEPortafoglio(giocatori, 12, contratti, caselle);
+		// TODO: il nome della proprietà si può estrarre in base al risultato del dado
+		Contratto contrattoTarget1 = contratti.stream()
+				.filter(contratto -> contratto.getTesto().equals("Via Accademia")).findFirst().orElse(null);
+		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, "Via Accademia", contrattoTarget1,
+				numeroDiCasetteSullaCasella);
 		assertEquals(12, giocatore1.getPosizione());
 		assertEquals(1500, giocatore1.getPortafoglio());
 
-		giocatore1.aggiornaPosizioneEPortafoglio(giocatori, 12, contratti, caselle);
+		Contratto contrattoTarget2 = contratti.stream()
+				.filter(contratto -> contratto.getTesto().equals("Corso Magellano")).findFirst().orElse(null);
+		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, "Corso Magellano", contrattoTarget2,
+				numeroDiCasetteSullaCasella);
 		assertEquals(24, giocatore1.getPosizione());
 		assertEquals(1500, giocatore1.getPortafoglio());
 
-		giocatore1.aggiornaPosizioneEPortafoglio(giocatori, 12, contratti, caselle);
+		Contratto contrattoTarget3 = contratti.stream()
+				.filter(contratto -> contratto.getTesto().equals("Stazione Est")).findFirst().orElse(null);
+		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, "Stazione Est", contrattoTarget3,
+				numeroDiCasetteSullaCasella);
 		assertEquals(36, giocatore1.getPosizione());
 		assertEquals(1500, giocatore1.getPortafoglio());
 
-		giocatore1.aggiornaPosizioneEPortafoglio(giocatori, 12, contratti, caselle);
+		Contratto contrattoTarget4 = contratti.stream()
+				.filter(contratto -> contratto.getTesto().equals("Imprevisti")).findFirst().orElse(null);
+		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, "Imprevisti", contrattoTarget4,
+				numeroDiCasetteSullaCasella);
 		assertEquals(8, giocatore1.getPosizione());
+		assertEquals(2000, giocatore1.getPortafoglio());
+
+		Contratto contrattoTarget5 = contratti.stream()
+				.filter(contratto -> contratto.getTesto().equals("Piazza Dante")).findFirst().orElse(null);
+		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, "Piazza Dante", contrattoTarget5,
+				numeroDiCasetteSullaCasella);
+		assertEquals(20, giocatore1.getPosizione());
 		assertEquals(2000, giocatore1.getPortafoglio());
 
 	}
 
 	@Order(11)
 	@Test
-	void test_giocatore_proprieta_e_affitto() {
+	void test_giocatore_proprieta_e_affitto_terreno() {
 
-		List<Contratto> contratti = monopoly.getTabellone().getContratti();
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
 		Giocatore giocatore1 = giocatori.get(0);
 		Giocatore giocatore2 = giocatori.get(1);
+		List<Contratto> contratti = monopoly.getTabellone().getContratti();
 
-		giocatore1.compraProprieta(contratti, caselle, "Vicolo Stretto");
+		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
+		assertEquals(28, proprietariDeiContratti.size());
+		Map<String, Integer> numeroDiCasetteSullaCasella = monopoly.getTabellone().getNumeroDiCasetteSullaCasella();
+
+		giocatore1.compraProprieta(proprietariDeiContratti, "Vicolo Stretto", caselle);
+		assertEquals(giocatore1, proprietariDeiContratti.get("Vicolo Stretto"));
 		assertEquals(1350, giocatore1.getPortafoglio());
 
-		assertEquals("Vicolo Stretto", giocatore1.getContratti().get(0).getTesto());
-		assertEquals(27, monopoly.getTabellone().getContratti().size());
+		Contratto contrattoTarget = contratti.stream()
+				.filter(contratto -> contratto.getTesto().equals("Vicolo Stretto")).findFirst().orElse(null);
 
-		giocatore2.aggiornaPosizioneEPortafoglio(giocatori, 3, contratti, caselle);
+		giocatore2.aggiornaPosizioneEPortafoglio(3, proprietariDeiContratti, "Vicolo Stretto", contrattoTarget,
+				numeroDiCasetteSullaCasella);
 		assertEquals(1490, giocatore2.getPortafoglio());
 
 	}

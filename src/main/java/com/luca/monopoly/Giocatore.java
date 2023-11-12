@@ -1,16 +1,13 @@
 package com.luca.monopoly;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Random;
 
 public class Giocatore {
     private Segnalini segnalino;
-
     private int portafoglio;
     private int posizione;
-    private final List<Contratto> contratti = new ArrayList<>();
 
     public Giocatore(Segnalini segnalino, int portafoglio, int posizione) {
         this.segnalino = segnalino;
@@ -34,13 +31,16 @@ public class Giocatore {
         this.portafoglio = portafoglio;
     }
 
-    public void aggiornaPosizioneEPortafoglio(List<Giocatore> altriGiocatori, int risultatoDado,
-            List<Contratto> contratti, List<Casella> caselle) {
+    public void aggiornaPosizioneEPortafoglio(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
+            String nomeProprieta, Contratto contratto, Map<String, Integer> numeroDiCasetteSullaCasella) {
 
         this.posizione += risultatoDado;
 
         aggiornaPortafoglioSePassaDalVia();
-        aggiornaPortafoglioSePassaDaTerrenoInAffitto(altriGiocatori, caselle);
+
+        aggiornaPortafoglioSePassaDaTerrenoOCasaInAffitto(proprietariDeiContratti,
+                nomeProprieta, contratto, numeroDiCasetteSullaCasella);
+
         this.posizione = this.posizione % 40;
 
     }
@@ -51,22 +51,14 @@ public class Giocatore {
         }
     }
 
-    private void aggiornaPortafoglioSePassaDaTerrenoInAffitto(List<Giocatore> altriGiocatori, List<Casella> caselle) {
+    private void aggiornaPortafoglioSePassaDaTerrenoOCasaInAffitto(Map<String, Giocatore> proprietariDeiContratti,
+            String nomeProprieta, Contratto contratto, Map<String, Integer> numeroDiCasetteSullaCasella) {
 
-        List<Contratto> contrattiAltriGiocatori = new ArrayList<>();
-
-        for (Giocatore giocatoreCorrente : altriGiocatori) {
-            contrattiAltriGiocatori.addAll(giocatoreCorrente.getContratti(altriGiocatori));
+        if (proprietariDeiContratti.get(nomeProprieta) != null) {
+            int numeroCasette = numeroDiCasetteSullaCasella.get(nomeProprieta);
+            int affitto = contratto.calcolaAffitto(numeroCasette);
+            this.portafoglio -= affitto;
         }
-
-        Optional<Contratto> contrattoPossedutoOptional = contrattiAltriGiocatori.stream()
-                .filter(contratto -> contratto.getTesto().equals(caselle.get(this.posizione).getTesto()))
-                .findFirst();
-
-        if (contrattoPossedutoOptional.isPresent()) {
-            this.portafoglio -= contrattoPossedutoOptional.get().getRenditaTerreno();
-        }
-
     }
 
     public int lanciaDadi() {
@@ -87,29 +79,17 @@ public class Giocatore {
         return posizione;
     }
 
-    public void compraProprieta(List<Contratto> contrattiDellaBanca, List<Casella> caselle, String nomeProprieta) {
-        Optional<Contratto> contrattoOptional = contrattiDellaBanca.stream()
-                .filter(contratto -> contratto.getTesto().equals(nomeProprieta)).findFirst();
-
-        if (contrattoOptional.isPresent()) {
-            contratti.add(contrattoOptional.get());
-            contrattiDellaBanca.remove(contrattoOptional.get());
+    public void compraProprieta(Map<String, Giocatore> proprietariDeiContratti, String nomeProprieta,
+            List<Casella> caselle) {
+        if (proprietariDeiContratti.containsKey(nomeProprieta)) {
+            proprietariDeiContratti.put(nomeProprieta, this);
             portafoglio -= caselle.stream().filter(casella -> casella.getTesto().equals(nomeProprieta)).findFirst()
                     .get().getCostoProprieta();
         }
     }
 
-    public List<Contratto> getContratti() {
-        return contratti;
-    }
-
-    public List<Contratto> getContratti(List<Giocatore> altriGiocatori) {
-        List<Contratto> contrattiAltriGiocatori = new ArrayList<>();
-
-        for (Giocatore giocatore : altriGiocatori) {
-            contrattiAltriGiocatori.addAll(giocatore.getContratti());
-        }
-
-        return contrattiAltriGiocatori;
+    @Override
+    public String toString() {
+        return "Segnalino: " + segnalino + " Portafoglio: " + portafoglio + " Posizione: " + posizione;
     }
 }

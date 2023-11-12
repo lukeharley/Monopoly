@@ -1,7 +1,10 @@
 package com.luca.monopoly;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Tabellone {
 
@@ -12,6 +15,8 @@ public class Tabellone {
 	private final List<Casella> caselle = new ArrayList<>();
 	private final List<String> imprevisti = new ArrayList<>();
 	private final List<String> probabilità = new ArrayList<>();
+	private TreeMap<String, Giocatore> proprietariDeiContratti = new TreeMap<>();
+	private Map<String, Integer> numeroDiCasetteSullaCasella = new HashMap<>();
 
 	public Tabellone() {
 
@@ -122,6 +127,64 @@ public class Tabellone {
 		probabilità.add("Avete ceduto delle azioni: ricavate 125€.");
 		probabilità.add("Pagate il conto del dottore: 125€.");
 
+		proprietariDeiContratti.put("Vicolo Corto", null);
+		proprietariDeiContratti.put("Vicolo Stretto", null);
+		proprietariDeiContratti.put("Stazione Sud", null);
+		proprietariDeiContratti.put("Bastioni Gran Sasso", null);
+		proprietariDeiContratti.put("Viale Monterosa", null);
+		proprietariDeiContratti.put("Viale Vesuvio", null);
+		proprietariDeiContratti.put("Via Accademia", null);
+		proprietariDeiContratti.put("Società Elettrica", null);
+		proprietariDeiContratti.put("Corso Ateneo", null);
+		proprietariDeiContratti.put("Piazza Università", null);
+		proprietariDeiContratti.put("Stazione Ovest", null);
+		proprietariDeiContratti.put("Via Verdi", null);
+		proprietariDeiContratti.put("Corso Raffaello", null);
+		proprietariDeiContratti.put("Piazza Dante", null);
+		proprietariDeiContratti.put("Via Marco Polo", null);
+		proprietariDeiContratti.put("Corso Magellano", null);
+		proprietariDeiContratti.put("Largo Colombo", null);
+		proprietariDeiContratti.put("Stazione Nord", null);
+		proprietariDeiContratti.put("Viale Costantino", null);
+		proprietariDeiContratti.put("Viale Traiano", null);
+		proprietariDeiContratti.put("Società Acqua Potabile", null);
+		proprietariDeiContratti.put("Piazza Giulio Cesare", null);
+		proprietariDeiContratti.put("Via Roma", null);
+		proprietariDeiContratti.put("Corso Impero", null);
+		proprietariDeiContratti.put("Largo Augusto", null);
+		proprietariDeiContratti.put("Stazione Est", null);
+		proprietariDeiContratti.put("Viale dei Giardini", null);
+		proprietariDeiContratti.put("Parco della Vittoria", null);
+
+		numeroDiCasetteSullaCasella.put("Vicolo Corto", 0);
+		numeroDiCasetteSullaCasella.put("Vicolo Stretto", 0);
+		numeroDiCasetteSullaCasella.put("Stazione Sud", 0);
+		numeroDiCasetteSullaCasella.put("Bastioni Gran Sasso", 0);
+		numeroDiCasetteSullaCasella.put("Viale Monterosa", 0);
+		numeroDiCasetteSullaCasella.put("Viale Vesuvio", 0);
+		numeroDiCasetteSullaCasella.put("Via Accademia", 0);
+		numeroDiCasetteSullaCasella.put("Società Elettrica", 0);
+		numeroDiCasetteSullaCasella.put("Corso Ateneo", 0);
+		numeroDiCasetteSullaCasella.put("Piazza Università", 0);
+		numeroDiCasetteSullaCasella.put("Stazione Ovest", 0);
+		numeroDiCasetteSullaCasella.put("Via Verdi", 0);
+		numeroDiCasetteSullaCasella.put("Corso Raffaello", 0);
+		numeroDiCasetteSullaCasella.put("Piazza Dante", 0);
+		numeroDiCasetteSullaCasella.put("Via Marco Polo", 0);
+		numeroDiCasetteSullaCasella.put("Corso Magellano", 0);
+		numeroDiCasetteSullaCasella.put("Largo Colombo", 0);
+		numeroDiCasetteSullaCasella.put("Stazione Nord", 0);
+		numeroDiCasetteSullaCasella.put("Viale Costantino", 0);
+		numeroDiCasetteSullaCasella.put("Viale Traiano", 0);
+		numeroDiCasetteSullaCasella.put("Società Acqua Potabile", 0);
+		numeroDiCasetteSullaCasella.put("Piazza Giulio Cesare", 0);
+		numeroDiCasetteSullaCasella.put("Via Roma", 0);
+		numeroDiCasetteSullaCasella.put("Corso Impero", 0);
+		numeroDiCasetteSullaCasella.put("Largo Augusto", 0);
+		numeroDiCasetteSullaCasella.put("Stazione Est", 0);
+		numeroDiCasetteSullaCasella.put("Viale dei Giardini", 0);
+		numeroDiCasetteSullaCasella.put("Parco della Vittoria", 0);
+
 	}
 
 	public List<Casella> getCaselle() {
@@ -138,6 +201,22 @@ public class Tabellone {
 
 	public List<String> getProbabilità() {
 		return probabilità;
+	}
+
+	public Map<String, Giocatore> getProprietariDeiContratti() {
+		return proprietariDeiContratti;
+	}
+
+	public void setProprietariDeiContratti(TreeMap<String, Giocatore> proprietariDeiContratti) {
+		this.proprietariDeiContratti = proprietariDeiContratti;
+	}
+
+	public Map<String, Integer> getNumeroDiCasetteSullaCasella() {
+		return numeroDiCasetteSullaCasella;
+	}
+
+	public void setNumeroDiCasetteSullaCasella(Map<String, Integer> numeroDiCasetteSullaCasella) {
+		this.numeroDiCasetteSullaCasella = numeroDiCasetteSullaCasella;
 	}
 
 	public List<Casa> getCase() {
@@ -161,4 +240,5 @@ public class Tabellone {
 
 		return listaDiAlberghi;
 	}
+
 }

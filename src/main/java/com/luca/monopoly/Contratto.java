@@ -72,4 +72,31 @@ public class Contratto {
     return renditaQuattroStazioni;
   }
 
+  public int calcolaAffitto(int numeroCasette) {
+    switch (numeroCasette) {
+      case 0:
+        return this.getRenditaTerreno();
+      case 1:
+        return this.getRenditaUnaCasa();
+      case 2:
+        return this.getRenditaDueCase();
+      case 3:
+        return this.getRenditaTreCase();
+      case 4:
+        return this.getRenditaQuattroCase();
+      case 5:
+        return this.getRenditaAlbergo();
+      default:
+        throw new IllegalArgumentException("Numero di casette non valido: " + numeroCasette
+            + ". Il numero di casette deve essere compreso tra 0 e 5.");
+    }
+  }
+
+  @Override
+  public String toString() {
+    return "Testo: " + testo + " Rendita terreno: " + renditaTerreno + " Rendita una casa: " + renditaUnaCasa
+        + " Rendita due case: " + renditaDueCase + " Rendita tre case: " + renditaTreCase + " Rendita quattro case: "
+        + renditaQuattroCase + " Rendita alberghi: " + renditaAlbergo + "\n";
+  }
+
 }
