@@ -7,11 +7,12 @@ public class Casella {
 	private int costoProprieta;
 	private int numeroDiCasetteSullaCasella;
 
-	public Casella(String testo, boolean terreno, String colore, int costoProprieta) {
+	public Casella(String testo, boolean terreno, String colore, int costoProprieta, int numeroDiCasetteSullaCasella) {
 		this.testo = testo;
 		this.terreno = terreno;
 		this.colore = colore;
 		this.costoProprieta = costoProprieta;
+		this.numeroDiCasetteSullaCasella = numeroDiCasetteSullaCasella;
 	}
 
 	public String getTesto() {

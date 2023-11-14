@@ -31,7 +31,13 @@ public class Monopoly {
 		return dadi;
 	}
 
-	public Giocatore getGiocatore() {
-		return new Giocatore(Segnalini.CANE, 1500, 0);
+	public List<Giocatore> getGiocatori() {
+
+		List<Giocatore> giocatori = new ArrayList<>();
+
+		giocatori.add(new Giocatore(Segnalini.CANE, 1500, 0));
+		giocatori.add(new Giocatore(Segnalini.DINOSAURO, 1500, 0));
+
+		return giocatori;
 	}
 }

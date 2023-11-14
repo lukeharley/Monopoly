@@ -1,7 +1,6 @@
 package com.luca.monopoly;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -16,50 +15,49 @@ public class Tabellone {
 	private final List<String> imprevisti = new ArrayList<>();
 	private final List<String> probabilità = new ArrayList<>();
 	private TreeMap<String, Giocatore> proprietariDeiContratti = new TreeMap<>();
-	private Map<String, Integer> numeroDiCasetteSullaCasella = new HashMap<>();
 
 	public Tabellone() {
 
-		caselle.add(new Casella("Via", false, null, 0));
-		caselle.add(new Casella("Vicolo Corto", true, "fucsia", 150));
-		caselle.add(new Casella("Probabilità", false, null, 0));
-		caselle.add(new Casella("Vicolo Stretto", true, "fucsia", 150));
-		caselle.add(new Casella("Tassa Patrimoniale", false, null, 0));
-		caselle.add(new Casella("Stazione Sud", false, null, 0));
-		caselle.add(new Casella("Bastioni Gran Sasso", true, "azzurro", 250));
-		caselle.add(new Casella("Imprevisti", false, null, 0));
-		caselle.add(new Casella("Viale Monterosa", true, "azzurro", 250));
-		caselle.add(new Casella("Viale Vesuvio", true, "azzurro", 300));
-		caselle.add(new Casella("Prigione/Transito", false, null, 0));
-		caselle.add(new Casella("Via Accademia", true, "arancione", 350));
-		caselle.add(new Casella("Società Elettrica", false, null, 0));
-		caselle.add(new Casella("Corso Ateneo", true, "arancione", 350));
-		caselle.add(new Casella("Piazza Università", true, "arancione", 400));
-		caselle.add(new Casella("Stazione Ovest", false, null, 0));
-		caselle.add(new Casella("Via Verdi", true, "marrone", 450));
-		caselle.add(new Casella("Probabilità", false, null, 0));
-		caselle.add(new Casella("Corso Raffaello", true, "marrone", 450));
-		caselle.add(new Casella("Piazza Dante", true, "marrone", 500));
-		caselle.add(new Casella("Posteggio Gratuito", false, null, 0));
-		caselle.add(new Casella("Via Marco Polo", true, "rosso", 550));
-		caselle.add(new Casella("Imprevisti", false, null, 0));
-		caselle.add(new Casella("Corso Magellano", true, "rosso", 550));
-		caselle.add(new Casella("Largo Colombo", true, "rosso", 600));
-		caselle.add(new Casella("Stazione Nord", false, null, 0));
-		caselle.add(new Casella("Viale Costantino", true, "giallo", 650));
-		caselle.add(new Casella("Viale Traiano", true, "giallo", 650));
-		caselle.add(new Casella("Società Acqua Potabile", false, null, 0));
-		caselle.add(new Casella("Piazza Giulio Cesare", true, "giallo", 700));
-		caselle.add(new Casella("In prigione!", false, null, 0));
-		caselle.add(new Casella("Via Roma", true, "verde", 750));
-		caselle.add(new Casella("Corso Impero", true, "verde", 750));
-		caselle.add(new Casella("Probabilità", false, null, 0));
-		caselle.add(new Casella("Largo Augusto", true, "verde", 800));
-		caselle.add(new Casella("Stazione Est", false, null, 0));
-		caselle.add(new Casella("Imprevisti", false, null, 0));
-		caselle.add(new Casella("Viale dei Giardini", true, "viola", 900));
-		caselle.add(new Casella("Tassa di Lusso", false, null, 0));
-		caselle.add(new Casella("Parco della Vittoria", true, "viola", 1000));
+		caselle.add(new Casella("Via", false, null, 0, 0));
+		caselle.add(new Casella("Vicolo Corto", true, "fucsia", 150, 0));
+		caselle.add(new Casella("Probabilità", false, null, 0, 0));
+		caselle.add(new Casella("Vicolo Stretto", true, "fucsia", 150, 0));
+		caselle.add(new Casella("Tassa Patrimoniale", false, null, 0, 0));
+		caselle.add(new Casella("Stazione Sud", false, null, 0, 0));
+		caselle.add(new Casella("Bastioni Gran Sasso", true, "azzurro", 250, 0));
+		caselle.add(new Casella("Imprevisti", false, null, 0, 0));
+		caselle.add(new Casella("Viale Monterosa", true, "azzurro", 250, 0));
+		caselle.add(new Casella("Viale Vesuvio", true, "azzurro", 300, 0));
+		caselle.add(new Casella("Prigione/Transito", false, null, 0, 0));
+		caselle.add(new Casella("Via Accademia", true, "arancione", 350, 0));
+		caselle.add(new Casella("Società Elettrica", false, null, 0, 0));
+		caselle.add(new Casella("Corso Ateneo", true, "arancione", 350, 0));
+		caselle.add(new Casella("Piazza Università", true, "arancione", 400, 0));
+		caselle.add(new Casella("Stazione Ovest", false, null, 0, 0));
+		caselle.add(new Casella("Via Verdi", true, "marrone", 450, 0));
+		caselle.add(new Casella("Probabilità", false, null, 0, 0));
+		caselle.add(new Casella("Corso Raffaello", true, "marrone", 450, 0));
+		caselle.add(new Casella("Piazza Dante", true, "marrone", 500, 0));
+		caselle.add(new Casella("Posteggio Gratuito", false, null, 0, 0));
+		caselle.add(new Casella("Via Marco Polo", true, "rosso", 550, 0));
+		caselle.add(new Casella("Imprevisti", false, null, 0, 0));
+		caselle.add(new Casella("Corso Magellano", true, "rosso", 550, 0));
+		caselle.add(new Casella("Largo Colombo", true, "rosso", 600, 0));
+		caselle.add(new Casella("Stazione Nord", false, null, 0, 0));
+		caselle.add(new Casella("Viale Costantino", true, "giallo", 650, 0));
+		caselle.add(new Casella("Viale Traiano", true, "giallo", 650, 0));
+		caselle.add(new Casella("Società Acqua Potabile", false, null, 0, 0));
+		caselle.add(new Casella("Piazza Giulio Cesare", true, "giallo", 700, 0));
+		caselle.add(new Casella("In prigione!", false, null, 0, 0));
+		caselle.add(new Casella("Via Roma", true, "verde", 750, 0));
+		caselle.add(new Casella("Corso Impero", true, "verde", 750, 0));
+		caselle.add(new Casella("Probabilità", false, null, 0, 0));
+		caselle.add(new Casella("Largo Augusto", true, "verde", 800, 0));
+		caselle.add(new Casella("Stazione Est", false, null, 0, 0));
+		caselle.add(new Casella("Imprevisti", false, null, 0, 0));
+		caselle.add(new Casella("Viale dei Giardini", true, "viola", 900, 0));
+		caselle.add(new Casella("Tassa di Lusso", false, null, 0, 0));
+		caselle.add(new Casella("Parco della Vittoria", true, "viola", 1000, 0));
 
 		contratti.add(new Contratto("Vicolo Corto", 5, 25, 0));
 		contratti.add(new Contratto("Vicolo Stretto", 10, 50, 0));
@@ -156,35 +154,6 @@ public class Tabellone {
 		proprietariDeiContratti.put("Viale dei Giardini", null);
 		proprietariDeiContratti.put("Parco della Vittoria", null);
 
-		numeroDiCasetteSullaCasella.put("Vicolo Corto", 0);
-		numeroDiCasetteSullaCasella.put("Vicolo Stretto", 0);
-		numeroDiCasetteSullaCasella.put("Stazione Sud", 0);
-		numeroDiCasetteSullaCasella.put("Bastioni Gran Sasso", 0);
-		numeroDiCasetteSullaCasella.put("Viale Monterosa", 0);
-		numeroDiCasetteSullaCasella.put("Viale Vesuvio", 0);
-		numeroDiCasetteSullaCasella.put("Via Accademia", 0);
-		numeroDiCasetteSullaCasella.put("Società Elettrica", 0);
-		numeroDiCasetteSullaCasella.put("Corso Ateneo", 0);
-		numeroDiCasetteSullaCasella.put("Piazza Università", 0);
-		numeroDiCasetteSullaCasella.put("Stazione Ovest", 0);
-		numeroDiCasetteSullaCasella.put("Via Verdi", 0);
-		numeroDiCasetteSullaCasella.put("Corso Raffaello", 0);
-		numeroDiCasetteSullaCasella.put("Piazza Dante", 0);
-		numeroDiCasetteSullaCasella.put("Via Marco Polo", 0);
-		numeroDiCasetteSullaCasella.put("Corso Magellano", 0);
-		numeroDiCasetteSullaCasella.put("Largo Colombo", 0);
-		numeroDiCasetteSullaCasella.put("Stazione Nord", 0);
-		numeroDiCasetteSullaCasella.put("Viale Costantino", 0);
-		numeroDiCasetteSullaCasella.put("Viale Traiano", 0);
-		numeroDiCasetteSullaCasella.put("Società Acqua Potabile", 0);
-		numeroDiCasetteSullaCasella.put("Piazza Giulio Cesare", 0);
-		numeroDiCasetteSullaCasella.put("Via Roma", 0);
-		numeroDiCasetteSullaCasella.put("Corso Impero", 0);
-		numeroDiCasetteSullaCasella.put("Largo Augusto", 0);
-		numeroDiCasetteSullaCasella.put("Stazione Est", 0);
-		numeroDiCasetteSullaCasella.put("Viale dei Giardini", 0);
-		numeroDiCasetteSullaCasella.put("Parco della Vittoria", 0);
-
 	}
 
 	public List<Casella> getCaselle() {
@@ -209,14 +178,6 @@ public class Tabellone {
 
 	public void setProprietariDeiContratti(TreeMap<String, Giocatore> proprietariDeiContratti) {
 		this.proprietariDeiContratti = proprietariDeiContratti;
-	}
-
-	public Map<String, Integer> getNumeroDiCasetteSullaCasella() {
-		return numeroDiCasetteSullaCasella;
-	}
-
-	public void setNumeroDiCasetteSullaCasella(Map<String, Integer> numeroDiCasetteSullaCasella) {
-		this.numeroDiCasetteSullaCasella = numeroDiCasetteSullaCasella;
 	}
 
 	public List<Casa> getCase() {

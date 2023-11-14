@@ -2,6 +2,7 @@ package com.luca.monopoly;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
 public class Giocatore {
@@ -32,33 +33,33 @@ public class Giocatore {
     }
 
     public void aggiornaPosizioneEPortafoglio(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
-            String nomeProprieta, Contratto contratto, Map<String, Integer> numeroDiCasetteSullaCasella) {
+            List<Casella> caselle, List<Contratto> contratti) {
 
-        this.posizione += risultatoDado;
+        aggiornaPosizione(risultatoDado);
+        aggiornaPosizioneEPortafoglioSePassaDalVia();
 
-        aggiornaPortafoglioSePassaDalVia();
+        String nomeProprieta = caselle.get(this.posizione).getTesto();
+        int numeroCasette = caselle.get(this.posizione).getNumeroDiCasetteSullaCasella();
 
-        aggiornaPortafoglioSePassaDaTerrenoOCasaInAffitto(proprietariDeiContratti,
-                nomeProprieta, contratto, numeroDiCasetteSullaCasella);
-
-        this.posizione = this.posizione % 40;
-
-    }
-
-    private void aggiornaPortafoglioSePassaDalVia() {
-        if (this.posizione > 40) {
-            this.portafoglio += 500;
-        }
-    }
-
-    private void aggiornaPortafoglioSePassaDaTerrenoOCasaInAffitto(Map<String, Giocatore> proprietariDeiContratti,
-            String nomeProprieta, Contratto contratto, Map<String, Integer> numeroDiCasetteSullaCasella) {
+        Optional<Contratto> contrattoOptional = contratti.stream()
+                .filter(contratto -> contratto.getTesto().equals(nomeProprieta)).findFirst();
 
         if (proprietariDeiContratti.get(nomeProprieta) != null) {
-            int numeroCasette = numeroDiCasetteSullaCasella.get(nomeProprieta);
-            int affitto = contratto.calcolaAffitto(numeroCasette);
+            int affitto = contrattoOptional.get().calcolaAffitto(numeroCasette);
             this.portafoglio -= affitto;
         }
+    }
+
+    public int aggiornaPosizione(int risultatoDado) {
+        return this.posizione += risultatoDado;
+    }
+
+    private int aggiornaPosizioneEPortafoglioSePassaDalVia() {
+        if (this.posizione > 40) {
+            this.portafoglio += 500;
+            this.posizione %= 40;
+        }
+        return this.posizione;
     }
 
     public int lanciaDadi() {
