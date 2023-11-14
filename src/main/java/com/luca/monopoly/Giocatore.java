@@ -35,7 +35,8 @@ public class Giocatore {
     public void aggiornaPosizioneEPortafoglio(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
             List<Casella> caselle, List<Contratto> contratti) {
 
-        aggiornaPosizione(risultatoDado);
+        this.posizione += risultatoDado;
+
         aggiornaPosizioneEPortafoglioSePassaDalVia();
 
         String nomeProprieta = caselle.get(this.posizione).getTesto();
@@ -48,10 +49,6 @@ public class Giocatore {
             int affitto = contrattoOptional.get().calcolaAffitto(numeroCasette);
             this.portafoglio -= affitto;
         }
-    }
-
-    public int aggiornaPosizione(int risultatoDado) {
-        return this.posizione += risultatoDado;
     }
 
     private int aggiornaPosizioneEPortafoglioSePassaDalVia() {
