@@ -184,11 +184,10 @@ public class MonopolyTest {
 		Giocatore giocatore1 = giocatori.get(0);
 		Giocatore giocatore2 = giocatori.get(1);
 
-		List<Casella> caselle = monopoly.getTabellone().getCaselle();
-		List<Contratto> contratti = monopoly.getTabellone().getContratti();
-
 		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
 		assertEquals(28, proprietariDeiContratti.size());
+		List<Casella> caselle = monopoly.getTabellone().getCaselle();
+		List<Contratto> contratti = monopoly.getTabellone().getContratti();
 
 		giocatore1.compraProprieta(proprietariDeiContratti, "Vicolo Stretto", caselle);
 		assertEquals(giocatore1, proprietariDeiContratti.get("Vicolo Stretto"));
