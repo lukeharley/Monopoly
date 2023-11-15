@@ -1,4 +1,4 @@
-package com.luca.monopoly;
+package com.luca.monopoly.domain;
 
 public class Contratto {
   private String testo;

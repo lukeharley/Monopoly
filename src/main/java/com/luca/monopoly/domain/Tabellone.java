@@ -1,4 +1,4 @@
-package com.luca.monopoly;
+package com.luca.monopoly.domain;
 
 import java.util.ArrayList;
 import java.util.List;

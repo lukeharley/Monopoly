@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Home</title>
+</head>
+
+<body>
+
+    <h1>Home page Monopoly</h1>
+
+    <form action="#" th:action="@{/}" th:object="${form}" method="post">
+        <div>
+            <input type="text" th:value="*{nome}" th:name="'nome'" th:id="'nome'" placeholder="Inserire il nome del giocatore" />
+        </div>
+
+        <div>
+            <button type="submit">Aggiungi giocatore</button>
+        </div>
+    </form>
+
+    <div th:text="'Numero di dadi: ' + ${dadi}"></div>
+
+    <th:block th:if="${nomeGiocatoreAggiunto != null}">
+        <div th:text="'Il giocatore aggiunto si chiama: ' + ${nomeGiocatoreAggiunto}"></div>
+    </th:block>
+
+
+</body>
+</html>

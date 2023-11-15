@@ -1,5 +1,6 @@
 package com.luca.monopoly;
 
+import com.luca.monopoly.domain.*;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
