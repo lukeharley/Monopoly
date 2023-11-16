@@ -29,10 +29,10 @@ Scopo del gioco:
    a) ~~Acquistare la proprietà/il terreno (se ancora disponibili)~~ [FATTO] e, se si ottengono tutti i terreni di uno stesso colore, posizionare le case e quindi gli alberghi (se possibile): il costo (da saldare alla banca) è stabilito nelle carte dei Contratti.
    [Se si completa il numero di terreni dello stesso colore (= si ha un Monopolio) la rendita del solo terreno raddoppia e si sblocca la possibilità di posizionare case e poi alberghi]
    b) ~~Pagare l'affitto/la rendita (se la proprietà è posseduta da un altro giocatore): il prezzo (da pagare alla banca) è stabilito nelle carte dei Contratti e dipende dal numero di case e alberghi~~ [FATTO]
-   c) Se la casella è di tipo imprevisto o probabilità (String.equals()). Pescare una carta "Imprevisti" o "Probabilità" e registrare l'effetto in base alle variabili cotenute nel testo della rispettiva carta.
-   d) Se la casella è una stazione o società elettrica pagare la tassa: il costo è stabilito nelle carte dei Contratti.
-   e) Andare in prigione
-   f) Se la casella è Posteggio gratuito" non accade niente
+   c) ~~Se la casella è di tipo imprevisto o probabilità (String.equals()). Pescare una carta "Imprevisti" o "Probabilità" e registrare l'effetto in base alle variabili cotenute nel testo della rispettiva carta.~~
+   d) ~~Se la casella è una stazione o società elettrica pagare la tassa: il costo è stabilito nelle carte dei Contratti.~~
+   e) ~~Andare in prigione~~
+   f) ~~Se la casella è Posteggio gratuito" non accade niente~~
    g) ~~Se la casella è il "Via!" si ritira un premio in denaro: es. 500€~~ [FATTO]
    h) Se la casella è "In prigione!" il giocatore finisce in prigione.
 7. ACQUISTARE PROPRIETA’, CASE E ALBERGHI
