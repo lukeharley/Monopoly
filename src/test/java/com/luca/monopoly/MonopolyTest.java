@@ -241,4 +241,21 @@ public class MonopolyTest {
 
 	}
 
+	@Order(12)
+	@Test
+	void test_giocatore_pagamento_tasse() {
+
+		Giocatore giocatore1 = giocatori.get(0);
+		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
+		List<Casella> caselle = monopoly.getTabellone().getCaselle();
+		List<Contratto> contratti = monopoly.getTabellone().getContratti();
+		List<Imprevisto> imprevisti = monopoly.getTabellone().getImprevisti();
+		List<Probabilita> probabilita = monopoly.getTabellone().getProbabilita();
+
+		giocatore1.aggiornaPosizioneEPortafoglio(4, proprietariDeiContratti, caselle, contratti, imprevisti,
+				probabilita);
+		assertEquals(1460, giocatore1.getPortafoglio());
+
+	}
+
 }

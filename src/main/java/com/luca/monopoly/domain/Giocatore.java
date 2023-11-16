@@ -44,7 +44,7 @@ public class Giocatore {
 
         aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
         aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
-        aggiornaPortafoglioSeStazioneOSocietaElettrica(caselle, contratti);
+        aggiornaPortafoglioSeTasse(caselle, contratti);
 
         String nomeProprieta = caselle.get(this.posizione).getTesto();
         int numeroCasette = caselle.get(this.posizione).getNumeroDiCasetteSullaCasella();
@@ -58,11 +58,14 @@ public class Giocatore {
         }
     }
 
-    private void aggiornaPortafoglioSeStazioneOSocietaElettrica(List<Casella> caselle, List<Contratto> contratti) {
-
+    private void aggiornaPortafoglioSeTasse(List<Casella> caselle, List<Contratto> contratti) {
         if (caselle.get(this.posizione).getTesto().startsWith("Società")
                 || caselle.get(this.posizione).getTesto().startsWith("Stazione")) {
             this.portafoglio -= contratti.get(this.posizione).getTassa();
+        } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa Patrimoniale")) {
+            this.portafoglio -= 40;
+        } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa di Lusso")) {
+            this.portafoglio -= 250;
         }
     }
 
