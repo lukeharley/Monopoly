@@ -1,5 +1,6 @@
 package com.luca.monopoly.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -9,6 +10,8 @@ public class Giocatore {
     private Segnalini segnalino;
     private int portafoglio;
     private int posizione;
+    private List<Imprevisto> mazzoCartePescateImprevisti = new ArrayList<>();
+    private List<Probabilita> mazzoCartePescateProbabilita = new ArrayList<>();
 
     public Giocatore(Segnalini segnalino, int portafoglio, int posizione) {
         this.segnalino = segnalino;
@@ -33,11 +36,15 @@ public class Giocatore {
     }
 
     public void aggiornaPosizioneEPortafoglio(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
-            List<Casella> caselle, List<Contratto> contratti) {
+            List<Casella> caselle, List<Contratto> contratti, List<Imprevisto> imprevisti,
+            List<Probabilita> probabilita) {
 
         this.posizione += risultatoDado;
-
         aggiornaPosizioneEPortafoglioSePassaDalVia();
+
+        aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+        aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
+        aggiornaPortafoglioSeStazioneOSocietaElettrica(caselle, contratti);
 
         String nomeProprieta = caselle.get(this.posizione).getTesto();
         int numeroCasette = caselle.get(this.posizione).getNumeroDiCasetteSullaCasella();
@@ -48,6 +55,36 @@ public class Giocatore {
         if (proprietariDeiContratti.get(nomeProprieta) != null) {
             int affitto = contrattoOptional.get().calcolaAffitto(numeroCasette);
             this.portafoglio -= affitto;
+        }
+    }
+
+    private void aggiornaPortafoglioSeStazioneOSocietaElettrica(List<Casella> caselle, List<Contratto> contratti) {
+
+        if (caselle.get(this.posizione).getTesto().startsWith("Società")
+                || caselle.get(this.posizione).getTesto().startsWith("Stazione")) {
+            this.portafoglio -= contratti.get(this.posizione).getTassa();
+        }
+    }
+
+    private void aggiornaPosizioneEPortafoglioSeProbabilita(List<Casella> caselle, List<Probabilita> probabilita,
+            List<Probabilita> mazzoCartePescateProbabilita) {
+
+        if (caselle.get(this.posizione).getTesto().equals("Probabilità")) {
+            Probabilita probabilitaCorrente = probabilita.get(0);
+            this.posizione += probabilitaCorrente.getShiftPosizione();
+            this.portafoglio += probabilitaCorrente.getImporto();
+            probabilitaCorrente.pescaCarta(probabilita, mazzoCartePescateProbabilita);
+        }
+    }
+
+    private void aggiornaPosizioneEPortafoglioSeImprevisto(List<Casella> caselle, List<Imprevisto> imprevisti,
+            List<Imprevisto> mazzoCartePescateImprevisti) {
+
+        if (caselle.get(this.posizione).getTesto().equals("Imprevisti")) {
+            Imprevisto imprevistoCorrente = imprevisti.get(0);
+            this.posizione += imprevistoCorrente.getShiftPosizione();
+            this.portafoglio += imprevistoCorrente.getImporto();
+            imprevistoCorrente.pescaCarta(imprevisti, mazzoCartePescateImprevisti);
         }
     }
 

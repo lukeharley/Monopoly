@@ -12,8 +12,9 @@ public class Contratto {
   private int renditaDueStazioni;
   private int renditaTreStazioni;
   private int renditaQuattroStazioni;
+  private int tassa;
 
-  public Contratto(String testo, int renditaTerreno, int renditaUnaCasa, int renditaUnaStazione) {
+  public Contratto(String testo, int renditaTerreno, int renditaUnaCasa, int renditaUnaStazione, int tassa) {
     this.testo = testo;
     this.renditaTerreno = renditaTerreno;
     this.renditaUnaCasa = renditaUnaCasa;
@@ -25,6 +26,7 @@ public class Contratto {
     this.renditaDueStazioni = renditaUnaStazione * 2;
     this.renditaTreStazioni = renditaUnaStazione * 3;
     this.renditaQuattroStazioni = renditaUnaStazione * 4;
+    this.tassa = tassa;
 
   }
 
@@ -70,6 +72,10 @@ public class Contratto {
 
   public int getRenditaQuattroStazioni() {
     return renditaQuattroStazioni;
+  }
+
+  public int getTassa() {
+    return tassa;
   }
 
   public int calcolaAffitto(int numeroCasette) {

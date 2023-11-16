@@ -11,7 +11,7 @@ Imprevisti e Probabilità: https://answerprime.com/monopoli-elenco-imprevisti-pr
 
 Contratti (Campione): https://it.scribd.com/document/327938771/Contratti-Monopoli
 https://www.giochi-da-tavolo.it/monpoli-istruzioni-regole/#:~:text=PAGARE%20RENDITE%20E%20AFFITTI
-ricerca dei restanti contratti su Google Immagini e conversione dei valori da lire in euro
+ricerca dei restanti contratti su Google Immagini e conversione dei valori da lire in euro (diviso 40)
 
 Sviluppo del gioco Monopoly
 Scopo del gioco:
@@ -24,7 +24,7 @@ Scopo del gioco:
 5. ~~Ad ogni turno il giocatore lancia i dadi e ottiene un valore che fa muovere i segnalini dei giocatori (shift = valore ottenuto come risultato del lancio dei dadi).~~ [FATTO]
    ~~Terminate/oltrepassate le 40 posizioni del tabellone, si ottengono i 500€ del Via! e il giro ricomincia da 0)~~ [FATTO]
    (Se si ottengono 2 numeri uguali per le 2 facce, il giocatore ripete il turno. [POSTICIPATO]
-   Dopo 3 volte che ciò accade, il giocatore finisce in prigione senza passare dal Via! [= senza ritirare i 200€, non vale il ricalcolo delle posizioni delle caselle].) [POSTICIPATO]
+   Dopo 3 volte che ciò accade, il giocatore finisce in prigione senza passare dal Via! [= senza ritirare i 500€, non vale il ricalcolo delle posizioni delle caselle].) [POSTICIPATO]
 6. In base alla casella su cui si arriva, si potranno effettuare le seguenti azioni:
    a) ~~Acquistare la proprietà/il terreno (se ancora disponibili)~~ [FATTO] e, se si ottengono tutti i terreni di uno stesso colore, posizionare le case e quindi gli alberghi (se possibile): il costo (da saldare alla banca) è stabilito nelle carte dei Contratti.
    [Se si completa il numero di terreni dello stesso colore (= si ha un Monopolio) la rendita del solo terreno raddoppia e si sblocca la possibilità di posizionare case e poi alberghi]

@@ -12,8 +12,8 @@ public class Tabellone {
 
 	private final List<Contratto> contratti = new ArrayList<>();
 	private final List<Casella> caselle = new ArrayList<>();
-	private final List<String> imprevisti = new ArrayList<>();
-	private final List<String> probabilità = new ArrayList<>();
+	private final List<Imprevisto> imprevisti = new ArrayList<>();
+	private final List<Probabilita> probabilita = new ArrayList<>();
 	private TreeMap<String, Giocatore> proprietariDeiContratti = new TreeMap<>();
 
 	public Tabellone() {
@@ -59,71 +59,80 @@ public class Tabellone {
 		caselle.add(new Casella("Tassa di Lusso", false, null, 0, 0));
 		caselle.add(new Casella("Parco della Vittoria", true, "viola", 1000, 0));
 
-		contratti.add(new Contratto("Vicolo Corto", 5, 25, 0));
-		contratti.add(new Contratto("Vicolo Stretto", 10, 50, 0));
-		contratti.add(new Contratto("Stazione Sud", 0, 0, 65));
-		contratti.add(new Contratto("Bastioni Gran Sasso", 15, 75, 0));
-		contratti.add(new Contratto("Viale Monterosa", 15, 75, 0));
-		contratti.add(new Contratto("Viale Vesuvio", 20, 100, 0));
-		contratti.add(new Contratto("Via Accademia", 25, 125, 0));
-		contratti.add(new Contratto("Società Elettrica", 0, 0, 50));
-		contratti.add(new Contratto("Corso Ateneo", 25, 125, 0));
-		contratti.add(new Contratto("Piazza Università", 30, 150, 0));
-		contratti.add(new Contratto("Stazione Ovest", 0, 0, 65));
-		contratti.add(new Contratto("Via Verdi", 35, 175, 0));
-		contratti.add(new Contratto("Corso Raffaello", 35, 175, 0));
-		contratti.add(new Contratto("Piazza Dante", 40, 200, 0));
-		contratti.add(new Contratto("Via Marco Polo", 45, 225, 0));
-		contratti.add(new Contratto("Corso Magellano", 45, 225, 0));
-		contratti.add(new Contratto("Largo Colombo", 50, 250, 0));
-		contratti.add(new Contratto("Stazione Nord", 0, 0, 65));
-		contratti.add(new Contratto("Viale Costantino", 50, 250, 0));
-		contratti.add(new Contratto("Viale Traiano", 55, 275, 0));
-		contratti.add(new Contratto("Società Acqua Potabile", 0, 0, 50));
-		contratti.add(new Contratto("Piazza Giulio Cesare", 60, 300, 0));
-		contratti.add(new Contratto("Via Roma", 65, 325, 0));
-		contratti.add(new Contratto("Corso Impero", 70, 375, 0));
-		contratti.add(new Contratto("Largo Augusto", 70, 375, 0));
-		contratti.add(new Contratto("Stazione Est", 0, 0, 65));
-		contratti.add(new Contratto("Viale dei Giardini", 75, 425, 0));
-		contratti.add(new Contratto("Parco della Vittoria", 125, 500, 0));
+		contratti.add(new Contratto("Vicolo Corto", 5, 25, 0, 0));
+		contratti.add(new Contratto("Vicolo Stretto", 10, 50, 0, 0));
+		contratti.add(new Contratto("Stazione Sud", 0, 0, 65, 60));
+		contratti.add(new Contratto("Bastioni Gran Sasso", 15, 75, 0, 0));
+		contratti.add(new Contratto("Viale Monterosa", 15, 75, 0, 0));
+		contratti.add(new Contratto("Viale Vesuvio", 20, 100, 0, 0));
+		contratti.add(new Contratto("Via Accademia", 25, 125, 0, 0));
+		contratti.add(new Contratto("Società Elettrica", 0, 0, 50, 50));
+		contratti.add(new Contratto("Corso Ateneo", 25, 125, 0, 0));
+		contratti.add(new Contratto("Piazza Università", 30, 150, 0, 0));
+		contratti.add(new Contratto("Stazione Ovest", 0, 0, 65, 60));
+		contratti.add(new Contratto("Via Verdi", 35, 175, 0, 0));
+		contratti.add(new Contratto("Corso Raffaello", 35, 175, 0, 0));
+		contratti.add(new Contratto("Piazza Dante", 40, 200, 0, 0));
+		contratti.add(new Contratto("Via Marco Polo", 45, 225, 0, 0));
+		contratti.add(new Contratto("Corso Magellano", 45, 225, 0, 0));
+		contratti.add(new Contratto("Largo Colombo", 50, 250, 0, 0));
+		contratti.add(new Contratto("Stazione Nord", 0, 0, 65, 60));
+		contratti.add(new Contratto("Viale Costantino", 50, 250, 0, 0));
+		contratti.add(new Contratto("Viale Traiano", 55, 275, 0, 0));
+		contratti.add(new Contratto("Società Acqua Potabile", 0, 0, 50, 50));
+		contratti.add(new Contratto("Piazza Giulio Cesare", 60, 300, 0, 0));
+		contratti.add(new Contratto("Via Roma", 65, 325, 0, 0));
+		contratti.add(new Contratto("Corso Impero", 70, 375, 0, 0));
+		contratti.add(new Contratto("Largo Augusto", 70, 375, 0, 0));
+		contratti.add(new Contratto("Stazione Est", 0, 0, 65, 60));
+		contratti.add(new Contratto("Viale dei Giardini", 75, 425, 0, 0));
+		contratti.add(new Contratto("Parco della Vittoria", 125, 500, 0, 0));
 
-		imprevisti.add("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.");
-		imprevisti.add("Andate in Prigione direttamente e senza passare dal Via.");
-		imprevisti.add("Avete tutti i vostri stabili da riparare: pagare 60€ per ogni Casa e 250€ per ogni Albergo.");
-		imprevisti.add("Fate 3 passi indietro (con tanti auguri).");
-		imprevisti.add("Andate sino a Via Accademia: se passate dal Via ritirate 500€.");
-		imprevisti.add("Versate 50€ per beneficienza.");
-		imprevisti.add("Andate alla Stazione Nord: se passate dal Via ritirate 500€.");
-		imprevisti.add("Multa di 40€ per aver guidato senza patente.");
-		imprevisti.add("Andate fino al Parco della Vittoria.");
-		imprevisti.add("Matrimonio in famiglia: spese impreviste 375€.");
+		imprevisti.add(new Imprevisto("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.", 500, 0));
+		imprevisti.add(new Imprevisto("Andate in Prigione direttamente e senza passare dal Via.", 0, 0));
+		imprevisti.add(new Imprevisto(
+				"Avete tutti i vostri stabili da riparare: pagare 60€ per ogni Casa e 250€ per ogni Albergo.", 60 / 250,
+				0));
+		imprevisti.add(new Imprevisto("Fate 3 passi indietro (con tanti auguri).", 0, -3));
+		imprevisti.add(new Imprevisto("Andate sino a Via Accademia: se passate dal Via ritirate 500€.", 500, 0));
+		imprevisti.add(new Imprevisto("Versate 50€ per beneficienza.", -50, 0));
+		imprevisti.add(new Imprevisto("Andate alla Stazione Nord: se passate dal Via ritirate 500€.", 500, 0));
+		imprevisti.add(new Imprevisto("Multa di 40€ per aver guidato senza patente.", -40, 0));
+		imprevisti.add(new Imprevisto("Andate fino al Parco della Vittoria.", 0, 0));
+		imprevisti.add(new Imprevisto("Matrimonio in famiglia: spese impreviste 375€.", -375, 0));
+		imprevisti.add(new Imprevisto(
+				"Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene (non si sa mai!) oppure venderlo.",
+				0, 0));
+		imprevisti.add(new Imprevisto("Maturano le cedole delle vostre cartelle di rendita, ritirate 375€.", 375, 0));
 		imprevisti.add(
-				"Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene (non si sa mai!) oppure venderlo.");
-		imprevisti.add("Maturano le cedole delle vostre cartelle di rendita, ritirate 375€.");
-		imprevisti.add("La banca vi paga gli interessi del vostro conto corrente, ritirate 125€.");
-		imprevisti.add("Andate avanti sino al Via.");
-		imprevisti.add("Avete vinto un terno al lotto: ritirate 250€.");
-		imprevisti.add("Andate in prigione direttamente e senza passare dal Via.");
+				new Imprevisto("La banca vi paga gli interessi del vostro conto corrente, ritirate 125€.", 125, 0));
+		imprevisti.add(new Imprevisto("Andate avanti sino al Via.", 0, 0));
+		imprevisti.add(new Imprevisto("Avete vinto un terno al lotto: ritirate 250€.", 250, 0));
+		imprevisti.add(new Imprevisto("Andate in prigione direttamente e senza passare dal Via.", 0, 0));
 
-		probabilità.add("Ritornate al Vicolo Corto.");
-		probabilità.add("È maturata la cedola delle vostre azioni: ritirate 60€.");
-		probabilità.add("Rimborso tassa sul reddito: ritirate 50€ dalla banca.");
-		probabilità.add("Avete vinto il secondo premio in un concorso di bellezza: ritirate 25€.");
-		probabilità.add("Scade il vostro premio di assicurazione: pagate 125€.");
-		probabilità.add(
-				"Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene(non si sa mai!) oppure venderlo.");
-		probabilità.add("Avete vinto un premio di consolazione alla lotteria di Merano: ritirate 250€.");
-		probabilità.add("Andate fino al Via.");
-		probabilità.add("Pagate una multa di 25€, oppure prendete un cartoncino dagli Imprevisti.");
-		probabilità.add("Siete creditori verso la banca di 500€, ritirateli.");
-		probabilità.add("Avete perso una causa: pagate 250€");
-		probabilità.add("Andate in prigione direttamente e senza passare dal Via.");
-		probabilità.add("È il vostro compleanno: ogni giocatore vi regala 25€.");
-		probabilità.add(
-				"Dovete pagare un contributo di miglioria stradale, 100€ per ogni Casa, 250€ per ogni Albergo che possedete.");
-		probabilità.add("Avete ceduto delle azioni: ricavate 125€.");
-		probabilità.add("Pagate il conto del dottore: 125€.");
+		probabilita.add(new Probabilita("Ritornate al Vicolo Corto.", 0, 0));
+		probabilita.add(new Probabilita("È maturata la cedola delle vostre azioni: ritirate 60€.", 60, 0));
+		probabilita.add(new Probabilita("Rimborso tassa sul reddito: ritirate 50€ dalla banca.", 50, 0));
+		probabilita
+				.add(new Probabilita("Avete vinto il secondo premio in un concorso di bellezza: ritirate 25€.", 25, 0));
+		probabilita.add(new Probabilita("Scade il vostro premio di assicurazione: pagate 125€.", -125, 0));
+		probabilita.add(new Probabilita(
+				"Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene(non si sa mai!) oppure venderlo.",
+				0, 0));
+		probabilita.add(new Probabilita("Avete vinto un premio di consolazione alla lotteria di Merano: ritirate 250€.",
+				250, 0));
+		probabilita.add(new Probabilita("Andate fino al Via.", 0, 0));
+		probabilita.add(
+				new Probabilita("Pagate una multa di 25€, oppure prendete un cartoncino dagli Imprevisti.", -25, 0));
+		probabilita.add(new Probabilita("Siete creditori verso la banca di 500€, ritirateli.", 500, 0));
+		probabilita.add(new Probabilita("Avete perso una causa: pagate 250€", -250, 0));
+		probabilita.add(new Probabilita("Andate in prigione direttamente e senza passare dal Via.", 0, 0));
+		probabilita.add(new Probabilita("È il vostro compleanno: ogni giocatore vi regala 25€.", 25 * 2, 0));
+		probabilita.add(new Probabilita(
+				"Dovete pagare un contributo di miglioria stradale, 100€ per ogni Casa, 250€ per ogni Albergo che possedete.",
+				(100 * 1) + (250 * 1), 0));
+		probabilita.add(new Probabilita("Avete ceduto delle azioni: ricavate 125€.", 125, 0));
+		probabilita.add(new Probabilita("Pagate il conto del dottore: 125€.", -125, 0));
 
 		proprietariDeiContratti.put("Vicolo Corto", null);
 		proprietariDeiContratti.put("Vicolo Stretto", null);
@@ -164,12 +173,12 @@ public class Tabellone {
 		return contratti;
 	}
 
-	public List<String> getImprevisti() {
+	public List<Imprevisto> getImprevisti() {
 		return imprevisti;
 	}
 
-	public List<String> getProbabilità() {
-		return probabilità;
+	public List<Probabilita> getProbabilita() {
+		return probabilita;
 	}
 
 	public Map<String, Giocatore> getProprietariDeiContratti() {

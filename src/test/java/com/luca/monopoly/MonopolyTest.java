@@ -84,12 +84,28 @@ public class MonopolyTest {
 
 		Tabellone tabellone = monopoly.getTabellone();
 
-		List<String> imprevisti = tabellone.getImprevisti();
+		Giocatore giocatore1 = giocatori.get(0);
+		assertEquals(0, giocatore1.getPosizione());
+		assertEquals(1500, giocatore1.getPortafoglio());
+
+		List<Casella> caselle = monopoly.getTabellone().getCaselle();
+		List<Contratto> contratti = monopoly.getTabellone().getContratti();
+		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
+		List<Probabilita> probabilita = monopoly.getTabellone().getProbabilita();
+
+		List<Imprevisto> imprevisti = tabellone.getImprevisti();
 		assertEquals(16, imprevisti.size());
 
-		String primaCartaImprevisto = imprevisti.get(0);
+		Imprevisto primaCartaImprevisto = imprevisti.get(0);
 		assertEquals("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.",
-				primaCartaImprevisto);
+				primaCartaImprevisto.getTesto());
+
+		giocatore1.aggiornaPosizioneEPortafoglio(7, proprietariDeiContratti, caselle, contratti, imprevisti,
+				probabilita);
+		assertEquals(2000, giocatore1.getPortafoglio());
+		giocatore1.aggiornaPosizioneEPortafoglio(15, proprietariDeiContratti, caselle, contratti, imprevisti,
+				probabilita);
+		assertEquals(2000, giocatore1.getPortafoglio());
 
 	}
 
@@ -99,11 +115,27 @@ public class MonopolyTest {
 
 		Tabellone tabellone = monopoly.getTabellone();
 
-		List<String> probabilita = tabellone.getProbabilità();
+		Giocatore giocatore1 = giocatori.get(0);
+		assertEquals(0, giocatore1.getPosizione());
+		assertEquals(1500, giocatore1.getPortafoglio());
+
+		List<Casella> caselle = monopoly.getTabellone().getCaselle();
+		List<Contratto> contratti = monopoly.getTabellone().getContratti();
+		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
+		List<Imprevisto> imprevisti = monopoly.getTabellone().getImprevisti();
+
+		List<Probabilita> probabilita = tabellone.getProbabilita();
 		assertEquals(16, probabilita.size());
 
-		String primaCartaProbabilita = probabilita.get(0);
-		assertEquals("Ritornate al Vicolo Corto.", primaCartaProbabilita);
+		Probabilita primaCartaProbabilita = probabilita.get(0);
+		assertEquals("Ritornate al Vicolo Corto.", primaCartaProbabilita.getTesto());
+
+		giocatore1.aggiornaPosizioneEPortafoglio(2, proprietariDeiContratti, caselle, contratti, imprevisti,
+				probabilita);
+		assertEquals(1500, giocatore1.getPortafoglio());
+		giocatore1.aggiornaPosizioneEPortafoglio(15, proprietariDeiContratti, caselle, contratti, imprevisti,
+				probabilita);
+		assertEquals(1560, giocatore1.getPortafoglio());
 	}
 
 	@Order(7)
@@ -154,33 +186,40 @@ public class MonopolyTest {
 		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
 		List<Contratto> contratti = monopoly.getTabellone().getContratti();
+		List<Imprevisto> imprevisti = monopoly.getTabellone().getImprevisti();
+		List<Probabilita> probabilita = monopoly.getTabellone().getProbabilita();
 
-		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti);
+		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti, imprevisti,
+				probabilita);
 		assertEquals(12, giocatore1.getPosizione());
 		assertEquals(1500, giocatore1.getPortafoglio());
 
-		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti);
+		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti, imprevisti,
+				probabilita);
 		assertEquals(24, giocatore1.getPosizione());
 		assertEquals(1500, giocatore1.getPortafoglio());
 
-		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti);
+		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti, imprevisti,
+				probabilita);
 
 		assertEquals(36, giocatore1.getPosizione());
-		assertEquals(1500, giocatore1.getPortafoglio());
+		assertEquals(2000, giocatore1.getPortafoglio()); // sono stati aggiunti anche 500€ degli imprevisti
 
-		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti);
+		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti, imprevisti,
+				probabilita);
 		assertEquals(8, giocatore1.getPosizione());
-		assertEquals(2000, giocatore1.getPortafoglio());
+		assertEquals(2500, giocatore1.getPortafoglio()); // sono stati aggiunti anche 500€ degli imprevisti
 
-		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti);
+		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti, imprevisti,
+				probabilita);
 		assertEquals(20, giocatore1.getPosizione());
-		assertEquals(2000, giocatore1.getPortafoglio());
+		assertEquals(2500, giocatore1.getPortafoglio());
 
 	}
 
 	@Order(11)
 	@Test
-	void test_giocatore_proprieta_e_affitto_terreno() {
+	void test_giocatore_proprieta_e_affitto_terreno_o_casa() {
 
 		Giocatore giocatore1 = giocatori.get(0);
 		Giocatore giocatore2 = giocatori.get(1);
@@ -189,12 +228,15 @@ public class MonopolyTest {
 		assertEquals(28, proprietariDeiContratti.size());
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
 		List<Contratto> contratti = monopoly.getTabellone().getContratti();
+		List<Imprevisto> imprevisti = monopoly.getTabellone().getImprevisti();
+		List<Probabilita> probabilita = monopoly.getTabellone().getProbabilita();
 
 		giocatore1.compraProprieta(proprietariDeiContratti, "Vicolo Stretto", caselle);
 		assertEquals(giocatore1, proprietariDeiContratti.get("Vicolo Stretto"));
 		assertEquals(1350, giocatore1.getPortafoglio());
 
-		giocatore2.aggiornaPosizioneEPortafoglio(3, proprietariDeiContratti, caselle, contratti);
+		giocatore2.aggiornaPosizioneEPortafoglio(3, proprietariDeiContratti, caselle, contratti, imprevisti,
+				probabilita);
 		assertEquals(1490, giocatore2.getPortafoglio());
 
 	}
