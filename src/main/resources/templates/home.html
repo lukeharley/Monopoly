@@ -2,6 +2,8 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
     <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../../css.monopoly.css" th:href="@{/css/monopoly.css}" />
 </head>
 
 <body>
@@ -10,18 +12,37 @@
 
     <form action="#" th:action="@{/}" th:object="${form}" method="post">
         <div>
-            <input type="text" th:value="*{nome}" th:name="'nome'" th:id="'nome'" placeholder="Inserire il nome del giocatore" />
+            <p th:utext="'Benvenuti nel nostro <b>fantastico</b> gioco del Monopoly!'"></p>
+            <input style="margin-top: 10px;" type="text" th:field="*{nome}" th:value="${nome}" th:name="'nome'" th:id="'nome'" placeholder="Inserire il nome del giocatore" />
         </div>
-
-        <div>
+        <div style="margin-top: 10px;">
             <button type="submit">Aggiungi giocatore</button>
         </div>
+
+        <div style="margin-top: 10px;">
+            <label>Scegliere un segnalino (tra quelli disponibili)</label>
+            <select th:field="*{segnalino}">
+                <option value="0">Seleziona</option>
+                <option th:each="segnalinoScelto : ${T(com.luca.monopoly.domain.Segnalini).values()}"
+                th:value="${segnalinoScelto}" th:text="${segnalinoScelto.nome}"></option>
+            </select>
+        </div>
+        <div style="margin-top: 10px;">
+            <button type="submit">Seleziona segnalino</button>
+        </div>
+
+        
+
     </form>
 
-    <div th:text="'Numero di dadi: ' + ${dadi}"></div>
+    <div style="margin-top: 10px;" th:utext="'Numero di dadi: ' + ${dadi}"></div>
 
     <th:block th:if="${nomeGiocatoreAggiunto != null}">
-        <div th:text="'Il giocatore aggiunto si chiama: ' + ${nomeGiocatoreAggiunto}"></div>
+        <div>
+        <p th:utext="'Il giocatore aggiunto si chiama: <b>' + ${nomeGiocatoreAggiunto} + '</b>'"></p>
+        <p th:utext="${nomeGiocatoreAggiunto} + ' avrà di partenza un portafoglio di <b>' + ${portafoglioPrimoGiocatoreAggiunto} + '€</b>.'"></p>
+        <p th:utext="'Il segnalino che <b>' + ${nomeGiocatoreAggiunto} + '</b> ha scelto è a forma di <b>' + ${segnalinoScelto.nome} + '</b>.'"></p>
+        </div>
     </th:block>
 
 </body>
