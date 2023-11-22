@@ -9,8 +9,8 @@ public class Imprevisto extends Carta {
         super();
     }
 
-    public Imprevisto(String testo, int importo, int shiftPosizione) {
-        super(testo, importo, shiftPosizione);
+    public Imprevisto(String testo, int importo, String nuovaPosizione, int shiftPosizione) {
+        super(testo, importo, nuovaPosizione, shiftPosizione);
     }
 
     public void pescaCarta(List<Imprevisto> mazzoCorrente, List<Imprevisto> mazzoCartePescate) {

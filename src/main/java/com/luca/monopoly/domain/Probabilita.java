@@ -9,8 +9,8 @@ public class Probabilita extends Carta {
         super();
     }
 
-    public Probabilita(String testo, int importo, int shiftPosizione) {
-        super(testo, importo, shiftPosizione);
+    public Probabilita(String testo, int importo, String nuovaPosizione, int shiftPosizione) {
+        super(testo, importo, nuovaPosizione, shiftPosizione);
     }
 
     public void pescaCarta(List<Probabilita> mazzoCorrente, List<Probabilita> mazzoCartePescate) {

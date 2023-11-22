@@ -102,10 +102,12 @@ public class MonopolyTest {
 
 		giocatore1.aggiornaPosizioneEPortafoglio(7, proprietariDeiContratti, caselle, contratti, imprevisti,
 				probabilita);
-		assertEquals(2000, giocatore1.getPortafoglio());
+		assertEquals(1500, giocatore1.getPortafoglio());
 		giocatore1.aggiornaPosizioneEPortafoglio(15, proprietariDeiContratti, caselle, contratti, imprevisti,
 				probabilita);
-		assertEquals(2000, giocatore1.getPortafoglio());
+		assertEquals(1500, giocatore1.getPortafoglio());
+
+		// rimane da testare esaurimento del mazzo di carte
 
 	}
 
@@ -133,9 +135,15 @@ public class MonopolyTest {
 		giocatore1.aggiornaPosizioneEPortafoglio(2, proprietariDeiContratti, caselle, contratti, imprevisti,
 				probabilita);
 		assertEquals(1500, giocatore1.getPortafoglio());
-		giocatore1.aggiornaPosizioneEPortafoglio(15, proprietariDeiContratti, caselle, contratti, imprevisti,
+		// Nel metodo successivo sposto il segnalino di una posizione per raggiungere la
+		// prossima carta
+		// Probabilità in quanto con la prima probabilità il giocatore è tornato alla
+		// casella Vicolo Corto
+		giocatore1.aggiornaPosizioneEPortafoglio(1, proprietariDeiContratti, caselle, contratti, imprevisti,
 				probabilita);
 		assertEquals(1560, giocatore1.getPortafoglio());
+
+		// rimane da testare esaurimento del mazzo di carte
 	}
 
 	@Order(7)

@@ -88,51 +88,81 @@ public class Tabellone {
 		contratti.add(new Contratto("Viale dei Giardini", 75, 425, 0, 0));
 		contratti.add(new Contratto("Parco della Vittoria", 125, 500, 0, 0));
 
-		imprevisti.add(new Imprevisto("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.", 500, 0));
-		imprevisti.add(new Imprevisto("Andate in Prigione direttamente e senza passare dal Via.", 0, 0));
-		imprevisti.add(new Imprevisto(
-				"Avete tutti i vostri stabili da riparare: pagare 60€ per ogni Casa e 250€ per ogni Albergo.", 60 / 250,
+		// prettier-ignore
+		imprevisti.add(new Imprevisto("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.", 0, "24", 0));
+		imprevisti.add(new Imprevisto("Andate in Prigione direttamente e senza passare dal Via.", 0, "30", 0));
+		imprevisti.add(new Imprevisto("Avete tutti i vostri stabili da riparare: pagare 180€.", -180, "NaN", 0));
+		/*
+		 * da implementare, sostituito con imprevisto precedente in attesa di gestire il
+		 * numero di case o alberghi posseduti:
+		 * imprevisti.add(new Imprevisto(
+		 * "Avete tutti i vostri stabili da riparare: pagare 60€ per ogni Casa e 250€ per ogni Albergo."
+		 * , 60 / 250,
+		 * "NaN", 0));
+		 */
+		imprevisti.add(new Imprevisto("Fate 3 passi indietro (con tanti auguri).", 0, "NaN", -3));
+		imprevisti.add(new Imprevisto("Andate sino a Via Accademia: se passate dal Via ritirate 500€.", 0, "11", 0));
+		imprevisti.add(new Imprevisto("Versate 50€ per beneficienza.", -50, "NaN", 0));
+		imprevisti.add(new Imprevisto("Andate alla Stazione Nord: se passate dal Via ritirate 500€.", 0, "25", 0));
+		imprevisti.add(new Imprevisto("Multa di 40€ per aver guidato senza patente.", -40, "NaN", 0));
+		imprevisti.add(new Imprevisto("Andate fino al Parco della Vittoria.", 0, "40", 0));
+		imprevisti.add(new Imprevisto("Matrimonio in famiglia: spese impreviste 375€.", -375, "NaN", 0));
+		imprevisti.add(new Imprevisto("Matrimonio in famiglia: spese impreviste 280€.", -280, "NaN", 0));
+		/*
+		 * da implementare, sostituito con imprevisto precedente in attesa di gestire
+		 * l'uscita di prigione
+		 * imprevisti.add(new Imprevisto(
+		 * "Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene (non si sa mai!) oppure venderlo."
+		 * ,
+		 * 0, "NaN", 0));
+		 */
+		imprevisti.add(new Imprevisto("Maturano le cedole delle vostre cartelle di rendita, ritirate 375€.", 375, "NaN",
 				0));
-		imprevisti.add(new Imprevisto("Fate 3 passi indietro (con tanti auguri).", 0, -3));
-		imprevisti.add(new Imprevisto("Andate sino a Via Accademia: se passate dal Via ritirate 500€.", 500, 0));
-		imprevisti.add(new Imprevisto("Versate 50€ per beneficienza.", -50, 0));
-		imprevisti.add(new Imprevisto("Andate alla Stazione Nord: se passate dal Via ritirate 500€.", 500, 0));
-		imprevisti.add(new Imprevisto("Multa di 40€ per aver guidato senza patente.", -40, 0));
-		imprevisti.add(new Imprevisto("Andate fino al Parco della Vittoria.", 0, 0));
-		imprevisti.add(new Imprevisto("Matrimonio in famiglia: spese impreviste 375€.", -375, 0));
-		imprevisti.add(new Imprevisto(
-				"Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene (non si sa mai!) oppure venderlo.",
-				0, 0));
-		imprevisti.add(new Imprevisto("Maturano le cedole delle vostre cartelle di rendita, ritirate 375€.", 375, 0));
 		imprevisti.add(
-				new Imprevisto("La banca vi paga gli interessi del vostro conto corrente, ritirate 125€.", 125, 0));
-		imprevisti.add(new Imprevisto("Andate avanti sino al Via.", 0, 0));
-		imprevisti.add(new Imprevisto("Avete vinto un terno al lotto: ritirate 250€.", 250, 0));
-		imprevisti.add(new Imprevisto("Andate in prigione direttamente e senza passare dal Via.", 0, 0));
+				new Imprevisto("La banca vi paga gli interessi del vostro conto corrente, ritirate 125€.", 125, "NaN",
+						0));
+		imprevisti.add(new Imprevisto("Andate avanti sino al Via.", 500, "0", 0));
+		imprevisti.add(new Imprevisto("Avete vinto un terno al lotto: ritirate 250€.", 250, "NaN", 0));
+		imprevisti.add(new Imprevisto("Andate in prigione direttamente e senza passare dal Via.", 0, "30", 0));
 
-		probabilita.add(new Probabilita("Ritornate al Vicolo Corto.", 0, 0));
-		probabilita.add(new Probabilita("È maturata la cedola delle vostre azioni: ritirate 60€.", 60, 0));
-		probabilita.add(new Probabilita("Rimborso tassa sul reddito: ritirate 50€ dalla banca.", 50, 0));
-		probabilita
-				.add(new Probabilita("Avete vinto il secondo premio in un concorso di bellezza: ritirate 25€.", 25, 0));
-		probabilita.add(new Probabilita("Scade il vostro premio di assicurazione: pagate 125€.", -125, 0));
-		probabilita.add(new Probabilita(
-				"Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene(non si sa mai!) oppure venderlo.",
-				0, 0));
+		probabilita.add(new Probabilita("Ritornate al Vicolo Corto.", 0, "1", 0));
+		probabilita.add(new Probabilita("È maturata la cedola delle vostre azioni: ritirate 60€.", 60, "NaN", 0));
+		probabilita.add(new Probabilita("Rimborso tassa sul reddito: ritirate 50€ dalla banca.", 50, "NaN", 0));
+		probabilita.add(new Probabilita("Avete vinto il secondo premio in un concorso di bellezza: ritirate 25€.", 25,
+				"NaN", 0));
+		probabilita.add(new Probabilita("Scade il vostro premio di assicurazione: pagate 125€.", -125, "NaN", 0));
+		probabilita.add(new Probabilita("Scade il vostro premio di assicurazione: pagate 140€.", -140, "NaN", 0));
+		/*
+		 * da implementare, sostituito con probabilità precedente in attesa di gestire
+		 * l'uscita di prigione
+		 * probabilita.add(new Probabilita(
+		 * "Uscite gratis di prigione, se ci siete: potete conservare questo cartoncino sino al momento di servirvene(non si sa mai!) oppure venderlo."
+		 * ,
+		 * 0, "NaN", 0));
+		 */
 		probabilita.add(new Probabilita("Avete vinto un premio di consolazione alla lotteria di Merano: ritirate 250€.",
-				250, 0));
-		probabilita.add(new Probabilita("Andate fino al Via.", 0, 0));
-		probabilita.add(
-				new Probabilita("Pagate una multa di 25€, oppure prendete un cartoncino dagli Imprevisti.", -25, 0));
-		probabilita.add(new Probabilita("Siete creditori verso la banca di 500€, ritirateli.", 500, 0));
-		probabilita.add(new Probabilita("Avete perso una causa: pagate 250€", -250, 0));
-		probabilita.add(new Probabilita("Andate in prigione direttamente e senza passare dal Via.", 0, 0));
-		probabilita.add(new Probabilita("È il vostro compleanno: ogni giocatore vi regala 25€.", 25 * 2, 0));
-		probabilita.add(new Probabilita(
-				"Dovete pagare un contributo di miglioria stradale, 100€ per ogni Casa, 250€ per ogni Albergo che possedete.",
-				(100 * 1) + (250 * 1), 0));
-		probabilita.add(new Probabilita("Avete ceduto delle azioni: ricavate 125€.", 125, 0));
-		probabilita.add(new Probabilita("Pagate il conto del dottore: 125€.", -125, 0));
+				250, "NaN", 0));
+		probabilita.add(new Probabilita("Andate fino al Via.", 0, "0", 0));
+		// seconda parte ancora da implementare
+		probabilita
+				.add(new Probabilita("Pagate una multa di 25€ (oppure pescate una carta Imprevisti)", -25, "NaN", 0));
+		probabilita.add(new Probabilita("Siete creditori verso la banca di 500€, ritirateli.", 500, "NaN", 0));
+		probabilita.add(new Probabilita("Avete perso una causa: pagate 250€", -250, "NaN", 0));
+		probabilita.add(new Probabilita("Andate in prigione direttamente e senza passare dal Via.", 0, "30", 0));
+		// va bene finché i giocatori sono 2
+		probabilita.add(new Probabilita("È il vostro compleanno: ogni giocatore vi regala 25€.", 25, "NaN", 0));
+		probabilita.add(new Probabilita("Avete perso una causa: pagate 150€", -150, "NaN", 0));
+		/*
+		 * da implementare, sostituito con probabilità precedente in attesa di gestire
+		 * il
+		 * numero di case o alberghi posseduti:
+		 * probabilita.add(new Probabilita(
+		 * "Dovete pagare un contributo di miglioria stradale, 100€ per ogni Casa, 250€ per ogni Albergo che possedete."
+		 * ,
+		 * (100 * 1) + (250 * 1), "NaN", 0));
+		 */
+		probabilita.add(new Probabilita("Avete ceduto delle azioni: ricavate 125€.", 125, "NaN", 0));
+		probabilita.add(new Probabilita("Pagate il conto del dottore: 125€.", -125, "NaN", 0));
 
 		proprietariDeiContratti.put("Vicolo Corto", null);
 		proprietariDeiContratti.put("Vicolo Stretto", null);

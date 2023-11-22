@@ -74,8 +74,23 @@ public class Giocatore {
 
         if (caselle.get(this.posizione).getTesto().equals("Probabilità")) {
             Probabilita probabilitaCorrente = probabilita.get(0);
-            this.posizione += probabilitaCorrente.getShiftPosizione();
+
+            if (probabilita.get(0).getShiftPosizione() != 0) {
+                this.posizione += probabilitaCorrente.getShiftPosizione();
+            }
+
+            if (Carta.eUnNumero(probabilitaCorrente.getNuovaPosizione())) {
+                this.posizione = Integer.parseInt(probabilitaCorrente.getNuovaPosizione());
+            }
+
+            if (Carta.eUnNumero(probabilitaCorrente.getNuovaPosizione())
+                    && Integer.parseInt(probabilitaCorrente.getNuovaPosizione()) > this.posizione
+                    && !(probabilitaCorrente.getTesto().contains("senza passare dal Via"))) {
+                this.portafoglio += 500;
+            }
+
             this.portafoglio += probabilitaCorrente.getImporto();
+
             probabilitaCorrente.pescaCarta(probabilita, mazzoCartePescateProbabilita);
         }
     }
@@ -85,8 +100,23 @@ public class Giocatore {
 
         if (caselle.get(this.posizione).getTesto().equals("Imprevisti")) {
             Imprevisto imprevistoCorrente = imprevisti.get(0);
-            this.posizione += imprevistoCorrente.getShiftPosizione();
+
+            if (imprevisti.get(0).getShiftPosizione() != 0) {
+                this.posizione += imprevistoCorrente.getShiftPosizione();
+            }
+
+            if (Carta.eUnNumero(imprevistoCorrente.getNuovaPosizione())) {
+                this.posizione = Integer.parseInt(imprevistoCorrente.getNuovaPosizione());
+            }
+
+            if (Carta.eUnNumero(imprevistoCorrente.getNuovaPosizione())
+                    && Integer.parseInt(imprevistoCorrente.getNuovaPosizione()) > this.posizione
+                    && !(imprevistoCorrente.getTesto().contains("senza passare dal Via"))) {
+                this.portafoglio += 500;
+            }
+
             this.portafoglio += imprevistoCorrente.getImporto();
+
             imprevistoCorrente.pescaCarta(imprevisti, mazzoCartePescateImprevisti);
         }
     }
