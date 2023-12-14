@@ -4,15 +4,30 @@ import com.luca.monopoly.domain.Giocatore;
 import com.luca.monopoly.domain.Monopoly;
 import com.luca.monopoly.domain.Segnalini;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
+
+
+    @ModelAttribute("segnalini")
+    public List<SelectOptionView> getSegnalini() {
+
+        List<SelectOptionView> segnalini = new ArrayList<>();
+
+        for (Segnalini segnalino : Segnalini.values()) {
+            segnalini.add(new SelectOptionView(segnalino.ordinal(), segnalino.getNome()));
+        }
+
+        return segnalini;
+    }
 
     @GetMapping("/")
     public String getHome(Model model) {

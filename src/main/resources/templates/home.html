@@ -23,7 +23,7 @@
             <label>Scegliere un segnalino (tra quelli disponibili)</label>
             <select th:field="*{segnalino}">
                 <option value="0">Seleziona</option>
-                <option th:each="segnalinoScelto : ${T(com.luca.monopoly.domain.Segnalini).values()}"
+                <option th:each="segnalinoScelto : ${segnalini}"
                 th:value="${segnalinoScelto}" th:text="${segnalinoScelto.nome}"></option>
             </select>
         </div>
