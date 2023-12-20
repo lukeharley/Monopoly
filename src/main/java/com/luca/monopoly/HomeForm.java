@@ -5,8 +5,10 @@ import com.luca.monopoly.domain.Segnalini;
 public class HomeForm {
 
     private String nome;
+
     private int portafoglio;
-    private Segnalini segnalino;
+
+    private int segnalino;
 
     public String getNome() {
         return nome;
@@ -24,11 +26,11 @@ public class HomeForm {
         this.portafoglio = portafoglio;
     }
 
-    public Segnalini getSegnalino() {
+    public int getSegnalino() {
         return segnalino;
     }
 
-    public void setSegnalino(Segnalini segnalino) {
+    public void setSegnalino(int segnalino) {
         this.segnalino = segnalino;
     }
 

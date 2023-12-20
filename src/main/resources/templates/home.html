@@ -1,49 +1,71 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Home</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" type="text/css" media="all" href="../../css.monopoly.css" th:href="@{/css/monopoly.css}" />
+    <title>Home</title>
 </head>
 
 <body>
 
-    <h1>Home page Monopoly</h1>
+    <div class="container">
 
-    <form action="#" th:action="@{/}" th:object="${form}" method="post">
-        <div>
-            <p th:utext="'Benvenuti nel nostro <b>fantastico</b> gioco del Monopoly!'"></p>
-            <input style="margin-top: 10px;" type="text" th:field="*{nome}" th:value="${nome}" th:name="'nome'" th:id="'nome'" placeholder="Inserire il nome del giocatore" />
+        <h1 class="text-center">Home page Monopoly</h1>
+
+        <h2 class="text-center mt-3" th:utext="'Benvenuti nel nostro <b>fantastico</b> gioco del Monopoly!'"></h2>
+
+        <div class="row mt-5">
+            <div class="col">
+                <form action="#" th:action="@{/}" th:object="${form}" method="post">
+
+                    <div class="row mt-3">
+                        <label class="col-sm-4 form-label">Inserire il nome del giocatore</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" th:field="*{nome}" th:value="${nome}" th:name="'nome'" th:id="'nome'" />
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <label class="col-sm-4 form-label">Scegliere un segnalino (tra quelli disponibili)</label>
+                        <div class="col-sm-4">
+                            <select class="form-select" th:field="*{segnalino}">
+                                <option th:each="segnalinoScelto : ${segnalini}"
+                                        th:value="${segnalinoScelto.value}" th:text="${segnalinoScelto.label}"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Aggiungi giocatore</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div style="margin-top: 10px;">
-            <button type="submit">Aggiungi giocatore</button>
+
+        <div class="row mt-5">
+            <div class="col">
+                <div th:utext="'Numero di dadi: ' + ${dadi}"></div>
+            </div>
         </div>
 
-        <div style="margin-top: 10px;">
-            <label>Scegliere un segnalino (tra quelli disponibili)</label>
-            <select th:field="*{segnalino}">
-                <option value="0">Seleziona</option>
-                <option th:each="segnalinoScelto : ${segnalini}"
-                th:value="${segnalinoScelto}" th:text="${segnalinoScelto.nome}"></option>
-            </select>
+        <div class="row mt-5">
+            <div class="col">
+                <th:block th:if="${nomeGiocatoreAggiunto != null}">
+                    <div>
+                        <p th:utext="'Il giocatore aggiunto si chiama: <b>' + ${nomeGiocatoreAggiunto} + '</b>'"></p>
+                        <p th:utext="${nomeGiocatoreAggiunto} + ' avrà di partenza un portafoglio di <b>' + ${portafoglioPrimoGiocatoreAggiunto} + '€</b>.'"></p>
+                        <p th:utext="'Il segnalino che <b>' + ${nomeGiocatoreAggiunto} + '</b> ha scelto è a forma di <b>' + ${segnalinoScelto} + '</b>.'"></p>
+                    </div>
+                </th:block>
+            </div>
         </div>
-        <div style="margin-top: 10px;">
-            <button type="submit">Seleziona segnalino</button>
-        </div>
-
-        
-
-    </form>
-
-    <div style="margin-top: 10px;" th:utext="'Numero di dadi: ' + ${dadi}"></div>
-
-    <th:block th:if="${nomeGiocatoreAggiunto != null}">
-        <div>
-        <p th:utext="'Il giocatore aggiunto si chiama: <b>' + ${nomeGiocatoreAggiunto} + '</b>'"></p>
-        <p th:utext="${nomeGiocatoreAggiunto} + ' avrà di partenza un portafoglio di <b>' + ${portafoglioPrimoGiocatoreAggiunto} + '€</b>.'"></p>
-        <p th:utext="'Il segnalino che <b>' + ${nomeGiocatoreAggiunto} + '</b> ha scelto è a forma di <b>' + ${segnalinoScelto.nome} + '</b>.'"></p>
-        </div>
-    </th:block>
+    </div>
 
 </body>
 </html>

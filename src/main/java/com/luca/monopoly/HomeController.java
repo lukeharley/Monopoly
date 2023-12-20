@@ -17,18 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 
 
-    @ModelAttribute("segnalini")
-    public List<SelectOptionView> getSegnalini() {
-
-        List<SelectOptionView> segnalini = new ArrayList<>();
-
-        for (Segnalini segnalino : Segnalini.values()) {
-            segnalini.add(new SelectOptionView(segnalino.ordinal(), segnalino.getNome()));
-        }
-
-        return segnalini;
-    }
-
     @GetMapping("/")
     public String getHome(Model model) {
 
@@ -37,7 +25,12 @@ public class HomeController {
         model.addAttribute("portafoglioPrimoGiocatoreAggiunto",
                 new Giocatore(Segnalini.CANE, 1500, 0).getPortafoglio());
 
-        List<Segnalini> segnalini = new Monopoly().getSegnalini();
+        List<SelectOptionView> segnalini = new ArrayList<>();
+
+        for (Segnalini segnalino : Segnalini.values()) {
+            segnalini.add(new SelectOptionView(segnalino.ordinal(), segnalino.getNome()));
+        }
+
         model.addAttribute("segnalini", segnalini);
 
         return "home";
@@ -50,9 +43,17 @@ public class HomeController {
         model.addAttribute("form", form);
         model.addAttribute("dadi", new Monopoly().getDadi().size());
         model.addAttribute("nomeGiocatoreAggiunto", form.getNome());
-        model.addAttribute("segnalinoScelto", form.getSegnalino());
+        model.addAttribute("segnalinoScelto", Segnalini.values()[form.getSegnalino()].getNome());
         model.addAttribute("portafoglioPrimoGiocatoreAggiunto",
                 new Giocatore(Segnalini.CANE, 1500, 0).getPortafoglio());
+
+        List<SelectOptionView> segnalini = new ArrayList<>();
+
+        for (Segnalini segnalino : Segnalini.values()) {
+            segnalini.add(new SelectOptionView(segnalino.ordinal(), segnalino.getNome()));
+        }
+
+        model.addAttribute("segnalini", segnalini);
 
         return "home";
     }
