@@ -18,16 +18,8 @@ public class Carta {
         return testo;
     }
 
-    public void setTesto(String testo) {
-        this.testo = testo;
-    }
-
     public int getImporto() {
         return importo;
-    }
-
-    public void setImporto(int importo) {
-        this.importo = importo;
     }
 
     public String getNuovaPosizione() {
