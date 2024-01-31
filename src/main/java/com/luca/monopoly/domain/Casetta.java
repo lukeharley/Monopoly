@@ -1,5 +1,5 @@
 package com.luca.monopoly.domain;
 
-public class Casa {
+public class Casetta {
 
 }

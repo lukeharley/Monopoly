@@ -7,10 +7,6 @@ public class Carta {
     private String nuovaPosizione;
     private int shiftPosizione;
 
-    public Carta() {
-
-    }
-
     public Carta(String testo, int importo, String nuovaPosizione, int shiftPosizione) {
         this.testo = testo;
         this.importo = importo;
