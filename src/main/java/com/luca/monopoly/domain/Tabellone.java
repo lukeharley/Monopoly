@@ -224,7 +224,7 @@ public class Tabellone {
 		List<Casetta> listaDiCasette = new ArrayList<>();
 
 		for (int i = 1; i <= NUMERO_MAX_PEZZI_CASETTA; i++) {
-			listaDiCase.add(new Casetta());
+			listaDiCasette.add(new Casetta());
 		}
 
 		return listaDiCasette;
