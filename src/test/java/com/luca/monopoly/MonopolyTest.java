@@ -252,4 +252,17 @@ public class MonopolyTest {
 
 	}
 
+	@Order(13)
+	@Test
+	void test_giocatore_in_prigione() {
+
+		Giocatore giocatore1 = giocatori.get(0);
+		giocatore1.aggiornaPosizione(12);
+		giocatore1.aggiornaPosizione(12);
+		giocatore1.aggiornaPosizione(6);
+		giocatore1.aggiornaPosizioneSeInPrigione();
+		assertEquals(10, giocatore1.getPosizione());
+
+	}
+
 }

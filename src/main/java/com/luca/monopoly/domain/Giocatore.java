@@ -55,6 +55,7 @@ public class Giocatore {
             List<Casella> caselle, List<Contratto> contratti, List<Imprevisto> imprevisti,
             List<Probabilita> probabilita) {
         aggiornaPosizione(risultatoDado);
+        aggiornaPosizioneSeInPrigione();
         aggiornaPosizioneEPortafoglioSePassaDalVia();
         aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
         aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
@@ -64,6 +65,14 @@ public class Giocatore {
 
     public int aggiornaPosizione(int risultatoDado) {
         return this.posizione += risultatoDado;
+    }
+
+    public int aggiornaPosizioneSeInPrigione() {
+        if (this.posizione == 30) {
+            this.posizione = 10;
+        }
+
+        return this.posizione;
     }
 
     public int aggiornaPortafoglioSeAffitto(List<Casella> caselle, List<Contratto> contratti,
