@@ -35,17 +35,39 @@ public class Giocatore {
         this.portafoglio = portafoglio;
     }
 
+    public List<Imprevisto> getMazzoCartePescateImprevisti() {
+        return mazzoCartePescateImprevisti;
+    }
+
+    public void setMazzoCartePescateImprevisti(List<Imprevisto> mazzoCartePescateImprevisti) {
+        this.mazzoCartePescateImprevisti = mazzoCartePescateImprevisti;
+    }
+
+    public List<Probabilita> getMazzoCartePescateProbabilita() {
+        return mazzoCartePescateProbabilita;
+    }
+
+    public void setMazzoCartePescateProbabilita(List<Probabilita> mazzoCartePescateProbabilita) {
+        this.mazzoCartePescateProbabilita = mazzoCartePescateProbabilita;
+    }
+
     public void aggiornaPosizioneEPortafoglio(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
             List<Casella> caselle, List<Contratto> contratti, List<Imprevisto> imprevisti,
             List<Probabilita> probabilita) {
-
-        this.posizione += risultatoDado;
+        aggiornaPosizione(risultatoDado);
         aggiornaPosizioneEPortafoglioSePassaDalVia();
-
         aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
         aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
         aggiornaPortafoglioSeTasse(caselle, contratti);
+        aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti);
+    }
 
+    public int aggiornaPosizione(int risultatoDado) {
+        return this.posizione += risultatoDado;
+    }
+
+    public int aggiornaPortafoglioSeAffitto(List<Casella> caselle, List<Contratto> contratti,
+            Map<String, Giocatore> proprietariDeiContratti) {
         String nomeProprieta = caselle.get(this.posizione).getTesto();
         int numeroCasette = caselle.get(this.posizione).getNumeroDiCasetteSullaCasella();
 
@@ -56,9 +78,11 @@ public class Giocatore {
             int affitto = contrattoOptional.get().calcolaAffitto(numeroCasette);
             this.portafoglio -= affitto;
         }
+
+        return this.portafoglio;
     }
 
-    private void aggiornaPortafoglioSeTasse(List<Casella> caselle, List<Contratto> contratti) {
+    public void aggiornaPortafoglioSeTasse(List<Casella> caselle, List<Contratto> contratti) {
         if (caselle.get(this.posizione).getTesto().startsWith("Società")
                 || caselle.get(this.posizione).getTesto().startsWith("Stazione")) {
             this.portafoglio -= contratti.get(this.posizione).getTassa();
@@ -69,7 +93,7 @@ public class Giocatore {
         }
     }
 
-    private void aggiornaPosizioneEPortafoglioSeProbabilita(List<Casella> caselle, List<Probabilita> probabilita,
+    public void aggiornaPosizioneEPortafoglioSeProbabilita(List<Casella> caselle, List<Probabilita> probabilita,
             List<Probabilita> mazzoCartePescateProbabilita) {
 
         if (caselle.get(this.posizione).getTesto().equals("Probabilità")) {
@@ -95,7 +119,7 @@ public class Giocatore {
         }
     }
 
-    private void aggiornaPosizioneEPortafoglioSeImprevisto(List<Casella> caselle, List<Imprevisto> imprevisti,
+    public void aggiornaPosizioneEPortafoglioSeImprevisto(List<Casella> caselle, List<Imprevisto> imprevisti,
             List<Imprevisto> mazzoCartePescateImprevisti) {
 
         if (caselle.get(this.posizione).getTesto().equals("Imprevisti")) {
@@ -121,7 +145,7 @@ public class Giocatore {
         }
     }
 
-    private int aggiornaPosizioneEPortafoglioSePassaDalVia() {
+    public int aggiornaPosizioneEPortafoglioSePassaDalVia() {
         if (this.posizione > 40) {
             this.portafoglio += 500;
             this.posizione %= 40;

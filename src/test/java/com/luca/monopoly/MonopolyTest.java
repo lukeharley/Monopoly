@@ -79,6 +79,7 @@ public class MonopolyTest {
 	}
 
 	@Order(5)
+
 	@Test
 	void test_imprevisti() {
 
@@ -89,22 +90,20 @@ public class MonopolyTest {
 		assertEquals(1500, giocatore1.getPortafoglio());
 
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
-		List<Contratto> contratti = monopoly.getTabellone().getContratti();
-		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
-		List<Probabilita> probabilita = monopoly.getTabellone().getProbabilita();
+		List<Imprevisto> mazzoCartePescateImprevisti = giocatore1.getMazzoCartePescateImprevisti();
 
 		List<Imprevisto> imprevisti = tabellone.getImprevisti();
 		assertEquals(16, imprevisti.size());
-
 		Imprevisto primaCartaImprevisto = imprevisti.get(0);
 		assertEquals("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.",
 				primaCartaImprevisto.getTesto());
 
-		giocatore1.aggiornaPosizioneEPortafoglio(7, proprietariDeiContratti, caselle, contratti, imprevisti,
-				probabilita);
+		giocatore1.aggiornaPosizione(7);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
 		assertEquals(1500, giocatore1.getPortafoglio());
-		giocatore1.aggiornaPosizioneEPortafoglio(15, proprietariDeiContratti, caselle, contratti, imprevisti,
-				probabilita);
+
+		giocatore1.aggiornaPosizione(15);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
 		assertEquals(1500, giocatore1.getPortafoglio());
 
 		// rimane da testare esaurimento del mazzo di carte
@@ -112,6 +111,7 @@ public class MonopolyTest {
 	}
 
 	@Order(6)
+
 	@Test
 	void test_probabilita() {
 
@@ -122,9 +122,7 @@ public class MonopolyTest {
 		assertEquals(1500, giocatore1.getPortafoglio());
 
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
-		List<Contratto> contratti = monopoly.getTabellone().getContratti();
-		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
-		List<Imprevisto> imprevisti = monopoly.getTabellone().getImprevisti();
+		List<Probabilita> mazzoCartePescateProbabilita = giocatore1.getMazzoCartePescateProbabilita();
 
 		List<Probabilita> probabilita = tabellone.getProbabilita();
 		assertEquals(16, probabilita.size());
@@ -132,15 +130,16 @@ public class MonopolyTest {
 		Probabilita primaCartaProbabilita = probabilita.get(0);
 		assertEquals("Ritornate al Vicolo Corto.", primaCartaProbabilita.getTesto());
 
-		giocatore1.aggiornaPosizioneEPortafoglio(2, proprietariDeiContratti, caselle, contratti, imprevisti,
-				probabilita);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
 		assertEquals(1500, giocatore1.getPortafoglio());
-		// Nel metodo successivo sposto il segnalino di una posizione per raggiungere la
-		// prossima carta
-		// Probabilità in quanto con la prima probabilità il giocatore è tornato alla
-		// casella Vicolo Corto
-		giocatore1.aggiornaPosizioneEPortafoglio(1, proprietariDeiContratti, caselle, contratti, imprevisti,
-				probabilita);
+		/*
+		 * Nel metodo successivo sposto il segnalino di una posizione per raggiungere la
+		 * prossima carta Probabilità in quanto con la prima probabilità il giocatore è
+		 * tornato alla casella Vicolo Corto
+		 */
+		giocatore1.aggiornaPosizione(1);
+		giocatore1.aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
 		assertEquals(1560, giocatore1.getPortafoglio());
 
 		// rimane da testare esaurimento del mazzo di carte
@@ -191,41 +190,31 @@ public class MonopolyTest {
 		assertTrue(giocatore1.lanciaDadi() >= 2);
 		assertTrue(giocatore1.lanciaDadi() <= 12);
 
-		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
-		List<Casella> caselle = monopoly.getTabellone().getCaselle();
-		List<Contratto> contratti = monopoly.getTabellone().getContratti();
-		List<Imprevisto> imprevisti = monopoly.getTabellone().getImprevisti();
-		List<Probabilita> probabilita = monopoly.getTabellone().getProbabilita();
-
-		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti, imprevisti,
-				probabilita);
+		giocatore1.aggiornaPosizione(12);
 		assertEquals(12, giocatore1.getPosizione());
 		assertEquals(1500, giocatore1.getPortafoglio());
 
-		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti, imprevisti,
-				probabilita);
+		giocatore1.aggiornaPosizione(12);
 		assertEquals(24, giocatore1.getPosizione());
 		assertEquals(1500, giocatore1.getPortafoglio());
 
-		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti, imprevisti,
-				probabilita);
-
+		giocatore1.aggiornaPosizione(12);
 		assertEquals(36, giocatore1.getPosizione());
-		assertEquals(2000, giocatore1.getPortafoglio()); // sono stati aggiunti anche 500€ degli imprevisti
+		assertEquals(1500, giocatore1.getPortafoglio());
 
-		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti, imprevisti,
-				probabilita);
+		giocatore1.aggiornaPosizione(12);
+		giocatore1.aggiornaPosizioneEPortafoglioSePassaDalVia();
 		assertEquals(8, giocatore1.getPosizione());
-		assertEquals(2500, giocatore1.getPortafoglio()); // sono stati aggiunti anche 500€ degli imprevisti
+		assertEquals(2000, giocatore1.getPortafoglio());
 
-		giocatore1.aggiornaPosizioneEPortafoglio(12, proprietariDeiContratti, caselle, contratti, imprevisti,
-				probabilita);
+		giocatore1.aggiornaPosizione(12);
 		assertEquals(20, giocatore1.getPosizione());
-		assertEquals(2500, giocatore1.getPortafoglio());
+		assertEquals(2000, giocatore1.getPortafoglio());
 
 	}
 
 	@Order(11)
+
 	@Test
 	void test_giocatore_proprieta_e_affitto_terreno_o_casetta() {
 
@@ -234,34 +223,32 @@ public class MonopolyTest {
 
 		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
 		assertEquals(28, proprietariDeiContratti.size());
+
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
 		List<Contratto> contratti = monopoly.getTabellone().getContratti();
-		List<Imprevisto> imprevisti = monopoly.getTabellone().getImprevisti();
-		List<Probabilita> probabilita = monopoly.getTabellone().getProbabilita();
 
-		giocatore1.compraProprieta(proprietariDeiContratti, "Vicolo Stretto", caselle);
+		giocatore1.compraProprieta(proprietariDeiContratti, "Vicolo Stretto",
+				caselle);
 		assertEquals(giocatore1, proprietariDeiContratti.get("Vicolo Stretto"));
 		assertEquals(1350, giocatore1.getPortafoglio());
 
-		giocatore2.aggiornaPosizioneEPortafoglio(3, proprietariDeiContratti, caselle, contratti, imprevisti,
-				probabilita);
+		giocatore2.aggiornaPosizione(3);
+		giocatore2.aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti);
 		assertEquals(1490, giocatore2.getPortafoglio());
 
 	}
 
 	@Order(12)
+
 	@Test
 	void test_giocatore_pagamento_tasse() {
 
 		Giocatore giocatore1 = giocatori.get(0);
-		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
 		List<Contratto> contratti = monopoly.getTabellone().getContratti();
-		List<Imprevisto> imprevisti = monopoly.getTabellone().getImprevisti();
-		List<Probabilita> probabilita = monopoly.getTabellone().getProbabilita();
 
-		giocatore1.aggiornaPosizioneEPortafoglio(4, proprietariDeiContratti, caselle, contratti, imprevisti,
-				probabilita);
+		giocatore1.aggiornaPosizione(4);
+		giocatore1.aggiornaPortafoglioSeTasse(caselle, contratti);
 		assertEquals(1460, giocatore1.getPortafoglio());
 
 	}
