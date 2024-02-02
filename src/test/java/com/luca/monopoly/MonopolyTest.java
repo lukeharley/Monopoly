@@ -65,13 +65,13 @@ public class MonopolyTest {
 	void test_contratti() {
 
 		Tabellone tabellone = monopoly.getTabellone();
-
 		List<Contratto> contratti = tabellone.getContratti();
+
 		assertEquals(28, contratti.size());
 
 		assertEquals("Vicolo Corto", contratti.get(0).getTesto());
 		assertEquals(10, contratti.get(1).getRenditaTerreno());
-		assertEquals(500, contratti.get(27).getRenditaUnaCasa());
+		assertEquals(500, contratti.get(27).getRenditaUnaCasetta());
 		assertEquals(1000, contratti.get(13).getRenditaAlbergo());
 		assertEquals(65, contratti.get(2).getRenditaUnaStazione());
 		assertEquals(130, contratti.get(2).getRenditaDueStazioni());
@@ -152,7 +152,7 @@ public class MonopolyTest {
 
 		Tabellone tabellone = monopoly.getTabellone();
 
-		List<Casa> casette = tabellone.getCase();
+		List<Casetta> casette = tabellone.getCasette();
 		assertEquals(32, casette.size());
 	}
 
@@ -227,7 +227,7 @@ public class MonopolyTest {
 
 	@Order(11)
 	@Test
-	void test_giocatore_proprieta_e_affitto_terreno_o_casa() {
+	void test_giocatore_proprieta_e_affitto_terreno_o_casetta() {
 
 		Giocatore giocatore1 = giocatori.get(0);
 		Giocatore giocatore2 = giocatori.get(1);

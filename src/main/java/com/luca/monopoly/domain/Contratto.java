@@ -3,10 +3,10 @@ package com.luca.monopoly.domain;
 public class Contratto {
   private String testo;
   private int renditaTerreno;
-  private int renditaUnaCasa;
-  private int renditaDueCase;
-  private int renditaTreCase;
-  private int renditaQuattroCase;
+  private int renditaUnaCasetta;
+  private int renditaDueCasette;
+  private int renditaTreCasette;
+  private int renditaQuattroCasette;
   private int renditaAlbergo;
   private int renditaUnaStazione;
   private int renditaDueStazioni;
@@ -14,14 +14,14 @@ public class Contratto {
   private int renditaQuattroStazioni;
   private int tassa;
 
-  public Contratto(String testo, int renditaTerreno, int renditaUnaCasa, int renditaUnaStazione, int tassa) {
+  public Contratto(String testo, int renditaTerreno, int renditaUnaCasetta, int renditaUnaStazione, int tassa) {
     this.testo = testo;
     this.renditaTerreno = renditaTerreno;
-    this.renditaUnaCasa = renditaUnaCasa;
-    this.renditaDueCase = renditaUnaCasa * 2;
-    this.renditaTreCase = renditaUnaCasa * 3;
-    this.renditaQuattroCase = renditaUnaCasa * 4;
-    this.renditaAlbergo = renditaUnaCasa * 5;
+    this.renditaUnaCasetta = renditaUnaCasetta;
+    this.renditaDueCasette = renditaUnaCasetta * 2;
+    this.renditaTreCasette = renditaUnaCasetta * 3;
+    this.renditaQuattroCasette = renditaUnaCasetta * 4;
+    this.renditaAlbergo = renditaUnaCasetta * 5;
     this.renditaUnaStazione = renditaUnaStazione;
     this.renditaDueStazioni = renditaUnaStazione * 2;
     this.renditaTreStazioni = renditaUnaStazione * 3;
@@ -38,20 +38,20 @@ public class Contratto {
     return renditaTerreno;
   }
 
-  public int getRenditaUnaCasa() {
-    return renditaUnaCasa;
+  public int getRenditaUnaCasetta() {
+    return renditaUnaCasetta;
   }
 
-  public int getRenditaDueCase() {
-    return renditaDueCase;
+  public int getRenditaDueCasette() {
+    return renditaDueCasette;
   }
 
-  public int getRenditaTreCase() {
-    return renditaTreCase;
+  public int getRenditaTreCasette() {
+    return renditaTreCasette;
   }
 
-  public int getRenditaQuattroCase() {
-    return renditaQuattroCase;
+  public int getRenditaQuattroCasette() {
+    return renditaQuattroCasette;
   }
 
   public int getRenditaAlbergo() {
@@ -83,13 +83,13 @@ public class Contratto {
       case 0:
         return this.getRenditaTerreno();
       case 1:
-        return this.getRenditaUnaCasa();
+        return this.getRenditaUnaCasetta();
       case 2:
-        return this.getRenditaDueCase();
+        return this.getRenditaDueCasette();
       case 3:
-        return this.getRenditaTreCase();
+        return this.getRenditaTreCasette();
       case 4:
-        return this.getRenditaQuattroCase();
+        return this.getRenditaQuattroCasette();
       case 5:
         return this.getRenditaAlbergo();
       default:

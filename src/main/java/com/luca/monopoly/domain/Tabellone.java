@@ -7,7 +7,7 @@ import java.util.TreeMap;
 
 public class Tabellone {
 
-	private final int NUMERO_MAX_PEZZI_CASA = 32;
+	private final int NUMERO_MAX_PEZZI_CASETTA = 32;
 	private final int NUMERO_MAX_PEZZI_ALBERGO = 12;
 
 	private final List<Contratto> contratti = new ArrayList<>();
@@ -219,15 +219,15 @@ public class Tabellone {
 		this.proprietariDeiContratti = proprietariDeiContratti;
 	}
 
-	public List<Casa> getCase() {
+	public List<Casetta> getCasette() {
 
-		List<Casa> listaDiCase = new ArrayList<>();
+		List<Casetta> listaDiCasette = new ArrayList<>();
 
-		for (int i = 1; i <= NUMERO_MAX_PEZZI_CASA; i++) {
-			listaDiCase.add(new Casa());
+		for (int i = 1; i <= NUMERO_MAX_PEZZI_CASETTA; i++) {
+			listaDiCase.add(new Casetta());
 		}
 
-		return listaDiCase;
+		return listaDiCasette;
 	}
 
 	public List<Albergo> getAlberghi() {
