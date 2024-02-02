@@ -51,7 +51,7 @@ public class Giocatore {
         this.mazzoCartePescateProbabilita = mazzoCartePescateProbabilita;
     }
 
-    public void aggiornaPosizioneEPortafoglio(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
+    public void giocaTurno(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
             List<Casella> caselle, List<Contratto> contratti, List<Imprevisto> imprevisti,
             List<Probabilita> probabilita) {
         aggiornaPosizione(risultatoDado);

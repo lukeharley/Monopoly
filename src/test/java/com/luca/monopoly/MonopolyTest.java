@@ -239,7 +239,6 @@ public class MonopolyTest {
 	}
 
 	@Order(12)
-
 	@Test
 	void test_giocatore_pagamento_tasse() {
 

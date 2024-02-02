@@ -50,6 +50,5 @@ Scopo del gioco:
 13. ottenendo un punteggio doppio con i dadi senza dover pagare nulla. In questo caso deve muovere il segnalino di un numero di caselle pari al punteggio ottenuto
 14. utilizzando uno dei cartoncini sui quali è scritto USCITE GRATIS DI PRIGIONE
     Ad ogni turno trascorso in Prigione, il giocatore deve comunque lanciare i dadi. Se esce un “doppio” esce, altrimenti no. Dopo 3 turni il giocatore è costretto a pagare € 125 di multa e uscire, utilizzando per il movimento l’ultimo punteggio ottenuto.
-15. (Dado Speedy) [POSTICIPATO]
 
 # monopoly

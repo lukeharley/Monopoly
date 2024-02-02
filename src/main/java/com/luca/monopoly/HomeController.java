@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
-
     @GetMapping("/")
     public String getHome(Model model) {
 
