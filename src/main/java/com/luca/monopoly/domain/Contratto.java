@@ -100,9 +100,10 @@ public class Contratto {
 
   @Override
   public String toString() {
-    return "Testo: " + testo + " Rendita terreno: " + renditaTerreno + " Rendita una casa: " + renditaUnaCasa
-        + " Rendita due case: " + renditaDueCase + " Rendita tre case: " + renditaTreCase + " Rendita quattro case: "
-        + renditaQuattroCase + " Rendita alberghi: " + renditaAlbergo + "\n";
+    return "Testo: " + testo + " Rendita terreno: " + renditaTerreno + " Rendita una casa: " + renditaUnaCasetta
+        + " Rendita due case: " + renditaDueCasette + " Rendita tre case: " + renditaTreCasette
+        + " Rendita quattro case: "
+        + renditaQuattroCasette + " Rendita alberghi: " + renditaAlbergo + "\n";
   }
 
 }
