@@ -59,21 +59,29 @@ public class Tabellone {
 		caselle.add(new Casella("Tassa di Lusso", false, null, 0, 0));
 		caselle.add(new Casella("Parco della Vittoria", true, "viola", 1000, 0));
 
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Vicolo Corto", 5, 25, 0, 0));
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Vicolo Stretto", 10, 50, 0, 0));
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Stazione Sud", 0, 0, 65, 60));
 		contratti.add(new Contratto("Bastioni Gran Sasso", 15, 75, 0, 0));
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Viale Monterosa", 15, 75, 0, 0));
 		contratti.add(new Contratto("Viale Vesuvio", 20, 100, 0, 0));
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Via Accademia", 25, 125, 0, 0));
 		contratti.add(new Contratto("Società Elettrica", 0, 0, 50, 50));
 		contratti.add(new Contratto("Corso Ateneo", 25, 125, 0, 0));
 		contratti.add(new Contratto("Piazza Università", 30, 150, 0, 0));
 		contratti.add(new Contratto("Stazione Ovest", 0, 0, 65, 60));
 		contratti.add(new Contratto("Via Verdi", 35, 175, 0, 0));
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Corso Raffaello", 35, 175, 0, 0));
 		contratti.add(new Contratto("Piazza Dante", 40, 200, 0, 0));
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Via Marco Polo", 45, 225, 0, 0));
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Corso Magellano", 45, 225, 0, 0));
 		contratti.add(new Contratto("Largo Colombo", 50, 250, 0, 0));
 		contratti.add(new Contratto("Stazione Nord", 0, 0, 65, 60));
@@ -81,11 +89,15 @@ public class Tabellone {
 		contratti.add(new Contratto("Viale Traiano", 55, 275, 0, 0));
 		contratti.add(new Contratto("Società Acqua Potabile", 0, 0, 50, 50));
 		contratti.add(new Contratto("Piazza Giulio Cesare", 60, 300, 0, 0));
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Via Roma", 65, 325, 0, 0));
 		contratti.add(new Contratto("Corso Impero", 70, 375, 0, 0));
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Largo Augusto", 70, 375, 0, 0));
 		contratti.add(new Contratto("Stazione Est", 0, 0, 65, 60));
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Viale dei Giardini", 75, 425, 0, 0));
+		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
 		contratti.add(new Contratto("Parco della Vittoria", 125, 500, 0, 0));
 
 		// prettier-ignore

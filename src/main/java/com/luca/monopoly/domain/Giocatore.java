@@ -64,6 +64,7 @@ public class Giocatore {
     public void bancarotta(Giocatore giocatoreCorrente) {
         if (giocatoreCorrente.portafoglio < 0) {
             giocatoreCorrente.inBancarotta = true;
+            System.out.println("Il giocatore è in bancarotta");
         }
     }
 
@@ -71,8 +72,9 @@ public class Giocatore {
             List<Casella> caselle, List<Contratto> contratti, List<Imprevisto> imprevisti,
             List<Probabilita> probabilita, Giocatore giocatoreCorrente) {
         aggiornaPosizione(risultatoDado);
+        aggiornaPosizioneSePassaDalVia();
+        System.out.println("Il giocatore arriva nella casella " + caselle.get(this.posizione).getTesto()); 
         aggiornaPosizioneSeInPrigione();
-        aggiornaPosizioneEPortafoglioSePassaDalVia();
         aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
         aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
         aggiornaPortafoglioSeTasse(caselle, contratti);
@@ -81,12 +83,24 @@ public class Giocatore {
     }
 
     public int aggiornaPosizione(int risultatoDado) {
-        return this.posizione += risultatoDado;
+        this.posizione+= risultatoDado;
+        System.out.println("Il giocatore si muove fino alla posizione " + this.posizione);
+        return this.posizione;
+    }
+
+    public int aggiornaPosizioneSePassaDalVia() {
+        if (this.posizione >= 40) {
+            this.posizione %= 40;
+            this.portafoglio += 500;
+            System.out.println("Il giocatore passa dal via e ritira 500 euro dalla banca"); 
+        }
+        return this.posizione;
     }
 
     public int aggiornaPosizioneSeInPrigione() {
         if (this.posizione == 30) {
             this.posizione = 10;
+            System.out.println("Il giocatore va in prigione");
         }
 
         return this.posizione;
@@ -114,8 +128,10 @@ public class Giocatore {
             this.portafoglio -= contratti.get(this.posizione).getTassa();
         } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa Patrimoniale")) {
             this.portafoglio -= 40;
+            System.out.println("Il giocatore paga la tassa patrimoniale di 40 euro.");
         } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa di Lusso")) {
             this.portafoglio -= 250;
+            System.out.println("Il giocatore paga la tassa di lusso di 250 euro"); 
         }
     }
 
@@ -169,14 +185,6 @@ public class Giocatore {
 
             imprevistoCorrente.pescaCarta(imprevisti, mazzoCartePescateImprevisti);
         }
-    }
-
-    public int aggiornaPosizioneEPortafoglioSePassaDalVia() {
-        if (this.posizione > 40) {
-            this.portafoglio += 500;
-            this.posizione %= 40;
-        }
-        return this.posizione;
     }
 
     public int lanciaDadi() {

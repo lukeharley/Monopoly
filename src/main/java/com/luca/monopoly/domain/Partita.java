@@ -31,12 +31,18 @@ public class Partita {
         while (giocatoreCorrente.getInBancarotta() == false) {
 
             giocatoreCorrente = giocatori.get(indiceGiocatoreCorrente);
+            System.out.println("Il giocatore attualmente in gioco è il giocatore n° " + indiceGiocatoreCorrente);
 
             int risultatoDado = giocatoreCorrente.lanciaDadi();
+            System.out.println("Il giocatore "  + indiceGiocatoreCorrente + " tira il dado e ottiene il risultato " + risultatoDado); 
+            
             giocatoreCorrente.aggiornaPosizioneEPortafoglio(risultatoDado, proprietariDeiContratti, caselle, contratti,
                     imprevisti, probabilita, giocatoreCorrente);
-            indiceGiocatoreCorrente = (indiceGiocatoreCorrente + 1) % numeroDiGiocatori;
+            System.out.println("Il giocatore " + indiceGiocatoreCorrente + " ora si trova in posizione " + giocatoreCorrente.getPosizione() + " e ha un portafoglio di " + giocatoreCorrente.getPortafoglio() + " euro"); 
 
+            indiceGiocatoreCorrente = (indiceGiocatoreCorrente + 1) % numeroDiGiocatori;
+            System.out.println("Ora tocca al giocatore " + indiceGiocatoreCorrente); 
+ 
         }
     }
 

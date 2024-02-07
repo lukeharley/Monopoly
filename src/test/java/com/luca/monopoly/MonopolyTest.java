@@ -13,12 +13,14 @@ public class MonopolyTest {
 
 	private Monopoly monopoly;
 	private List<Giocatore> giocatori;
+	private Partita partita; 
 
 	@BeforeEach
 	void setup() {
 		monopoly = new Monopoly();
 
 		giocatori = monopoly.getGiocatori();
+		partita = new Partita();
 
 	}
 
@@ -67,14 +69,14 @@ public class MonopolyTest {
 		Tabellone tabellone = monopoly.getTabellone();
 		List<Contratto> contratti = tabellone.getContratti();
 
-		assertEquals(28, contratti.size());
+		assertEquals(40, contratti.size());
 
-		assertEquals("Vicolo Corto", contratti.get(0).getTesto());
-		assertEquals(10, contratti.get(1).getRenditaTerreno());
-		assertEquals(500, contratti.get(27).getRenditaUnaCasetta());
-		assertEquals(1000, contratti.get(13).getRenditaAlbergo());
-		assertEquals(65, contratti.get(2).getRenditaUnaStazione());
-		assertEquals(130, contratti.get(2).getRenditaDueStazioni());
+		assertEquals("Vicolo Corto", contratti.get(1).getTesto());
+		assertEquals(10, contratti.get(3).getRenditaTerreno());
+		assertEquals(425, contratti.get(37).getRenditaUnaCasetta());
+		assertEquals(1000, contratti.get(19).getRenditaAlbergo());
+		assertEquals(65, contratti.get(35).getRenditaUnaStazione());
+		assertEquals(130, contratti.get(35).getRenditaDueStazioni());
 
 	}
 
@@ -203,7 +205,7 @@ public class MonopolyTest {
 		assertEquals(1500, giocatore1.getPortafoglio());
 
 		giocatore1.aggiornaPosizione(12);
-		giocatore1.aggiornaPosizioneEPortafoglioSePassaDalVia();
+		giocatore1.aggiornaPosizioneSePassaDalVia();
 		assertEquals(8, giocatore1.getPosizione());
 		assertEquals(2000, giocatore1.getPortafoglio());
 
@@ -263,6 +265,12 @@ public class MonopolyTest {
 		giocatore1.aggiornaPosizioneSeInPrigione();
 		assertEquals(10, giocatore1.getPosizione());
 
+	}
+
+	@Order(14)
+	@Test
+	void test_partita() {
+		assertNotNull(partita); 
 	}
 
 }
