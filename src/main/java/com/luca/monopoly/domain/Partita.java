@@ -5,8 +5,6 @@ import java.util.Map;
 
 public class Partita {
 
-    private int indiceGiocatoreCorrente = 0;
-
     Monopoly monopoly = new Monopoly();
     List<Giocatore> giocatori = monopoly.getGiocatori();
     Tabellone tabellone = monopoly.getTabellone();
@@ -16,19 +14,29 @@ public class Partita {
     List<Probabilita> probabilita = tabellone.getProbabilita();
     Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
 
-    private void giocaPartita() {
-        while (indiceGiocatoreCorrente < 2) {
-            int numeroDiGiocatori = giocatori.size();
+    public static void main(String[] args) {
 
-            Giocatore giocatoreCorrente = giocatori.get(indiceGiocatoreCorrente);
+        int indiceGiocatoreCorrente = 0;
+        int numeroDiGiocatori = giocatori.size();
+        Giocatore giocatoreCorrente; 
+
+        giocaPartita();
+    }
+
+    
+    private void giocaPartita() {
+
+        while (giocatoreCorrente.inBancarotta == false) {
+
+            giocatoreCorrente = giocatori.get(indiceGiocatoreCorrente);
 
             int risultatoDado = giocatoreCorrente.lanciaDadi();
             giocatoreCorrente.aggiornaPosizioneEPortafoglio(risultatoDado, proprietariDeiContratti, caselle, contratti,
-                    imprevisti, probabilita);
+                    imprevisti, probabilita, giocatoreCorrente);
             indiceGiocatoreCorrente = (indiceGiocatoreCorrente + 1) % numeroDiGiocatori;
 
         }
     }
 
-    // partita.giocaPartita();
+    
 }

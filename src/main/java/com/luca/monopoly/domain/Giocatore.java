@@ -10,6 +10,7 @@ public class Giocatore {
     private Segnalini segnalino;
     private int portafoglio;
     private int posizione;
+    private Boolean inBancarotta;
     private List<Imprevisto> mazzoCartePescateImprevisti = new ArrayList<>();
     private List<Probabilita> mazzoCartePescateProbabilita = new ArrayList<>();
 
@@ -17,6 +18,7 @@ public class Giocatore {
         this.segnalino = segnalino;
         this.portafoglio = portafoglio;
         this.posizione = posizione;
+        this.inBancarotta = false;
     }
 
     public Segnalini getSegnalino() {
@@ -49,6 +51,12 @@ public class Giocatore {
 
     public void setMazzoCartePescateProbabilita(List<Probabilita> mazzoCartePescateProbabilita) {
         this.mazzoCartePescateProbabilita = mazzoCartePescateProbabilita;
+    }
+
+    public Boolean bancarotta(Giocatore giocatoreCorrente) {
+        if (giocatoreCorrente.portafoglio < 0) {
+            giocatoreCorrente.inBancarotta = true;
+        }
     }
 
     public void aggiornaPosizioneEPortafoglio(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
