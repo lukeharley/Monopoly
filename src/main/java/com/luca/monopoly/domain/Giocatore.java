@@ -53,7 +53,15 @@ public class Giocatore {
         this.mazzoCartePescateProbabilita = mazzoCartePescateProbabilita;
     }
 
-    public Boolean bancarotta(Giocatore giocatoreCorrente) {
+    public Boolean getInBancarotta() {
+        return inBancarotta;
+    }
+
+    public void setInBancarotta(Boolean inBancarotta) {
+        this.inBancarotta = inBancarotta;
+    }
+
+    public void bancarotta(Giocatore giocatoreCorrente) {
         if (giocatoreCorrente.portafoglio < 0) {
             giocatoreCorrente.inBancarotta = true;
         }
@@ -61,7 +69,7 @@ public class Giocatore {
 
     public void aggiornaPosizioneEPortafoglio(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
             List<Casella> caselle, List<Contratto> contratti, List<Imprevisto> imprevisti,
-            List<Probabilita> probabilita) {
+            List<Probabilita> probabilita, Giocatore giocatoreCorrente) {
         aggiornaPosizione(risultatoDado);
         aggiornaPosizioneSeInPrigione();
         aggiornaPosizioneEPortafoglioSePassaDalVia();
@@ -69,6 +77,7 @@ public class Giocatore {
         aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
         aggiornaPortafoglioSeTasse(caselle, contratti);
         aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti);
+        bancarotta(giocatoreCorrente);
     }
 
     public int aggiornaPosizione(int risultatoDado) {

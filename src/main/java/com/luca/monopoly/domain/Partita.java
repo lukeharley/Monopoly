@@ -16,17 +16,19 @@ public class Partita {
 
     public static void main(String[] args) {
 
-        int indiceGiocatoreCorrente = 0;
-        int numeroDiGiocatori = giocatori.size();
-        Giocatore giocatoreCorrente; 
+        Partita partita = new Partita(); 
 
-        giocaPartita();
+        partita.giocaPartita();
     }
 
     
     private void giocaPartita() {
 
-        while (giocatoreCorrente.inBancarotta == false) {
+        int indiceGiocatoreCorrente = 0;
+        int numeroDiGiocatori = giocatori.size();
+        Giocatore giocatoreCorrente = giocatori.get(indiceGiocatoreCorrente);
+
+        while (giocatoreCorrente.getInBancarotta() == false) {
 
             giocatoreCorrente = giocatori.get(indiceGiocatoreCorrente);
 
