@@ -229,8 +229,7 @@ public class MonopolyTest {
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
 		List<Contratto> contratti = monopoly.getTabellone().getContratti();
 
-		giocatore1.compraProprieta(proprietariDeiContratti, "Vicolo Stretto",
-				caselle);
+		giocatore1.compraProprieta(proprietariDeiContratti, caselle);
 		assertEquals(giocatore1, proprietariDeiContratti.get("Vicolo Stretto"));
 		assertEquals(1350, giocatore1.getPortafoglio());
 

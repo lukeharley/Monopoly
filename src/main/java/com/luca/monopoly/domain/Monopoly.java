@@ -7,13 +7,19 @@ import java.util.List;
 public class Monopoly {
 
 	private final Tabellone tabellone;
+	private final Banca banca;
 
 	public Monopoly() {
 		this.tabellone = new Tabellone();
+		this.banca = new Banca();
 	}
 
 	public Tabellone getTabellone() {
 		return tabellone;
+	}
+
+	public Banca getBanca() {
+		return banca;
 	}
 
 	public List<Segnalini> getSegnalini() {

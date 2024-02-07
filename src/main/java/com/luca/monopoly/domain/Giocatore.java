@@ -79,6 +79,7 @@ public class Giocatore {
         aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
         aggiornaPortafoglioSeTasse(caselle, contratti);
         aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti);
+        compraProprieta(proprietariDeiContratti, caselle); 
         bancarotta(giocatoreCorrente);
     }
 
@@ -205,12 +206,13 @@ public class Giocatore {
         return posizione;
     }
 
-    public void compraProprieta(Map<String, Giocatore> proprietariDeiContratti, String nomeProprieta,
-            List<Casella> caselle) {
+    public void compraProprieta(Map<String, Giocatore> proprietariDeiContratti, List<Casella> caselle) {
+        String nomeProprieta = caselle.get(this.posizione).getTesto();  
         if (proprietariDeiContratti.containsKey(nomeProprieta)) {
             proprietariDeiContratti.put(nomeProprieta, this);
-            portafoglio -= caselle.stream().filter(casella -> casella.getTesto().equals(nomeProprieta)).findFirst()
+            this.portafoglio -= caselle.stream().filter(casella -> casella.getTesto().equals(nomeProprieta)).findFirst()
                     .get().getCostoProprieta();
+            System.out.println("Il giocatore ha comprato la proprietà " + caselle.get(this.posizione).getTesto() + " e ora ha un portafoglio di " + this.portafoglio + " euro");        
         }
     }
 
