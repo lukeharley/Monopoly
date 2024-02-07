@@ -2,7 +2,6 @@ package com.luca.monopoly.domain;
 
 import java.util.List;
 import java.util.Map;
-
 public class Partita {
 
     Monopoly monopoly = new Monopoly();
@@ -28,7 +27,7 @@ public class Partita {
         int numeroDiGiocatori = giocatori.size();
         Giocatore giocatoreCorrente = giocatori.get(indiceGiocatoreCorrente);
 
-        while (giocatoreCorrente.getInBancarotta() == false) {
+        while (giocatoreCorrente.getInBancarotta() == false && giocatoreCorrente.getPortafoglio() < 4000) {
 
             giocatoreCorrente = giocatori.get(indiceGiocatoreCorrente);
             System.out.println("Il giocatore attualmente in gioco è il giocatore n° " + indiceGiocatoreCorrente);
@@ -39,6 +38,11 @@ public class Partita {
             giocatoreCorrente.aggiornaPosizioneEPortafoglio(risultatoDado, proprietariDeiContratti, caselle, contratti,
                     imprevisti, probabilita, giocatoreCorrente);
             System.out.println("Il giocatore " + indiceGiocatoreCorrente + " ora si trova in posizione " + giocatoreCorrente.getPosizione() + " e ha un portafoglio di " + giocatoreCorrente.getPortafoglio() + " euro"); 
+
+            if (giocatoreCorrente.getPortafoglio() > 4000) {
+                System.out.println("Il giocatore " + indiceGiocatoreCorrente + " ha vinto");
+                break;
+            }
 
             indiceGiocatoreCorrente = (indiceGiocatoreCorrente + 1) % numeroDiGiocatori;
             System.out.println("Ora tocca al giocatore " + indiceGiocatoreCorrente); 
