@@ -64,7 +64,7 @@ public class Giocatore {
     public void bancarotta(Giocatore giocatoreCorrente) {
         if (giocatoreCorrente.portafoglio < 0) {
             giocatoreCorrente.inBancarotta = true;
-            System.out.println("Il giocatore è in bancarotta");
+            System.out.println("Il giocatore corrente è in bancarotta. L'altro giocatore ha vinto");
         }
     }
 
@@ -118,6 +118,7 @@ public class Giocatore {
         if (proprietariDeiContratti.get(nomeProprieta) != null) {
             int affitto = contrattoOptional.get().calcolaAffitto(numeroCasette);
             this.portafoglio -= affitto;
+            System.out.println("Il giocatore ha pagato un affitto di " + affitto + " euro al proprietario del terreno"); 
             int portafoglioProprietarioDelContratto = proprietariDeiContratti.get(nomeProprieta).getPortafoglio();
             portafoglioProprietarioDelContratto = portafoglioProprietarioDelContratto + affitto;
         }
