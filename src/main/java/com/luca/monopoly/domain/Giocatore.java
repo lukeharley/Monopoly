@@ -77,9 +77,9 @@ public class Giocatore {
         aggiornaPosizioneSeInPrigione();
         aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
         aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
-        aggiornaPortafoglioSeTasse(caselle, contratti);
-        aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti);
         compraProprieta(proprietariDeiContratti, caselle); 
+        aggiornaPortafoglioSeTasse(proprietariDeiContratti, giocatoreCorrente, caselle, contratti);
+        aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti);
         bancarotta(giocatoreCorrente);
     }
 
@@ -126,17 +126,20 @@ public class Giocatore {
         return this.portafoglio;
     }
 
-    public void aggiornaPortafoglioSeTasse(List<Casella> caselle, List<Contratto> contratti) {
-        if (caselle.get(this.posizione).getTesto().startsWith("Società")
-                || caselle.get(this.posizione).getTesto().startsWith("Stazione")) {
-            this.portafoglio -= contratti.get(this.posizione).getTassa();
-        } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa Patrimoniale")) {
-            this.portafoglio -= 200;
-            System.out.println("Il giocatore paga la tassa patrimoniale di 200 euro.");
-        } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa di Lusso")) {
-            this.portafoglio -= 100;
-            System.out.println("Il giocatore paga la tassa di lusso di 100 euro"); 
-        }
+    public void aggiornaPortafoglioSeTasse(Map<String, Giocatore> proprietariDeiContratti, Giocatore giocatoreCorrente, List<Casella> caselle, List<Contratto> contratti) {
+        String nomeProprieta = caselle.get(this.posizione).getTesto();
+        if (proprietariDeiContratti.get(nomeProprieta) != giocatoreCorrente) {
+            if (caselle.get(this.posizione).getTesto().startsWith("Società")
+                    || caselle.get(this.posizione).getTesto().startsWith("Stazione")) {
+                this.portafoglio -= contratti.get(this.posizione).getTassa();
+            } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa Patrimoniale")) {
+                this.portafoglio -= 200;
+                System.out.println("Il giocatore paga la tassa patrimoniale di 200 euro.");
+            } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa di Lusso")) {
+                this.portafoglio -= 100;
+                System.out.println("Il giocatore paga la tassa di lusso di 100 euro"); 
+            }
+        }    
     }
 
     public void aggiornaPosizioneEPortafoglioSeProbabilita(List<Casella> caselle, List<Probabilita> probabilita,
