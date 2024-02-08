@@ -32,8 +32,8 @@ public class Partita {
         while (giocatoreCorrente.getInBancarotta() == false && giocatoreCorrente.getPortafoglio() < 4000) {
 
             giocatoreCorrente = giocatori.get(indiceGiocatoreCorrente);
-            System.out.println("Il giocatore attualmente in gioco è il giocatore n° " + indiceGiocatoreCorrente);
-
+            System.out.println("Il giocatore attualmente in gioco è il giocatore n° " + indiceGiocatoreCorrente + ". Si trova in posizione " + giocatoreCorrente.getPosizione() + " e ha un portafoglio di " + giocatoreCorrente.getPortafoglio() + " euro");
+ 
             int risultatoDado = giocatoreCorrente.lanciaDadi();
             System.out.println("Il giocatore "  + indiceGiocatoreCorrente + " tira il dado e ottiene il risultato " + risultatoDado); 
             
