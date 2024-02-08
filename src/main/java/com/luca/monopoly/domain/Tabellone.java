@@ -19,86 +19,86 @@ public class Tabellone {
 	public Tabellone() {
 
 		caselle.add(new Casella("Via", false, null, 0, 0));
-		caselle.add(new Casella("Vicolo Corto", true, "fucsia", 150, 0));
+		caselle.add(new Casella("Vicolo Corto", true, "fucsia", 60, 0));
 		caselle.add(new Casella("Probabilità", false, null, 0, 0));
-		caselle.add(new Casella("Vicolo Stretto", true, "fucsia", 150, 0));
+		caselle.add(new Casella("Vicolo Stretto", true, "fucsia", 60, 0));
 		caselle.add(new Casella("Tassa Patrimoniale", false, null, 0, 0));
 		caselle.add(new Casella("Stazione Sud", false, null, 0, 0));
-		caselle.add(new Casella("Bastioni Gran Sasso", true, "azzurro", 250, 0));
+		caselle.add(new Casella("Bastioni Gran Sasso", true, "azzurro", 100, 0));
 		caselle.add(new Casella("Imprevisti", false, null, 0, 0));
-		caselle.add(new Casella("Viale Monterosa", true, "azzurro", 250, 0));
-		caselle.add(new Casella("Viale Vesuvio", true, "azzurro", 300, 0));
+		caselle.add(new Casella("Viale Monterosa", true, "azzurro", 100, 0));
+		caselle.add(new Casella("Viale Vesuvio", true, "azzurro", 120, 0));
 		caselle.add(new Casella("Prigione/Transito", false, null, 0, 0));
-		caselle.add(new Casella("Via Accademia", true, "arancione", 350, 0));
+		caselle.add(new Casella("Via Accademia", true, "arancione", 140, 0));
 		caselle.add(new Casella("Società Elettrica", false, null, 0, 0));
-		caselle.add(new Casella("Corso Ateneo", true, "arancione", 350, 0));
-		caselle.add(new Casella("Piazza Università", true, "arancione", 400, 0));
+		caselle.add(new Casella("Corso Ateneo", true, "arancione", 140, 0));
+		caselle.add(new Casella("Piazza Università", true, "arancione", 160, 0));
 		caselle.add(new Casella("Stazione Ovest", false, null, 0, 0));
-		caselle.add(new Casella("Via Verdi", true, "marrone", 450, 0));
+		caselle.add(new Casella("Via Verdi", true, "marrone", 180, 0));
 		caselle.add(new Casella("Probabilità", false, null, 0, 0));
-		caselle.add(new Casella("Corso Raffaello", true, "marrone", 450, 0));
-		caselle.add(new Casella("Piazza Dante", true, "marrone", 500, 0));
+		caselle.add(new Casella("Corso Raffaello", true, "marrone", 180, 0));
+		caselle.add(new Casella("Piazza Dante", true, "marrone", 200, 0));
 		caselle.add(new Casella("Posteggio Gratuito", false, null, 0, 0));
-		caselle.add(new Casella("Via Marco Polo", true, "rosso", 550, 0));
+		caselle.add(new Casella("Via Marco Polo", true, "rosso", 220, 0));
 		caselle.add(new Casella("Imprevisti", false, null, 0, 0));
-		caselle.add(new Casella("Corso Magellano", true, "rosso", 550, 0));
-		caselle.add(new Casella("Largo Colombo", true, "rosso", 600, 0));
+		caselle.add(new Casella("Corso Magellano", true, "rosso", 220, 0));
+		caselle.add(new Casella("Largo Colombo", true, "rosso", 240, 0));
 		caselle.add(new Casella("Stazione Nord", false, null, 0, 0));
-		caselle.add(new Casella("Viale Costantino", true, "giallo", 650, 0));
-		caselle.add(new Casella("Viale Traiano", true, "giallo", 650, 0));
+		caselle.add(new Casella("Viale Costantino", true, "giallo", 260, 0));
+		caselle.add(new Casella("Viale Traiano", true, "giallo", 260, 0));
 		caselle.add(new Casella("Società Acqua Potabile", false, null, 0, 0));
-		caselle.add(new Casella("Piazza Giulio Cesare", true, "giallo", 700, 0));
+		caselle.add(new Casella("Piazza Giulio Cesare", true, "giallo", 280, 0));
 		caselle.add(new Casella("In prigione!", false, null, 0, 0));
-		caselle.add(new Casella("Via Roma", true, "verde", 750, 0));
-		caselle.add(new Casella("Corso Impero", true, "verde", 750, 0));
+		caselle.add(new Casella("Via Roma", true, "verde", 300, 0));
+		caselle.add(new Casella("Corso Impero", true, "verde", 300, 0));
 		caselle.add(new Casella("Probabilità", false, null, 0, 0));
-		caselle.add(new Casella("Largo Augusto", true, "verde", 800, 0));
+		caselle.add(new Casella("Largo Augusto", true, "verde", 320, 0));
 		caselle.add(new Casella("Stazione Est", false, null, 0, 0));
 		caselle.add(new Casella("Imprevisti", false, null, 0, 0));
-		caselle.add(new Casella("Viale dei Giardini", true, "viola", 900, 0));
+		caselle.add(new Casella("Viale dei Giardini", true, "viola", 350, 0));
 		caselle.add(new Casella("Tassa di Lusso", false, null, 0, 0));
-		caselle.add(new Casella("Parco della Vittoria", true, "viola", 1000, 0));
+		caselle.add(new Casella("Parco della Vittoria", true, "viola", 400, 0));
 
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Vicolo Corto", 5, 25, 0, 0));
+		contratti.add(new Contratto("Vicolo Corto", 2, 10, 0, 0));
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Vicolo Stretto", 10, 50, 0, 0));
+		contratti.add(new Contratto("Vicolo Stretto", 4, 20, 0, 0));
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Stazione Sud", 0, 0, 65, 60));
-		contratti.add(new Contratto("Bastioni Gran Sasso", 15, 75, 0, 0));
+		contratti.add(new Contratto("Stazione Sud", 0, 0, 65, 25));
+		contratti.add(new Contratto("Bastioni Gran Sasso", 6, 30, 0, 0));
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Viale Monterosa", 15, 75, 0, 0));
-		contratti.add(new Contratto("Viale Vesuvio", 20, 100, 0, 0));
+		contratti.add(new Contratto("Viale Monterosa", 6, 30, 0, 0));
+		contratti.add(new Contratto("Viale Vesuvio", 8, 40, 0, 0));
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Via Accademia", 25, 125, 0, 0));
+		contratti.add(new Contratto("Via Accademia", 10, 50, 0, 0));
 		contratti.add(new Contratto("Società Elettrica", 0, 0, 50, 50));
-		contratti.add(new Contratto("Corso Ateneo", 25, 125, 0, 0));
-		contratti.add(new Contratto("Piazza Università", 30, 150, 0, 0));
-		contratti.add(new Contratto("Stazione Ovest", 0, 0, 65, 60));
-		contratti.add(new Contratto("Via Verdi", 35, 175, 0, 0));
+		contratti.add(new Contratto("Corso Ateneo", 10, 50, 0, 0));
+		contratti.add(new Contratto("Piazza Università", 12, 60, 0, 0));
+		contratti.add(new Contratto("Stazione Ovest", 0, 0, 65, 25));
+		contratti.add(new Contratto("Via Verdi", 14, 70, 0, 0));
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Corso Raffaello", 35, 175, 0, 0));
-		contratti.add(new Contratto("Piazza Dante", 40, 200, 0, 0));
+		contratti.add(new Contratto("Corso Raffaello", 14, 70, 0, 0));
+		contratti.add(new Contratto("Piazza Dante", 16, 80, 0, 0));
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Via Marco Polo", 45, 225, 0, 0));
+		contratti.add(new Contratto("Via Marco Polo", 18, 90, 0, 0));
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Corso Magellano", 45, 225, 0, 0));
-		contratti.add(new Contratto("Largo Colombo", 50, 250, 0, 0));
-		contratti.add(new Contratto("Stazione Nord", 0, 0, 65, 60));
-		contratti.add(new Contratto("Viale Costantino", 50, 250, 0, 0));
-		contratti.add(new Contratto("Viale Traiano", 55, 275, 0, 0));
+		contratti.add(new Contratto("Corso Magellano", 18, 90, 0, 0));
+		contratti.add(new Contratto("Largo Colombo", 20, 100, 0, 0));
+		contratti.add(new Contratto("Stazione Nord", 0, 0, 65, 25));
+		contratti.add(new Contratto("Viale Costantino", 22, 110, 0, 0));
+		contratti.add(new Contratto("Viale Traiano", 22, 110, 0, 0));
 		contratti.add(new Contratto("Società Acqua Potabile", 0, 0, 50, 50));
-		contratti.add(new Contratto("Piazza Giulio Cesare", 60, 300, 0, 0));
+		contratti.add(new Contratto("Piazza Giulio Cesare", 24, 120, 0, 0));
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Via Roma", 65, 325, 0, 0));
-		contratti.add(new Contratto("Corso Impero", 70, 375, 0, 0));
+		contratti.add(new Contratto("Via Roma", 26, 130, 0, 0));
+		contratti.add(new Contratto("Corso Impero", 26, 130, 0, 0));
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Largo Augusto", 70, 375, 0, 0));
-		contratti.add(new Contratto("Stazione Est", 0, 0, 65, 60));
+		contratti.add(new Contratto("Largo Augusto", 28, 150, 0, 0));
+		contratti.add(new Contratto("Stazione Est", 0, 0, 65, 25));
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Viale dei Giardini", 75, 425, 0, 0));
+		contratti.add(new Contratto("Viale dei Giardini", 35, 175, 0, 0));
 		contratti.add(new Contratto("Segnaposto", 0, 0, 0, 0));
-		contratti.add(new Contratto("Parco della Vittoria", 125, 500, 0, 0));
+		contratti.add(new Contratto("Parco della Vittoria", 50, 200, 0, 0));
 
 		// prettier-ignore
 		imprevisti.add(new Imprevisto("Andate sino al Largo Colombo: se passate dal Via ritirate 500 euro.", 0, "24", 0));
@@ -117,7 +117,7 @@ public class Tabellone {
 		imprevisti.add(new Imprevisto("Versate 50 euro per beneficienza.", -50, "NaN", 0));
 		imprevisti.add(new Imprevisto("Andate alla Stazione Nord: se passate dal Via ritirate 500 euro.", 0, "25", 0));
 		imprevisti.add(new Imprevisto("Multa di 40 euro per aver guidato senza patente.", -40, "NaN", 0));
-		imprevisti.add(new Imprevisto("Andate fino al Parco della Vittoria.", 0, "40", 0));
+		imprevisti.add(new Imprevisto("Andate fino al Parco della Vittoria. Ritirate 200 euro.", 200, "40", 0));
 		imprevisti.add(new Imprevisto("Matrimonio in famiglia: spese impreviste 375 euro.", -375, "NaN", 0));
 		imprevisti.add(new Imprevisto("Matrimonio in famiglia: spese impreviste 280 euro.", -280, "NaN", 0));
 		/*
@@ -143,7 +143,7 @@ public class Tabellone {
 		probabilita.add(new Probabilita("Avete vinto il secondo premio in un concorso di bellezza: ritirate 25 euro.", 25,
 				"NaN", 0));
 		probabilita.add(new Probabilita("Scade il vostro premio di assicurazione: pagate 125 euro.", -125, "NaN", 0));
-		probabilita.add(new Probabilita("Scade il vostro premio di assicurazione: pagate 140 euro.", -140, "NaN", 0));
+		probabilita.add(new Probabilita("Dalla vendita di uno stock di merci ricavate 50 euro.", 50, "NaN", 0));
 		/*
 		 * da implementare, sostituito con probabilità precedente in attesa di gestire
 		 * l'uscita di prigione
@@ -161,8 +161,7 @@ public class Tabellone {
 		probabilita.add(new Probabilita("Siete creditori verso la banca di 500 euro, ritirateli.", 500, "NaN", 0));
 		probabilita.add(new Probabilita("Avete perso una causa: pagate 250 euro", -250, "NaN", 0));
 		probabilita.add(new Probabilita("Andate in prigione direttamente e senza passare dal Via.", 0, "30", 0));
-		// va bene finché i giocatori sono 2
-		probabilita.add(new Probabilita("È il vostro compleanno: ogni giocatore vi regala 25 euro.", 25, "NaN", 0));
+		probabilita.add(new Probabilita("Vi viene rimborsata la tassa sui redditi. Incassate 20 euro", 20, "NaN", 0));
 		probabilita.add(new Probabilita("Avete perso una causa: pagate 150 euro", -150, "NaN", 0));
 		/*
 		 * da implementare, sostituito con probabilità precedente in attesa di gestire

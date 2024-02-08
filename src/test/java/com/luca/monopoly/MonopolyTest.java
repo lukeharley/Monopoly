@@ -72,9 +72,9 @@ public class MonopolyTest {
 		assertEquals(40, contratti.size());
 
 		assertEquals("Vicolo Corto", contratti.get(1).getTesto());
-		assertEquals(10, contratti.get(3).getRenditaTerreno());
-		assertEquals(425, contratti.get(37).getRenditaUnaCasetta());
-		assertEquals(1000, contratti.get(19).getRenditaAlbergo());
+		assertEquals(4, contratti.get(3).getRenditaTerreno());
+		assertEquals(175, contratti.get(37).getRenditaUnaCasetta());
+		assertEquals(400, contratti.get(19).getRenditaAlbergo());
 		assertEquals(65, contratti.get(35).getRenditaUnaStazione());
 		assertEquals(130, contratti.get(35).getRenditaDueStazioni());
 
@@ -97,7 +97,7 @@ public class MonopolyTest {
 		List<Imprevisto> imprevisti = tabellone.getImprevisti();
 		assertEquals(16, imprevisti.size());
 		Imprevisto primaCartaImprevisto = imprevisti.get(0);
-		assertEquals("Andate sino al Largo Colombo: se passate dal Via ritirate 500€.",
+		assertEquals("Andate sino al Largo Colombo: se passate dal Via ritirate 500 euro.",
 				primaCartaImprevisto.getTesto());
 
 		giocatore1.aggiornaPosizione(7);
@@ -229,13 +229,14 @@ public class MonopolyTest {
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
 		List<Contratto> contratti = monopoly.getTabellone().getContratti();
 
+		giocatore1.aggiornaPosizione(3);
 		giocatore1.compraProprieta(proprietariDeiContratti, caselle);
 		assertEquals(giocatore1, proprietariDeiContratti.get("Vicolo Stretto"));
-		assertEquals(1350, giocatore1.getPortafoglio());
+		assertEquals(1440, giocatore1.getPortafoglio());
 
 		giocatore2.aggiornaPosizione(3);
 		giocatore2.aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti);
-		assertEquals(1490, giocatore2.getPortafoglio());
+		assertEquals(1496, giocatore2.getPortafoglio());
 
 	}
 
@@ -249,7 +250,7 @@ public class MonopolyTest {
 
 		giocatore1.aggiornaPosizione(4);
 		giocatore1.aggiornaPortafoglioSeTasse(caselle, contratti);
-		assertEquals(1460, giocatore1.getPortafoglio());
+		assertEquals(1300, giocatore1.getPortafoglio());
 
 	}
 

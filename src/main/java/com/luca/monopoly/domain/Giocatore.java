@@ -130,7 +130,7 @@ public class Giocatore {
                 || caselle.get(this.posizione).getTesto().startsWith("Stazione")) {
             this.portafoglio -= contratti.get(this.posizione).getTassa();
         } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa Patrimoniale")) {
-            this.portafoglio -= 40;
+            this.portafoglio -= 200;
             System.out.println("Il giocatore paga la tassa patrimoniale di 40 euro.");
         } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa di Lusso")) {
             this.portafoglio -= 250;
