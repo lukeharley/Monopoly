@@ -207,11 +207,11 @@ public class MonopolyTest {
 		giocatore1.aggiornaPosizione(12);
 		giocatore1.aggiornaPosizioneSePassaDalVia();
 		assertEquals(8, giocatore1.getPosizione());
-		assertEquals(2000, giocatore1.getPortafoglio());
+		assertEquals(1700, giocatore1.getPortafoglio());
 
 		giocatore1.aggiornaPosizione(12);
 		assertEquals(20, giocatore1.getPosizione());
-		assertEquals(2000, giocatore1.getPortafoglio());
+		assertEquals(1700, giocatore1.getPortafoglio());
 
 	}
 

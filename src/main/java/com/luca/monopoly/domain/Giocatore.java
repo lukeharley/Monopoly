@@ -92,7 +92,7 @@ public class Giocatore {
     public int aggiornaPosizioneSePassaDalVia() {
         if (this.posizione >= 40) {
             this.posizione %= 40;
-            this.portafoglio += 500;
+            this.portafoglio += 200;
             System.out.println("Il giocatore passa dal via e ritira 500 euro dalla banca"); 
         }
         return this.posizione;
@@ -162,7 +162,7 @@ public class Giocatore {
             if (Carta.eUnNumero(probabilitaCorrente.getNuovaPosizione())
                     && Integer.parseInt(probabilitaCorrente.getNuovaPosizione()) > this.posizione
                     && !(probabilitaCorrente.getTesto().contains("senza passare dal Via"))) {
-                this.portafoglio += 500;
+                this.portafoglio += 200;
             }
 
             this.portafoglio += probabilitaCorrente.getImporto();
@@ -188,7 +188,7 @@ public class Giocatore {
             if (Carta.eUnNumero(imprevistoCorrente.getNuovaPosizione())
                     && Integer.parseInt(imprevistoCorrente.getNuovaPosizione()) > this.posizione
                     && !(imprevistoCorrente.getTesto().contains("senza passare dal Via"))) {
-                this.portafoglio += 500;
+                this.portafoglio += 200;
             }
 
             this.portafoglio += imprevistoCorrente.getImporto();
