@@ -79,7 +79,7 @@ public class Giocatore {
         aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
         compraProprieta(proprietariDeiContratti, caselle); 
         aggiornaPortafoglioSeTasse(proprietariDeiContratti, giocatoreCorrente, caselle, contratti);
-        aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti);
+        aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti, giocatoreCorrente);
         bancarotta(giocatoreCorrente);
     }
 
@@ -107,21 +107,24 @@ public class Giocatore {
         return this.posizione;
     }
 
-    public int aggiornaPortafoglioSeAffitto(List<Casella> caselle, List<Contratto> contratti, Map<String, Giocatore> proprietariDeiContratti) {
+    public int aggiornaPortafoglioSeAffitto(List<Casella> caselle, List<Contratto> contratti, Map<String, Giocatore> proprietariDeiContratti, Giocatore giocatoreCorrente) {
         
         String nomeProprieta = caselle.get(this.posizione).getTesto();
-        int numeroCasette = caselle.get(this.posizione).getNumeroDiCasetteSullaCasella();
+        
+        if (proprietariDeiContratti.get(nomeProprieta) != giocatoreCorrente) {
+            int numeroCasette = caselle.get(this.posizione).getNumeroDiCasetteSullaCasella();
 
-        Optional<Contratto> contrattoOptional = contratti.stream()
-                .filter(contratto -> contratto.getTesto().equals(nomeProprieta)).findFirst();
+            Optional<Contratto> contrattoOptional = contratti.stream()
+                    .filter(contratto -> contratto.getTesto().equals(nomeProprieta)).findFirst();
 
-        if (proprietariDeiContratti.get(nomeProprieta) != null) {
-            int affitto = contrattoOptional.get().calcolaAffitto(numeroCasette);
-            this.portafoglio -= affitto;
-            System.out.println("Il giocatore ha pagato un affitto di " + affitto + " euro al proprietario del terreno"); 
-            int portafoglioProprietarioDelContratto = proprietariDeiContratti.get(nomeProprieta).getPortafoglio();
-            portafoglioProprietarioDelContratto = portafoglioProprietarioDelContratto + affitto;
-        }
+            if (proprietariDeiContratti.get(nomeProprieta) != null) {
+                int affitto = contrattoOptional.get().calcolaAffitto(numeroCasette);
+                this.portafoglio -= affitto;
+                System.out.println("Il giocatore ha pagato un affitto di " + affitto + " euro al proprietario del terreno"); 
+                int portafoglioProprietarioDelContratto = proprietariDeiContratti.get(nomeProprieta).getPortafoglio();
+                portafoglioProprietarioDelContratto = portafoglioProprietarioDelContratto + affitto;
+            }
+    }
 
         return this.portafoglio;
     }

@@ -235,7 +235,7 @@ public class MonopolyTest {
 		assertEquals(1440, giocatore1.getPortafoglio());
 
 		giocatore2.aggiornaPosizione(3);
-		giocatore2.aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti);
+		giocatore2.aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti, giocatore2);
 		assertEquals(1496, giocatore2.getPortafoglio());
 
 	}
