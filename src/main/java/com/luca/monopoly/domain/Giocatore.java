@@ -107,8 +107,8 @@ public class Giocatore {
         return this.posizione;
     }
 
-    public int aggiornaPortafoglioSeAffitto(List<Casella> caselle, List<Contratto> contratti,
-            Map<String, Giocatore> proprietariDeiContratti) {
+    public int aggiornaPortafoglioSeAffitto(List<Casella> caselle, List<Contratto> contratti, Map<String, Giocatore> proprietariDeiContratti) {
+        
         String nomeProprieta = caselle.get(this.posizione).getTesto();
         int numeroCasette = caselle.get(this.posizione).getNumeroDiCasetteSullaCasella();
 
@@ -118,6 +118,8 @@ public class Giocatore {
         if (proprietariDeiContratti.get(nomeProprieta) != null) {
             int affitto = contrattoOptional.get().calcolaAffitto(numeroCasette);
             this.portafoglio -= affitto;
+            int portafoglioProprietarioDelContratto = proprietariDeiContratti.get(nomeProprieta).getPortafoglio();
+            portafoglioProprietarioDelContratto = portafoglioProprietarioDelContratto + affitto;
         }
 
         return this.portafoglio;
@@ -208,7 +210,7 @@ public class Giocatore {
 
     public void compraProprieta(Map<String, Giocatore> proprietariDeiContratti, List<Casella> caselle) {
         String nomeProprieta = caselle.get(this.posizione).getTesto();  
-        if (proprietariDeiContratti.containsKey(nomeProprieta)) {
+        if (proprietariDeiContratti.containsKey(nomeProprieta) && this.portafoglio >= caselle.get(this.posizione).getCostoProprieta()) {
             proprietariDeiContratti.put(nomeProprieta, this);
             this.portafoglio -= caselle.stream().filter(casella -> casella.getTesto().equals(nomeProprieta)).findFirst()
                     .get().getCostoProprieta();
