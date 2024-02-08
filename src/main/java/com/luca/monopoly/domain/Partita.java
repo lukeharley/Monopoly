@@ -2,9 +2,11 @@ package com.luca.monopoly.domain;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 public class Partita {
 
     Monopoly monopoly = new Monopoly();
+    Scanner scanner = new Scanner(System.in);
     List<Giocatore> giocatori = monopoly.getGiocatori();
     Tabellone tabellone = monopoly.getTabellone();
     List<Casella> caselle = tabellone.getCaselle();
@@ -38,6 +40,9 @@ public class Partita {
             giocatoreCorrente.aggiornaPosizioneEPortafoglio(risultatoDado, proprietariDeiContratti, caselle, contratti,
                     imprevisti, probabilita, giocatoreCorrente);
             System.out.println("Il giocatore " + indiceGiocatoreCorrente + " ora si trova in posizione " + giocatoreCorrente.getPosizione() + " e ha un portafoglio di " + giocatoreCorrente.getPortafoglio() + " euro"); 
+
+            System.out.println("Premi INVIO per continuare...");
+            scanner.nextLine();
 
             if (giocatoreCorrente.getPortafoglio() > 4000) {
                 System.out.println("Il giocatore " + indiceGiocatoreCorrente + " ha vinto");
