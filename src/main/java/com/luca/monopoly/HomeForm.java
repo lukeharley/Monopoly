@@ -1,6 +1,5 @@
 package com.luca.monopoly;
 
-import com.luca.monopoly.domain.Segnalini;
 
 public class HomeForm {
 
