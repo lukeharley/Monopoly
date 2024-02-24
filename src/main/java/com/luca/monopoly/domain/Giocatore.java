@@ -70,19 +70,11 @@ public class Giocatore {
         this.inBancarotta = inBancarotta;
     }
 
-    public void bancarotta(Giocatore giocatoreCorrente) {
-        if (giocatoreCorrente.portafoglio < 0) {
-            giocatoreCorrente.inBancarotta = true;
-            System.out.println("Il giocatore corrente è in bancarotta. L'altro giocatore ha vinto");
-        }
-    }
-
     public void aggiornaPosizioneEPortafoglio(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
             List<Casella> caselle, List<Contratto> contratti, List<Imprevisto> imprevisti,
             List<Probabilita> probabilita, Giocatore giocatoreCorrente) {
 
-        aggiornaPosizione(risultatoDado);
-        aggiornaPosizioneSePassaDalVia();
+        aggiornaPosizioneSePassaDalVia(risultatoDado);
         System.out.println("Il giocatore arriva nella casella " + caselle.get(this.posizione).getTesto());
         aggiornaPosizioneSeInPrigione();
         aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
@@ -99,8 +91,6 @@ public class Giocatore {
         } else if ((proprietariDeiContratti.get(nomeProprieta) == giocatoreCorrente)) {
             costruisciCasette(proprietariDeiContratti, caselle);
         }
-
-        bancarotta(giocatoreCorrente);
     }
 
     public int aggiornaPosizione(int risultatoDado) {
@@ -109,12 +99,16 @@ public class Giocatore {
         return this.posizione;
     }
 
-    public int aggiornaPosizioneSePassaDalVia() {
+    public int aggiornaPosizioneSePassaDalVia(int risultatoDado) {
+        this.posizione += risultatoDado;
+
         if (this.posizione >= 40) {
             this.posizione %= 40;
             this.portafoglio += 200;
             System.out.println("Il giocatore passa dal via e ritira 500 euro dalla banca");
         }
+
+        System.out.println("Il giocatore si muove fino alla posizione " + this.posizione);
         return this.posizione;
     }
 

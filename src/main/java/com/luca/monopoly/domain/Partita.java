@@ -42,24 +42,30 @@ public class Partita {
 
             giocatoreCorrente.aggiornaPosizioneEPortafoglio(risultatoDado, proprietariDeiContratti, caselle, contratti,
                     imprevisti, probabilita, giocatoreCorrente);
+
             System.out.println("Il giocatore " + indiceGiocatoreCorrente + " ora si trova in posizione "
                     + giocatoreCorrente.getPosizione() + " e ha un portafoglio di " + giocatoreCorrente.getPortafoglio()
                     + " euro");
 
+            if (bancarotta(giocatoreCorrente)) {
+                break;
+            }
+
             System.out.println("Premi INVIO per continuare...");
             scanner.nextLine();
-
-            /*
-             * if (giocatoreCorrente.getPortafoglio() > 4000) {
-             * System.out.println("Il giocatore " + indiceGiocatoreCorrente + " ha vinto");
-             * break;
-             * }
-             */
 
             indiceGiocatoreCorrente = (indiceGiocatoreCorrente + 1) % numeroDiGiocatori;
             System.out.println("Ora tocca al giocatore " + indiceGiocatoreCorrente);
 
         }
+    }
+
+    private Boolean bancarotta(Giocatore giocatoreCorrente) {
+        if (giocatoreCorrente.getPortafoglio() < 0) {
+            giocatoreCorrente.setInBancarotta(true);
+            System.out.println("Il giocatore corrente è in bancarotta. L'altro giocatore ha vinto");
+        }
+        return giocatoreCorrente.getInBancarotta();
     }
 
 }

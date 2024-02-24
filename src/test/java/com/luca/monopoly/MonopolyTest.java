@@ -204,8 +204,7 @@ public class MonopolyTest {
 		assertEquals(36, giocatore1.getPosizione());
 		assertEquals(1500, giocatore1.getPortafoglio());
 
-		giocatore1.aggiornaPosizione(12);
-		giocatore1.aggiornaPosizioneSePassaDalVia();
+		giocatore1.aggiornaPosizioneSePassaDalVia(12);
 		assertEquals(8, giocatore1.getPosizione());
 		assertEquals(1700, giocatore1.getPortafoglio());
 
