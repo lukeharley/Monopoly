@@ -244,25 +244,26 @@ public class MonopolyTest {
 	void test_costruzione_casetta() {
 
 		Giocatore giocatoreCorrente = giocatori.get(0);
+		System.out.println(giocatoreCorrente.toString());
 
 		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
 		List<Casella> caselle = monopoly.getTabellone().getCaselle();
 
 		proprietariDeiContratti.put("Bastioni Gran Sasso", giocatoreCorrente);
-		proprietariDeiContratti.put("Viale Monte Rosa", giocatoreCorrente);
+		proprietariDeiContratti.put("Viale Monterosa", giocatoreCorrente);
 		proprietariDeiContratti.put("Viale Vesuvio", giocatoreCorrente);
 
-		giocatoreCorrente.setPosizione(7);
+		giocatoreCorrente.setPosizione(6);
 		assertEquals(1, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
-		giocatoreCorrente.setPosizione(7);
+		giocatoreCorrente.setPosizione(6);
 		assertEquals(2, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
-		giocatoreCorrente.setPosizione(7);
+		giocatoreCorrente.setPosizione(6);
 		assertEquals(3, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
-		giocatoreCorrente.setPosizione(7);
+		giocatoreCorrente.setPosizione(6);
 		assertEquals(4, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
-		giocatoreCorrente.setPosizione(7);
+		giocatoreCorrente.setPosizione(6);
 		assertEquals(5, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
-		giocatoreCorrente.setPosizione(7);
+		giocatoreCorrente.setPosizione(6);
 		assertEquals(5, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
 
 	}

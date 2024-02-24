@@ -253,7 +253,7 @@ public class Giocatore {
 
                     if (numeroDiCasetteSullaCasella > 4) {
                         System.out.println("Il giocatore corrente ha costruito un albergo, equivalente a "
-                                + numeroDiCasetteSullaCasella + "casette sulla casella");
+                                + numeroDiCasetteSullaCasella + " casette sulla casella");
                     } else {
                         System.out.println(
                                 "Il giocatore corrente ha costruito una nuova casetta. Attualmente il numero di casette sulla casella è di "
