@@ -157,7 +157,9 @@ public class Giocatore {
         if (proprietariDeiContratti.get(nomeProprieta) != giocatoreCorrente) {
             if (caselle.get(this.posizione).getTesto().startsWith("Società")
                     || caselle.get(this.posizione).getTesto().startsWith("Stazione")) {
+                int tassa = contratti.get(this.posizione).getTassa();
                 this.portafoglio -= contratti.get(this.posizione).getTassa();
+                System.out.println("Il giocatore paga una tassa di " + tassa + " euro");
             } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa Patrimoniale")) {
                 this.portafoglio -= 200;
                 System.out.println("Il giocatore paga la tassa patrimoniale di 200 euro.");
