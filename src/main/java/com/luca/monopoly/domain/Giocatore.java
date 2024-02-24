@@ -95,6 +95,10 @@ public class Giocatore {
 
     public int aggiornaPosizione(int risultatoDado) {
         this.posizione += risultatoDado;
+
+        if (this.posizione >= 40) {
+            this.posizione %= 40;
+        }
         System.out.println("Il giocatore si muove fino alla posizione " + this.posizione);
         return this.posizione;
     }

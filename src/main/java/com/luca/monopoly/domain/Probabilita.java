@@ -22,6 +22,9 @@ public class Probabilita extends Carta {
             Collections.shuffle(mazzoCartePescate);
             mazzoCorrente.addAll(mazzoCartePescate);
             mazzoCartePescate.clear();
+            Probabilita cartaPescata = mazzoCorrente.remove(0);
+            mazzoCartePescate.add(cartaPescata);
+            System.out.println("Testo della carta pescata: " + cartaPescata.getTesto());
         }
     }
 

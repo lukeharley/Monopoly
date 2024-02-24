@@ -108,7 +108,46 @@ public class MonopolyTest {
 		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
 		assertEquals(1500, giocatore1.getPortafoglio());
 
-		// rimane da testare esaurimento del mazzo di carte
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+		giocatore1.aggiornaPosizione(2);
+		giocatore1.aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
+
+		// aggiungere assertEquals ad ogni step per verificare andamento portafoglio
 
 	}
 
