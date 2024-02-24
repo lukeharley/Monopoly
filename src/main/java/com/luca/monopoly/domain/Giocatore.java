@@ -80,16 +80,26 @@ public class Giocatore {
     public void aggiornaPosizioneEPortafoglio(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
             List<Casella> caselle, List<Contratto> contratti, List<Imprevisto> imprevisti,
             List<Probabilita> probabilita, Giocatore giocatoreCorrente) {
+
         aggiornaPosizione(risultatoDado);
         aggiornaPosizioneSePassaDalVia();
         System.out.println("Il giocatore arriva nella casella " + caselle.get(this.posizione).getTesto());
         aggiornaPosizioneSeInPrigione();
         aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
         aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
-        compraProprieta(proprietariDeiContratti, caselle);
-        costruisciCasette(proprietariDeiContratti, caselle);
         aggiornaPortafoglioSeTasse(proprietariDeiContratti, giocatoreCorrente, caselle, contratti);
-        aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti, giocatoreCorrente);
+
+        String nomeProprieta = caselle.get(this.posizione).getTesto();
+
+        if (proprietariDeiContratti.get(nomeProprieta) != giocatoreCorrente
+                && proprietariDeiContratti.get(nomeProprieta) != null) {
+            aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti, giocatoreCorrente);
+        } else if (proprietariDeiContratti.get(nomeProprieta) == null) {
+            compraProprieta(proprietariDeiContratti, caselle);
+        } else if ((proprietariDeiContratti.get(nomeProprieta) == giocatoreCorrente)) {
+            costruisciCasette(proprietariDeiContratti, caselle);
+        }
+
         bancarotta(giocatoreCorrente);
     }
 
@@ -211,40 +221,46 @@ public class Giocatore {
     }
 
     public void compraProprieta(Map<String, Giocatore> proprietariDeiContratti, List<Casella> caselle) {
-        String nomeProprieta = caselle.get(this.posizione).getTesto();
-        if (this.portafoglio >= caselle.get(this.posizione).getCostoProprieta()) {
-            if (proprietariDeiContratti.containsKey(nomeProprieta)) {
-                proprietariDeiContratti.put(nomeProprieta, this);
-                this.portafoglio -= caselle.stream().filter(casella -> casella.getTesto().equals(nomeProprieta))
-                        .findFirst()
-                        .get().getCostoProprieta();
-                System.out.println("Il giocatore ha comprato la proprietà " + caselle.get(this.posizione).getTesto()
-                        + " e ora ha un portafoglio di " + this.portafoglio + " euro");
+        if (caselle.get(this.posizione).isTerreno()) {
+            String nomeProprieta = caselle.get(this.posizione).getTesto();
+            if (this.portafoglio >= caselle.get(this.posizione).getCostoProprieta()) {
+                if (proprietariDeiContratti.containsKey(nomeProprieta)) {
+                    proprietariDeiContratti.put(nomeProprieta, this);
+                    this.portafoglio -= caselle.stream().filter(casella -> casella.getTesto().equals(nomeProprieta))
+                            .findFirst()
+                            .get().getCostoProprieta();
+                    System.out.println("Il giocatore ha comprato la proprietà " + caselle.get(this.posizione).getTesto()
+                            + " e ora ha un portafoglio di " + this.portafoglio + " euro");
+                }
             }
         }
+
     }
 
     public int costruisciCasette(Map<String, Giocatore> proprietariDeiContratti, List<Casella> caselle) {
 
         int numeroDiCasetteSullaCasella = caselle.get(this.posizione).getNumeroDiCasetteSullaCasella();
 
-        if (possiedeTutteLeProprietaDelColore(proprietariDeiContratti, caselle)) {
+        if (caselle.get(this.posizione).isTerreno()) {
 
-            if (numeroDiCasetteSullaCasella < 5) {
+            if (possiedeTutteLeProprietaDelColore(proprietariDeiContratti, caselle)) {
 
-                numeroDiCasetteSullaCasella++;
+                if (numeroDiCasetteSullaCasella < 5) {
 
-                if (numeroDiCasetteSullaCasella > 4) {
-                    System.out.println("Il giocatore corrente ha costruito un albergo, equivalente a "
-                            + numeroDiCasetteSullaCasella + "casette sulla casella");
-                } else {
-                    System.out.println(
-                            "Il giocatore corrente ha costruito una nuova casetta. Attualmente il numero di casette sulla casella è di "
-                                    + numeroDiCasetteSullaCasella + "casette");
+                    numeroDiCasetteSullaCasella++;
+
+                    if (numeroDiCasetteSullaCasella > 4) {
+                        System.out.println("Il giocatore corrente ha costruito un albergo, equivalente a "
+                                + numeroDiCasetteSullaCasella + "casette sulla casella");
+                    } else {
+                        System.out.println(
+                                "Il giocatore corrente ha costruito una nuova casetta. Attualmente il numero di casette sulla casella è di "
+                                        + numeroDiCasetteSullaCasella + " casette");
+                    }
+
+                    caselle.get(this.posizione).setNumeroDiCasetteSullaCasella(numeroDiCasetteSullaCasella);
+
                 }
-
-                caselle.get(this.posizione).setNumeroDiCasetteSullaCasella(numeroDiCasetteSullaCasella);
-
             }
 
         }
