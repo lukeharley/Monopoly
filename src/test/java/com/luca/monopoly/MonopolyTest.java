@@ -13,7 +13,7 @@ public class MonopolyTest {
 
 	private Monopoly monopoly;
 	private List<Giocatore> giocatori;
-	private Partita partita; 
+	private Partita partita;
 
 	@BeforeEach
 	void setup() {
@@ -216,7 +216,6 @@ public class MonopolyTest {
 	}
 
 	@Order(11)
-
 	@Test
 	void test_giocatore_proprieta_e_affitto_terreno_o_casetta() {
 
@@ -242,6 +241,34 @@ public class MonopolyTest {
 
 	@Order(12)
 	@Test
+	void test_costruzione_casetta() {
+
+		Giocatore giocatoreCorrente = giocatori.get(0);
+
+		Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
+		List<Casella> caselle = monopoly.getTabellone().getCaselle();
+
+		proprietariDeiContratti.put("Bastioni Gran Sasso", giocatoreCorrente);
+		proprietariDeiContratti.put("Viale Monte Rosa", giocatoreCorrente);
+		proprietariDeiContratti.put("Viale Vesuvio", giocatoreCorrente);
+
+		giocatoreCorrente.setPosizione(7);
+		assertEquals(1, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
+		giocatoreCorrente.setPosizione(7);
+		assertEquals(2, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
+		giocatoreCorrente.setPosizione(7);
+		assertEquals(3, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
+		giocatoreCorrente.setPosizione(7);
+		assertEquals(4, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
+		giocatoreCorrente.setPosizione(7);
+		assertEquals(5, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
+		giocatoreCorrente.setPosizione(7);
+		assertEquals(5, giocatoreCorrente.costruisciCasette(proprietariDeiContratti, caselle));
+
+	}
+
+	@Order(13)
+	@Test
 	void test_giocatore_pagamento_tasse() {
 
 		Giocatore giocatoreCorrente = giocatori.get(0);
@@ -255,7 +282,7 @@ public class MonopolyTest {
 
 	}
 
-	@Order(13)
+	@Order(14)
 	@Test
 	void test_giocatore_in_prigione() {
 
@@ -268,10 +295,10 @@ public class MonopolyTest {
 
 	}
 
-	@Order(14)
+	@Order(15)
 	@Test
 	void test_partita() {
-		assertNotNull(partita); 
+		assertNotNull(partita);
 	}
 
 }

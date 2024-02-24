@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Giocatore {
     private Segnalini segnalino;
@@ -19,6 +20,14 @@ public class Giocatore {
         this.portafoglio = portafoglio;
         this.posizione = posizione;
         this.inBancarotta = false;
+    }
+
+    public int getPosizione() {
+        return posizione;
+    }
+
+    public void setPosizione(int posizione) {
+        this.posizione = posizione;
     }
 
     public Segnalini getSegnalino() {
@@ -73,18 +82,19 @@ public class Giocatore {
             List<Probabilita> probabilita, Giocatore giocatoreCorrente) {
         aggiornaPosizione(risultatoDado);
         aggiornaPosizioneSePassaDalVia();
-        System.out.println("Il giocatore arriva nella casella " + caselle.get(this.posizione).getTesto()); 
+        System.out.println("Il giocatore arriva nella casella " + caselle.get(this.posizione).getTesto());
         aggiornaPosizioneSeInPrigione();
         aggiornaPosizioneEPortafoglioSeImprevisto(caselle, imprevisti, mazzoCartePescateImprevisti);
         aggiornaPosizioneEPortafoglioSeProbabilita(caselle, probabilita, mazzoCartePescateProbabilita);
-        compraProprieta(proprietariDeiContratti, caselle); 
+        compraProprieta(proprietariDeiContratti, caselle);
+        costruisciCasette(proprietariDeiContratti, caselle);
         aggiornaPortafoglioSeTasse(proprietariDeiContratti, giocatoreCorrente, caselle, contratti);
         aggiornaPortafoglioSeAffitto(caselle, contratti, proprietariDeiContratti, giocatoreCorrente);
         bancarotta(giocatoreCorrente);
     }
 
     public int aggiornaPosizione(int risultatoDado) {
-        this.posizione+= risultatoDado;
+        this.posizione += risultatoDado;
         System.out.println("Il giocatore si muove fino alla posizione " + this.posizione);
         return this.posizione;
     }
@@ -93,7 +103,7 @@ public class Giocatore {
         if (this.posizione >= 40) {
             this.posizione %= 40;
             this.portafoglio += 200;
-            System.out.println("Il giocatore passa dal via e ritira 500 euro dalla banca"); 
+            System.out.println("Il giocatore passa dal via e ritira 500 euro dalla banca");
         }
         return this.posizione;
     }
@@ -107,10 +117,11 @@ public class Giocatore {
         return this.posizione;
     }
 
-    public int aggiornaPortafoglioSeAffitto(List<Casella> caselle, List<Contratto> contratti, Map<String, Giocatore> proprietariDeiContratti, Giocatore giocatoreCorrente) {
-        
+    public int aggiornaPortafoglioSeAffitto(List<Casella> caselle, List<Contratto> contratti,
+            Map<String, Giocatore> proprietariDeiContratti, Giocatore giocatoreCorrente) {
+
         String nomeProprieta = caselle.get(this.posizione).getTesto();
-        
+
         if (proprietariDeiContratti.get(nomeProprieta) != giocatoreCorrente) {
             int numeroCasette = caselle.get(this.posizione).getNumeroDiCasetteSullaCasella();
 
@@ -120,7 +131,8 @@ public class Giocatore {
             if (proprietariDeiContratti.get(nomeProprieta) != null) {
                 int affitto = contrattoOptional.get().calcolaAffitto(numeroCasette);
                 this.portafoglio -= affitto;
-                System.out.println("Il giocatore ha pagato un affitto di " + affitto + " euro al proprietario del terreno"); 
+                System.out.println(
+                        "Il giocatore ha pagato un affitto di " + affitto + " euro al proprietario del terreno");
                 int portafoglioProprietarioDelContratto = proprietariDeiContratti.get(nomeProprieta).getPortafoglio();
                 portafoglioProprietarioDelContratto = portafoglioProprietarioDelContratto + affitto;
             }
@@ -129,7 +141,8 @@ public class Giocatore {
         return this.portafoglio;
     }
 
-    public void aggiornaPortafoglioSeTasse(Map<String, Giocatore> proprietariDeiContratti, Giocatore giocatoreCorrente, List<Casella> caselle, List<Contratto> contratti) {
+    public void aggiornaPortafoglioSeTasse(Map<String, Giocatore> proprietariDeiContratti, Giocatore giocatoreCorrente,
+            List<Casella> caselle, List<Contratto> contratti) {
         String nomeProprieta = caselle.get(this.posizione).getTesto();
         if (proprietariDeiContratti.get(nomeProprieta) != giocatoreCorrente) {
             if (caselle.get(this.posizione).getTesto().startsWith("Società")
@@ -140,9 +153,9 @@ public class Giocatore {
                 System.out.println("Il giocatore paga la tassa patrimoniale di 200 euro.");
             } else if (caselle.get(this.posizione).getTesto().startsWith("Tassa di Lusso")) {
                 this.portafoglio -= 100;
-                System.out.println("Il giocatore paga la tassa di lusso di 100 euro"); 
+                System.out.println("Il giocatore paga la tassa di lusso di 100 euro");
             }
-        }    
+        }
     }
 
     public void aggiornaPosizioneEPortafoglioSeProbabilita(List<Casella> caselle, List<Probabilita> probabilita,
@@ -197,6 +210,68 @@ public class Giocatore {
         }
     }
 
+    public void compraProprieta(Map<String, Giocatore> proprietariDeiContratti, List<Casella> caselle) {
+        String nomeProprieta = caselle.get(this.posizione).getTesto();
+        if (this.portafoglio >= caselle.get(this.posizione).getCostoProprieta()) {
+            if (proprietariDeiContratti.containsKey(nomeProprieta)) {
+                proprietariDeiContratti.put(nomeProprieta, this);
+                this.portafoglio -= caselle.stream().filter(casella -> casella.getTesto().equals(nomeProprieta))
+                        .findFirst()
+                        .get().getCostoProprieta();
+                System.out.println("Il giocatore ha comprato la proprietà " + caselle.get(this.posizione).getTesto()
+                        + " e ora ha un portafoglio di " + this.portafoglio + " euro");
+            }
+        }
+    }
+
+    public int costruisciCasette(Map<String, Giocatore> proprietariDeiContratti, List<Casella> caselle) {
+
+        int numeroDiCasetteSullaCasella = caselle.get(this.posizione).getNumeroDiCasetteSullaCasella();
+
+        if (possiedeTutteLeProprietaDelColore(proprietariDeiContratti, caselle)) {
+
+            if (numeroDiCasetteSullaCasella < 5) {
+
+                numeroDiCasetteSullaCasella++;
+
+                if (numeroDiCasetteSullaCasella > 4) {
+                    System.out.println("Il giocatore corrente ha costruito un albergo, equivalente a "
+                            + numeroDiCasetteSullaCasella + "casette sulla casella");
+                } else {
+                    System.out.println(
+                            "Il giocatore corrente ha costruito una nuova casetta. Attualmente il numero di casette sulla casella è di "
+                                    + numeroDiCasetteSullaCasella + "casette");
+                }
+
+                caselle.get(this.posizione).setNumeroDiCasetteSullaCasella(numeroDiCasetteSullaCasella);
+
+            }
+
+        }
+
+        return numeroDiCasetteSullaCasella;
+    }
+
+    private Boolean possiedeTutteLeProprietaDelColore(Map<String, Giocatore> proprietariDeiContratti,
+            List<Casella> caselle) {
+
+        String coloreCasellaCorrente = caselle.get(this.posizione).getColore();
+
+        List<String> nomiProprietaDelColore = caselle.stream()
+                .filter(casella -> casella.getColore() != null && casella.getColore().equals(coloreCasellaCorrente))
+                .map(Casella::getTesto)
+                .collect(Collectors.toList());
+
+        for (String nomeProprieta : nomiProprietaDelColore) {
+            if (!proprietariDeiContratti.containsKey(nomeProprieta)
+                    || proprietariDeiContratti.get(nomeProprieta) != this) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public int lanciaDadi() {
         return generaNumeroCasuale(2, 12);
     }
@@ -209,22 +284,6 @@ public class Giocatore {
 
         final Random r = new Random();
         return r.nextInt(valoreMassimo - valoreMinimo + 1) + valoreMinimo;
-    }
-
-    public int getPosizione() {
-        return posizione;
-    }
-
-    public void compraProprieta(Map<String, Giocatore> proprietariDeiContratti, List<Casella> caselle) {
-        String nomeProprieta = caselle.get(this.posizione).getTesto();  
-        if (this.portafoglio >= caselle.get(this.posizione).getCostoProprieta()) {
-            if (proprietariDeiContratti.containsKey(nomeProprieta)) {
-                proprietariDeiContratti.put(nomeProprieta, this);
-                this.portafoglio -= caselle.stream().filter(casella -> casella.getTesto().equals(nomeProprieta)).findFirst()
-                        .get().getCostoProprieta();
-                System.out.println("Il giocatore ha comprato la proprietà " + caselle.get(this.posizione).getTesto() + " e ora ha un portafoglio di " + this.portafoglio + " euro");        
-            }
-        }
     }
 
     @Override
