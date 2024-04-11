@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-Application<monopoly>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.luca.monopoly.Application",
+      "projectName": "monopoly",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

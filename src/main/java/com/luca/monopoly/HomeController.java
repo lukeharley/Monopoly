@@ -54,6 +54,7 @@ public class HomeController {
 
         model.addAttribute("form", form);
         model.addAttribute("dadi", new Monopoly().getDadi().size());
+        model.addAttribute("caselle", new Monopoly().getTabellone().getCaselle());
         model.addAttribute("nomeGiocatoreAggiunto", form.getNome());
         model.addAttribute("segnalinoScelto", segnalino.getNome());
         model.addAttribute("portafoglioPrimoGiocatoreAggiunto",
@@ -61,8 +62,8 @@ public class HomeController {
 
         List<SelectOptionView> segnalini = new ArrayList<>();
 
-        for (Segnalini elment : Segnalini.values()) {
-            segnalini.add(new SelectOptionView(elment.ordinal(), elment.getNome()));
+        for (Segnalini element : Segnalini.values()) {
+            segnalini.add(new SelectOptionView(element.ordinal(), element.getNome()));
         }
 
         model.addAttribute("segnalini", segnalini);

@@ -65,6 +65,19 @@
                 </th:block>
             </div>
         </div>
+
+        <div class="row mt-5">
+            <div class="col">
+                <th:block th:each="casella : ${caselle}" style="height: 100px; position: relative;">
+                    <div style="border: 1px solid black; width: 100px; height: 100px; text-align: center;">
+                        <span th:text="${casella.testo}"></span>
+                    </div>
+        
+                    <div style="background-color: blue; width: 20px; height: 20px; position: absolute; top: 10px; left: 10px;"> </div>
+                </th:block>
+            </div>
+        </div>
+        
     </div>
 
 </body>
