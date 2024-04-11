@@ -16,8 +16,8 @@ spring:
     generate-ddl: true
   datasource:
     url: jdbc:mysql://localhost:3306/monopoly?createDatabaseIfNotExist=true
-    username:
-    password:
+    username: luke
+    password: DtAhixzPfLbVv7kEBodL # jA3N2bxGixoxs3jHiXuK #
     driver-class-name: com.mysql.cj.jdbc.Driver
   main:
     allow-bean-definition-overriding: true
