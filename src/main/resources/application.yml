@@ -10,9 +10,9 @@ spring:
     show-sql: false
     properties:
       hibernate:
-        format_sql: false
+        "[format_sql]": false
         dialect: org.hibernate.dialect.MySQLDialect
-        storage_engine: innodb
+        "[storage_engine]": innodb
     generate-ddl: true
   datasource:
     url: jdbc:mysql://localhost:3306/monopoly?createDatabaseIfNotExist=true
