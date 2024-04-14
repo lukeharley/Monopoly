@@ -15,11 +15,14 @@ public class JpaGiocatore {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "cognome")
-    private String cognome;
-
     @Column(name = "segnalino", unique = true)
     private Segnalini segnalini;
+
+    @Column(name = "portafoglio")
+    private Integer portafoglio;
+
+    @Column(name = "posizione")
+    private Integer posizione;
 
     public String getNome() {
         return nome;
@@ -45,11 +48,20 @@ public class JpaGiocatore {
         this.id = id;
     }
 
-    public String getCognome() {
-        return cognome;
+    public Integer getPortafoglio() {
+        return portafoglio;
     }
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setPortafoglio(Integer portafoglio) {
+        this.portafoglio = portafoglio;
     }
+
+    public Integer getPosizione() {
+        return posizione;
+    }
+
+    public void setPosizione(Integer posizione) {
+        this.posizione = posizione;
+    }
+
 }
