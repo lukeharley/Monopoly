@@ -1,10 +1,12 @@
 package com.luca.monopoly;
 
+import com.luca.monopoly.domain.Casella;
 import com.luca.monopoly.domain.Giocatore;
 import com.luca.monopoly.domain.Monopoly;
 import com.luca.monopoly.domain.Segnalini;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.luca.monopoly.repository.JpaGiocatore;
@@ -53,9 +55,12 @@ public class HomeController {
 
         jpaGiocatoreRepository.save(jpaGiocatore);
 
+        List<Casella> caselle = new Monopoly().getTabellone().getCaselle();
+        Collections.reverse(caselle);
+
         model.addAttribute("form", form);
         model.addAttribute("dadi", new Monopoly().getDadi().size());
-        model.addAttribute("caselle", new Monopoly().getTabellone().getCaselle());
+        model.addAttribute("caselle", caselle);
         model.addAttribute("giocatore", giocatore);
         model.addAttribute("nomeGiocatoreAggiunto", form.getNome());
         model.addAttribute("segnalinoScelto", segnalino.getNome());

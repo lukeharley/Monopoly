@@ -1,0 +1,39 @@
+h1 {
+    color: brown;
+}
+
+.cell {
+    border: 1px solid black; 
+    width: 8%; 
+    height: 100px; 
+}
+
+.container.tabellone {
+    display:flex; 
+    flex-direction: row-reverse;
+}
+
+.group-0 {
+    /* Stile per il primo gruppo di 10 caselle */
+    background-color: lightblue;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.group-1 {
+    /* Stile per il secondo gruppo di 10 caselle */
+    background-color: lightgreen;
+    display: inline-block;
+}
+
+.group-2 {
+    /* Stile per il terzo gruppo di 10 caselle */
+    background-color: lightyellow;
+    display: block;
+}
+
+.group-3 {
+    /* Stile per il quarto gruppo di 10 caselle */
+    background-color: lightcoral;
+    display: inline-block;
+}

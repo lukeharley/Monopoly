@@ -66,18 +66,21 @@
             </div>
         </div>
 
-        <div class="row mt-5">
-            <div class="col">
-                <th:block th:each="casella : ${caselle}" style="height: 100px; position: relative;">
-                    <div style="border: 1px solid black; width: 100px; height: 100px; text-align: center; position: relative;">
-                        <span th:text="${casella.testo}"></span>
-                        <th:block th:if="${casellaStat.index == giocatore.posizione}">
-                            <div style="background-color: blue; width: 20px; height: 20px; position: absolute; top: 10px; left: 10px;"> </div>
-                        </th:block>    
-                    </div>
-                </th:block>
+        <div class="container tabellone"></div>
+            <div class="grid mt-5">
+                <div class="g-col">
+                    <th:block th:each="casella : ${caselle}" style="height: 100px; width: 100px; position: relative;">
+                        <div class="cell" th:classappend="${casellaStat.index < 10 ? 'group-0' : (casellaStat.index < 19 ? 'group-1' : (casellaStat.index < 29 ? 'group-2' : 'group-3'))}" style="text-align: center; position: relative;">
+                            <span th:text="${casella.testo}"></span>
+                            <th:block th:if="${casellaStat.index == giocatore.posizione}">
+                                <div style="background-color: blue; width: 20px; height: 20px; position: absolute; top: 10px; left: 10px;"> </div>
+                            </th:block>
+                        </div>
+                    </th:block>
+                </div>
             </div>
         </div>
+            
         
     </div>
 
