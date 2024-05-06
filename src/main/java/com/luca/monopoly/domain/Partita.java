@@ -4,6 +4,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.luca.monopoly.AppConfig;
+import com.luca.monopoly.repository.JpaGiocatoreRepository;
+
 public class Partita {
 
     Monopoly monopoly = new Monopoly();
@@ -16,11 +22,24 @@ public class Partita {
     List<Probabilita> probabilita = tabellone.getProbabilita();
     Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
 
+    @Autowired
+    private JpaGiocatoreRepository jpaGiocatoreRepository;
+
+    public Partita(JpaGiocatoreRepository jpaGiocatoreRepository) {
+        this.jpaGiocatoreRepository = jpaGiocatoreRepository;
+    }
+
     public static void main(String[] args) {
 
-        Partita partita = new Partita();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        JpaGiocatoreRepository jpaGiocatoreRepository = context.getBean(JpaGiocatoreRepository.class);
+
+        Partita partita = new Partita(jpaGiocatoreRepository);
 
         partita.giocaPartita();
+
+        context.close();
     }
 
     private void giocaPartita() {
@@ -46,6 +65,7 @@ public class Partita {
             System.out.println("Il giocatore " + indiceGiocatoreCorrente + " ora si trova in posizione "
                     + giocatoreCorrente.getPosizione() + " e ha un portafoglio di " + giocatoreCorrente.getPortafoglio()
                     + " euro");
+            jpaGiocatoreRepository.updatePosizione(giocatoreCorrente.getId(), giocatoreCorrente.getPosizione());
 
             if (bancarotta(giocatoreCorrente)) {
                 break;

@@ -52,6 +52,8 @@ public class HomeController {
         JpaGiocatore jpaGiocatore = new JpaGiocatore();
         jpaGiocatore.setNome(form.getNome());
         jpaGiocatore.setSegnalini(segnalino);
+        jpaGiocatore.setPortafoglio(giocatore.getPortafoglio());
+        jpaGiocatore.setPosizione(giocatore.getPosizione());
 
         jpaGiocatoreRepository.save(jpaGiocatore);
 

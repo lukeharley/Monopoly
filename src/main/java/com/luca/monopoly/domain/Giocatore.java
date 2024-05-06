@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Giocatore {
+    private int id;
     private String nome;
     private Segnalini segnalino;
     private int portafoglio;
@@ -22,6 +23,14 @@ public class Giocatore {
         this.portafoglio = portafoglio;
         this.posizione = posizione;
         this.inBancarotta = false;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
