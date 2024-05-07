@@ -7,6 +7,7 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.luca.monopoly.repository.JpaGiocatore;
 import com.luca.monopoly.repository.JpaGiocatoreRepository;
 
 @Service
@@ -56,7 +57,11 @@ public class Partita {
             System.out.println("Il giocatore " + indiceGiocatoreCorrente + " ora si trova in posizione "
                     + giocatoreCorrente.getPosizione() + " e ha un portafoglio di " + giocatoreCorrente.getPortafoglio()
                     + " euro");
-            jpaGiocatoreRepository.updatePosizione(giocatoreCorrente.getId(), giocatoreCorrente.getPosizione());
+
+            JpaGiocatore jpaGiocatore = new JpaGiocatore();
+            jpaGiocatore.setPosizione(giocatoreCorrente.getPosizione());
+
+            jpaGiocatoreRepository.save(giocatoreCorrente);
 
             if (bancarotta(giocatoreCorrente)) {
                 break;

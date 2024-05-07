@@ -8,7 +8,6 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Giocatore {
-    private int id;
     private String nome;
     private Segnalini segnalino;
     private int portafoglio;
@@ -17,21 +16,12 @@ public class Giocatore {
     private List<Imprevisto> mazzoCartePescateImprevisti = new ArrayList<>();
     private List<Probabilita> mazzoCartePescateProbabilita = new ArrayList<>();
 
-    public Giocatore(int id, String nome, Segnalini segnalino, int portafoglio, int posizione) {
-        this.id = id;
+    public Giocatore(String nome, Segnalini segnalino, int portafoglio, int posizione) {
         this.nome = nome;
         this.segnalino = segnalino;
         this.portafoglio = portafoglio;
         this.posizione = posizione;
         this.inBancarotta = false;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {
