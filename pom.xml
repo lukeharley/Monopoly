@@ -29,6 +29,12 @@
   </repositories>
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
     <!--    Dipendenza Maven per creare n progetto web-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -55,8 +61,7 @@
     </dependency>
     <dependency>
       <groupId>com.mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.4.0</version>
+      <artifactId>mysql-connector-j</artifactId>
       <scope>runtime</scope>
     </dependency>
   </dependencies>

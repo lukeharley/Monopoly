@@ -6,8 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.luca.monopoly.domain.Giocatore;
+
 @Repository
-public interface JpaGiocatoreRepository extends JpaRepository<JpaGiocatore, Integer> {
+public interface JpaGiocatoreRepository extends JpaRepository<Giocatore, Integer> {
 
     @Modifying
     @Query("UPDATE Giocatore g SET g.posizione = :posizione WHERE g.id = :id")

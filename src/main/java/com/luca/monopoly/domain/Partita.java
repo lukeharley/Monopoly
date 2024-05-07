@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Service;
 
-import com.luca.monopoly.AppConfig;
 import com.luca.monopoly.repository.JpaGiocatoreRepository;
 
+@Service
 public class Partita {
 
     Monopoly monopoly = new Monopoly();
@@ -25,21 +25,12 @@ public class Partita {
     @Autowired
     private JpaGiocatoreRepository jpaGiocatoreRepository;
 
-    public Partita(JpaGiocatoreRepository jpaGiocatoreRepository) {
-        this.jpaGiocatoreRepository = jpaGiocatoreRepository;
-    }
-
     public static void main(String[] args) {
 
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-
-        JpaGiocatoreRepository jpaGiocatoreRepository = context.getBean(JpaGiocatoreRepository.class);
-
-        Partita partita = new Partita(jpaGiocatoreRepository);
+        Partita partita = new Partita();
 
         partita.giocaPartita();
 
-        context.close();
     }
 
     private void giocaPartita() {

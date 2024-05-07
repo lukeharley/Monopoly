@@ -1,10 +1,8 @@
 package com.luca.monopoly;
 
 import com.luca.monopoly.domain.*;
-import com.luca.monopoly.repository.JpaGiocatoreRepository;
 
 import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Map;
@@ -13,9 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MonopolyTest {
-
-	@Autowired
-	private JpaGiocatoreRepository jpaGiocatoreRepository;
 
 	private Monopoly monopoly;
 	private List<Giocatore> giocatori;
@@ -26,7 +21,7 @@ public class MonopolyTest {
 		monopoly = new Monopoly();
 
 		giocatori = monopoly.getGiocatori();
-		partita = new Partita(jpaGiocatoreRepository);
+		partita = new Partita();
 
 	}
 

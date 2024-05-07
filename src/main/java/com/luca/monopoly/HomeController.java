@@ -29,7 +29,7 @@ public class HomeController {
         model.addAttribute("form", new HomeForm());
         model.addAttribute("dadi", new Monopoly().getDadi().size());
         model.addAttribute("portafoglioPrimoGiocatoreAggiunto",
-                new Giocatore("", Segnalini.CANE, 1500, 0).getPortafoglio());
+                new Giocatore(0, "", Segnalini.CANE, 1500, 0).getPortafoglio());
 
         List<SelectOptionView> segnalini = new ArrayList<>();
 
@@ -47,7 +47,7 @@ public class HomeController {
     public String aggiungiGiocatore(Model model, HomeForm form) {
 
         Segnalini segnalino = Segnalini.values()[form.getSegnalino()];
-        Giocatore giocatore = new Giocatore("", segnalino, 1500, 0);
+        Giocatore giocatore = new Giocatore(0, "", segnalino, 1500, 0);
 
         JpaGiocatore jpaGiocatore = new JpaGiocatore();
         jpaGiocatore.setNome(form.getNome());
@@ -55,7 +55,7 @@ public class HomeController {
         jpaGiocatore.setPortafoglio(giocatore.getPortafoglio());
         jpaGiocatore.setPosizione(giocatore.getPosizione());
 
-        jpaGiocatoreRepository.save(jpaGiocatore);
+        jpaGiocatoreRepository.save(giocatore);
 
         List<Casella> caselle = new Monopoly().getTabellone().getCaselle();
         Collections.reverse(caselle);

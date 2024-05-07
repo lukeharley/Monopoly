@@ -42,8 +42,8 @@ public class Monopoly {
 		List<Giocatore> giocatori = new ArrayList<>();
 		int patrimonio = banca.getPatrimonio();
 
-		giocatori.add(new Giocatore("Luca", Segnalini.CANE, 1500, 0));
-		giocatori.add(new Giocatore("Mario", Segnalini.DINOSAURO, 1500, 0));
+		giocatori.add(new Giocatore(0, "Luca", Segnalini.CANE, 1500, 0));
+		giocatori.add(new Giocatore(1, "Mario", Segnalini.DINOSAURO, 1500, 0));
 		patrimonio -= giocatori.get(0).getPortafoglio();
 		patrimonio -= giocatori.get(1).getPortafoglio();
 		System.out.println("Il patrimonio della banca è pari a " + patrimonio);

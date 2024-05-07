@@ -17,7 +17,8 @@ public class Giocatore {
     private List<Imprevisto> mazzoCartePescateImprevisti = new ArrayList<>();
     private List<Probabilita> mazzoCartePescateProbabilita = new ArrayList<>();
 
-    public Giocatore(String nome, Segnalini segnalino, int portafoglio, int posizione) {
+    public Giocatore(int id, String nome, Segnalini segnalino, int portafoglio, int posizione) {
+        this.id = id;
         this.nome = nome;
         this.segnalino = segnalino;
         this.portafoglio = portafoglio;
