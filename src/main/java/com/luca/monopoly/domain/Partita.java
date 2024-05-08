@@ -4,13 +4,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.luca.monopoly.repository.JpaGiocatore;
-import com.luca.monopoly.repository.JpaGiocatoreRepository;
-
-@Service
 public class Partita {
 
     Monopoly monopoly = new Monopoly();
@@ -23,18 +16,7 @@ public class Partita {
     List<Probabilita> probabilita = tabellone.getProbabilita();
     Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
 
-    @Autowired
-    private JpaGiocatoreRepository jpaGiocatoreRepository;
-
-    public static void main(String[] args) {
-
-        Partita partita = new Partita();
-
-        partita.giocaPartita();
-
-    }
-
-    private void giocaPartita() {
+    public void giocaPartita() {
 
         int indiceGiocatoreCorrente = 0;
         int numeroDiGiocatori = giocatori.size();
@@ -58,11 +40,6 @@ public class Partita {
                     + giocatoreCorrente.getPosizione() + " e ha un portafoglio di " + giocatoreCorrente.getPortafoglio()
                     + " euro");
 
-            JpaGiocatore jpaGiocatore = new JpaGiocatore();
-            jpaGiocatore.setPosizione(giocatoreCorrente.getPosizione());
-
-            jpaGiocatoreRepository.save(giocatoreCorrente);
-
             if (bancarotta(giocatoreCorrente)) {
                 break;
             }
@@ -72,7 +49,6 @@ public class Partita {
 
             indiceGiocatoreCorrente = (indiceGiocatoreCorrente + 1) % numeroDiGiocatori;
             System.out.println("Ora tocca al giocatore " + indiceGiocatoreCorrente);
-
         }
     }
 

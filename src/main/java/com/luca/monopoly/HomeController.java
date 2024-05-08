@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.luca.monopoly.repository.JpaGiocatore;
 import com.luca.monopoly.repository.JpaGiocatoreRepository;
+import com.luca.monopoly.service.PartitaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +21,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
+    private final PartitaService partitaService;
+
     @Autowired
     private JpaGiocatoreRepository jpaGiocatoreRepository;
+
+    public HomeController(PartitaService partitaService) {
+        this.partitaService = partitaService;
+    }
 
     @GetMapping("/")
     public String getHome(Model model) {
@@ -75,6 +82,8 @@ public class HomeController {
         }
 
         model.addAttribute("segnalini", segnalini);
+
+        partitaService.nuovaPartita();
 
         return "home";
     }
