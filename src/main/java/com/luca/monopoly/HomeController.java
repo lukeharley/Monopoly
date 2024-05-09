@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
-    private final PartitaService partitaService;
+    private PartitaService partitaService;
 
     @Autowired
     private JpaGiocatoreRepository jpaGiocatoreRepository;
@@ -46,6 +46,8 @@ public class HomeController {
 
         model.addAttribute("segnalini", segnalini);
 
+        partitaService.nuovaPartita();
+
         return "home";
 
     }
@@ -62,7 +64,7 @@ public class HomeController {
         jpaGiocatore.setPortafoglio(giocatore.getPortafoglio());
         jpaGiocatore.setPosizione(giocatore.getPosizione());
 
-        jpaGiocatoreRepository.save(giocatore);
+        jpaGiocatoreRepository.save(jpaGiocatore);
 
         List<Casella> caselle = new Monopoly().getTabellone().getCaselle();
         Collections.reverse(caselle);
@@ -82,8 +84,6 @@ public class HomeController {
         }
 
         model.addAttribute("segnalini", segnalini);
-
-        partitaService.nuovaPartita();
 
         return "home";
     }

@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PartitaService {
 
-
     @Autowired
     private JpaGiocatoreRepository jpaGiocatoreRepository;
-
 
     public void nuovaPartita() {
         Partita partita = new Partita();
