@@ -103,6 +103,13 @@ public class Giocatore {
         }
     }
 
+    // metodo di test
+    public int aggiornaPortafoglio() {
+        this.portafoglio += 1;
+        System.out.println("Il portafoglio ora è di " + this.portafoglio + " euro");
+        return this.portafoglio;
+    }
+
     public int aggiornaPosizione(int risultatoDado) {
         this.posizione += risultatoDado;
 
@@ -299,7 +306,9 @@ public class Giocatore {
     }
 
     public int lanciaDadi() {
-        return generaNumeroCasuale(2, 12);
+        int risultatoDado = generaNumeroCasuale(2, 12);
+        System.out.println("Il risultato del dado è " + risultatoDado);
+        return risultatoDado;
     }
 
     private int generaNumeroCasuale(int valoreMinimo, int valoreMassimo) {
