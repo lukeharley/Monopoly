@@ -1,12 +1,9 @@
 package com.luca.monopoly;
 
-import com.luca.monopoly.domain.Casella;
-import com.luca.monopoly.domain.Giocatore;
-import com.luca.monopoly.domain.Monopoly;
-import com.luca.monopoly.domain.Segnalini;
+import com.luca.monopoly.domain.*;
+import com.luca.monopoly.domain.giocatore.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +22,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 
     private GiocatoreService giocatoreService;
+
+    private Monopoly monopoly;
 
     @Autowired
     private JpaGiocatoreRepository jpaGiocatoreRepository;
@@ -48,8 +47,6 @@ public class HomeController {
         }
 
         model.addAttribute("segnalini", segnalini);
-
-        // model.addAttribute("partitaIniziata", partitaService.nuovaPartita());
 
         return "home";
 
@@ -104,15 +101,34 @@ public class HomeController {
 
     @PostMapping("/lanciaDadi")
     public ResponseEntity<Map<String, Object>> lanciaDadi() {
+
+        monopoly = new Monopoly();
+        List<Giocatore> giocatori = monopoly.getGiocatori();
+
+        /*
+         * Giocatore giocatore1 = giocatori.get(0);
+         * Giocatore giocatore2 = giocatori.get(1);
+         */
+
+        Giocatore giocatoreCorrente = giocatori.get(0);
+
+        Tabellone tabellone = monopoly.getTabellone();
+        List<Casella> caselle = monopoly.getTabellone().getCaselle();
+        List<Contratto> contratti = tabellone.getContratti();
+        Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
+        List<Probabilita> mazzoCartePescateProbabilita = giocatoreCorrente.getMazzoCartePescateProbabilita();
+        List<Imprevisto> mazzoCartePescateImprevisti = giocatoreCorrente.getMazzoCartePescateImprevisti();
+
         int risultatoDado = giocatoreService.ottieniRisultatoDado();
-        int posizione = giocatoreService.ottieniNuovaPosizione(risultatoDado);
-        int portafoglio = giocatoreService.ottieniNuovoPortafoglio();
+        GiocatoreRisultato giocatoreRisultato = giocatoreService.ottieniNuovaPosizioneENuovoPortafoglio(risultatoDado,
+                proprietariDeiContratti, caselle, contratti, mazzoCartePescateImprevisti, mazzoCartePescateProbabilita,
+                giocatoreCorrente);
 
         Map<String, Object> response = new HashMap<>();
         response.put("result", "Dadi lanciati con successo!");
         response.put("risultatoDado", risultatoDado);
-        response.put("posizione", posizione);
-        response.put("portafoglio", portafoglio);
+        response.put("posizione", giocatoreRisultato.getNuovaPosizione());
+        response.put("portafoglio", giocatoreRisultato.getNuovoPortafoglio());
 
         return ResponseEntity.ok(response);
 

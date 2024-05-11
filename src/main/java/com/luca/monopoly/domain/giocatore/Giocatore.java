@@ -1,4 +1,4 @@
-package com.luca.monopoly.domain;
+package com.luca.monopoly.domain.giocatore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,13 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
+
+import com.luca.monopoly.domain.Carta;
+import com.luca.monopoly.domain.Casella;
+import com.luca.monopoly.domain.Contratto;
+import com.luca.monopoly.domain.Imprevisto;
+import com.luca.monopoly.domain.Probabilita;
+import com.luca.monopoly.domain.Segnalini;
 
 public class Giocatore {
     private String nome;
@@ -80,7 +87,8 @@ public class Giocatore {
         this.inBancarotta = inBancarotta;
     }
 
-    public void aggiornaPosizioneEPortafoglio(int risultatoDado, Map<String, Giocatore> proprietariDeiContratti,
+    public GiocatoreRisultato aggiornaPosizioneEPortafoglio(int risultatoDado,
+            Map<String, Giocatore> proprietariDeiContratti,
             List<Casella> caselle, List<Contratto> contratti, List<Imprevisto> imprevisti,
             List<Probabilita> probabilita, Giocatore giocatoreCorrente) {
 
@@ -101,6 +109,8 @@ public class Giocatore {
         } else if ((proprietariDeiContratti.get(nomeProprieta) == giocatoreCorrente)) {
             costruisciCasette(proprietariDeiContratti, caselle);
         }
+
+        return new GiocatoreRisultato(this.posizione, this.portafoglio);
     }
 
     // metodo di test

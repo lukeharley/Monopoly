@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.luca.monopoly.domain.giocatore.Giocatore;
+
 public class Monopoly {
 
 	private final Tabellone tabellone;

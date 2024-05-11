@@ -1,6 +1,7 @@
 package com.luca.monopoly;
 
 import com.luca.monopoly.domain.*;
+import com.luca.monopoly.domain.giocatore.Giocatore;
 
 import org.junit.jupiter.api.*;
 

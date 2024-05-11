@@ -1,19 +1,20 @@
 package com.luca.monopoly.service;
 
-// import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
-import com.luca.monopoly.domain.Giocatore;
 import com.luca.monopoly.domain.Segnalini;
-// import com.luca.monopoly.repository.JpaGiocatoreRepository;
+import com.luca.monopoly.domain.Imprevisto;
+import com.luca.monopoly.domain.Probabilita;
+import com.luca.monopoly.domain.Contratto;
+import com.luca.monopoly.domain.Casella;
+import com.luca.monopoly.domain.giocatore.Giocatore;
+import com.luca.monopoly.domain.giocatore.GiocatoreRisultato;
 
 @Service
 public class GiocatoreService {
-
-    // @Autowired
-    // private JpaGiocatoreRepository jpaGiocatoreRepository;
-
-    private static final GiocatoreService ISTANZA = new GiocatoreService();
 
     private Giocatore giocatore;
 
@@ -21,23 +22,20 @@ public class GiocatoreService {
         giocatore = new Giocatore("", Segnalini.CANE, 1500, 0);
     }
 
-    public static GiocatoreService getIstanza() {
-        return ISTANZA;
-    }
-
     public int ottieniRisultatoDado() {
         int risultatoDado = giocatore.lanciaDadi();
         return risultatoDado;
     }
 
-    public int ottieniNuovaPosizione(int risultatoDado) {
-        int nuovaPosizione = giocatore.aggiornaPosizione(risultatoDado);
-        return nuovaPosizione;
-    }
+    public GiocatoreRisultato ottieniNuovaPosizioneENuovoPortafoglio(int risultatoDado,
+            Map<String, Giocatore> proprietariDeiContratti,
+            List<Casella> caselle, List<Contratto> contratti, List<Imprevisto> imprevisti,
+            List<Probabilita> probabilita, Giocatore giocatoreCorrente) {
 
-    public int ottieniNuovoPortafoglio() {
-        int nuovoPortafoglio = giocatore.aggiornaPortafoglio();
-        return nuovoPortafoglio;
+        GiocatoreRisultato giocatoreRisultato = giocatore.aggiornaPosizioneEPortafoglio(risultatoDado,
+                proprietariDeiContratti, caselle, contratti, imprevisti, probabilita, giocatoreCorrente);
+
+        return giocatoreRisultato;
     }
 
 }

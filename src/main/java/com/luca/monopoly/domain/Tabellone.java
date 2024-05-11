@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.luca.monopoly.domain.giocatore.Giocatore;
+
 public class Tabellone {
 
 	private final int NUMERO_MAX_PEZZI_CASETTA = 32;
