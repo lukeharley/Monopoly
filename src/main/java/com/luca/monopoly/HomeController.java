@@ -23,7 +23,7 @@ public class HomeController {
 
     private GiocatoreService giocatoreService;
 
-    private Monopoly monopoly;
+    private Monopoly monopoly = new Monopoly();
 
     @Autowired
     private JpaGiocatoreRepository jpaGiocatoreRepository;
@@ -102,7 +102,6 @@ public class HomeController {
     @PostMapping("/lanciaDadi")
     public ResponseEntity<Map<String, Object>> lanciaDadi() {
 
-        monopoly = new Monopoly();
         List<Giocatore> giocatori = monopoly.getGiocatori();
 
         /*
@@ -113,22 +112,29 @@ public class HomeController {
         Giocatore giocatoreCorrente = giocatori.get(0);
 
         Tabellone tabellone = monopoly.getTabellone();
-        List<Casella> caselle = monopoly.getTabellone().getCaselle();
+        List<Casella> caselle = tabellone.getCaselle();
         List<Contratto> contratti = tabellone.getContratti();
-        Map<String, Giocatore> proprietariDeiContratti = monopoly.getTabellone().getProprietariDeiContratti();
-        List<Probabilita> mazzoCartePescateProbabilita = giocatoreCorrente.getMazzoCartePescateProbabilita();
-        List<Imprevisto> mazzoCartePescateImprevisti = giocatoreCorrente.getMazzoCartePescateImprevisti();
-
-        int risultatoDado = giocatoreService.ottieniRisultatoDado();
-        GiocatoreRisultato giocatoreRisultato = giocatoreService.ottieniNuovaPosizioneENuovoPortafoglio(risultatoDado,
-                proprietariDeiContratti, caselle, contratti, mazzoCartePescateImprevisti, mazzoCartePescateProbabilita,
-                giocatoreCorrente);
+        Map<String, Giocatore> proprietariDeiContratti = tabellone.getProprietariDeiContratti();
+        List<Probabilita> probabilita = tabellone.getProbabilita();
+        List<Imprevisto> imprevisti = tabellone.getImprevisti();
 
         Map<String, Object> response = new HashMap<>();
-        response.put("result", "Dadi lanciati con successo!");
-        response.put("risultatoDado", risultatoDado);
-        response.put("posizione", giocatoreRisultato.getNuovaPosizione());
-        response.put("portafoglio", giocatoreRisultato.getNuovoPortafoglio());
+
+        if (giocatoreCorrente.getPortafoglio() > 0) {
+
+            int risultatoDado = giocatoreService.ottieniRisultatoDado();
+            GiocatoreRisultato giocatoreRisultato = giocatoreService.ottieniNuovaPosizioneENuovoPortafoglio(
+                    risultatoDado, proprietariDeiContratti, caselle, contratti, imprevisti,
+                    probabilita, giocatoreCorrente);
+
+            response.put("result", "Dadi lanciati con successo!");
+            response.put("risultatoDado", risultatoDado);
+            response.put("posizione", giocatoreRisultato.getNuovaPosizione());
+            response.put("portafoglio", giocatoreRisultato.getNuovoPortafoglio());
+
+        } else {
+            System.out.println("Il giocatore corrente è in bancarotta. L'altro giocatore ha vinto!");
+        }
 
         return ResponseEntity.ok(response);
 

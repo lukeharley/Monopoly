@@ -131,12 +131,13 @@ public class Giocatore {
     }
 
     public int aggiornaPosizioneSePassaDalVia(int risultatoDado) {
+
         this.posizione += risultatoDado;
 
         if (this.posizione >= 40) {
             this.posizione %= 40;
             this.portafoglio += 200;
-            System.out.println("Il giocatore passa dal via e ritira 500 euro dalla banca");
+            System.out.println("Il giocatore passa dal via e ritira 200 euro dalla banca");
         }
 
         System.out.println("Il giocatore si muove fino alla posizione " + this.posizione);
@@ -168,8 +169,8 @@ public class Giocatore {
                 this.portafoglio -= affitto;
                 System.out.println(
                         "Il giocatore ha pagato un affitto di " + affitto + " euro al proprietario del terreno");
-                int portafoglioProprietarioDelContratto = proprietariDeiContratti.get(nomeProprieta).getPortafoglio();
-                portafoglioProprietarioDelContratto = portafoglioProprietarioDelContratto + affitto;
+                Giocatore proprietario = proprietariDeiContratti.get(nomeProprieta);
+                proprietario.setPortafoglio(proprietario.getPortafoglio() + affitto);
             }
         }
 
