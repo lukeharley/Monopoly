@@ -60,35 +60,22 @@
             </div>
         </div>
 
-        <div class="row mt-5">
-            <div class="col">
+        <div class="row mt-5 mb-5">
+            <div class="col-sm-4">
                 <th:block th:if="${nomeGiocatoreAggiunto != null}">
-                    <div>
-                        <p th:utext="'Il giocatore aggiunto si chiama: <b>' + ${nomeGiocatoreAggiunto} + '</b>'"></p>
-                        <p th:utext="${nomeGiocatoreAggiunto} + ' avrà di partenza un portafoglio di <b>' + ${portafoglioPrimoGiocatoreAggiunto} + '€</b>.'"></p>
-                        <p th:utext="'Il segnalino che <b>' + ${nomeGiocatoreAggiunto} + '</b> ha scelto è a forma di <b>' + ${segnalinoScelto} + '</b>.'"></p>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Giocatore 1</h5>
+                            <p class="card-text nome" th:utext="'Nome: <b>' + ${nomeGiocatoreAggiunto} + '</b>'"></p>
+                            <p class="card-text portafoglio" th:utext="'Portafoglio: <b>' + ${portafoglioPrimoGiocatoreAggiunto} + '€</b>'"></p>
+                            <p class="card-text segnalino" th:utext="'Segnalino: <b>' + ${segnalinoScelto} + '</b>'"></p>
+                        </div>
                     </div>
                 </th:block>
             </div>
         </div>
 
-
         <button type="button" th:onclick="lanciaDadi();">Lancia dadi</button>
-     
-<!--         <div class="container tabellone">
-            <div class="grid mt-5">
-                <div class="g-col">
-                    <th:block th:each="casella : ${caselle}" style="height: 100px; width: 100px; position: relative;">
-                        <div class="cell" th:classappend="${casellaStat.index < 10 ? 'group-0' : (casellaStat.index < 19 ? 'group-1' : (casellaStat.index < 29 ? 'group-2' : 'group-3'))}" style="text-align: center; position: relative;">
-                            <span th:text="${casella.testo}"></span>
-                            <th:block th:if="${casellaStat.index == giocatore.posizione}">
-                                <div style="background-color: blue; width: 20px; height: 20px; position: absolute; top: 10px; left: 10px;"> </div>
-                            </th:block>
-                        </div>
-                    </th:block>
-                </div>
-            </div>
-        </div> -->
 
         <div class="container tabellone"></div>
             <div class="grid mt-5">

@@ -24,12 +24,15 @@ function aggiornaInterfaccia(data) {
 
     var caselleTabellone = document.querySelectorAll(".casella > div");
     caselleTabellone.forEach(function(casella) {
-        casella.classList.remove("segnalino");
+        casella.classList.remove("posizioneSegnalino");
     });
     
     var posizione = data.posizione; 
     var casellaOccupata = document.getElementById("casella_" + posizione).children[1];
-    casellaOccupata.classList.add("segnalino");
+    casellaOccupata.classList.add("posizioneSegnalino");
+
+    var portafoglio = document.querySelector(".portafoglio > b");
+    portafoglio.textContent = data.portafoglio + "€";
    
     
 }
