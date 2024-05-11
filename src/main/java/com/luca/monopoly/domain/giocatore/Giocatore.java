@@ -110,14 +110,9 @@ public class Giocatore {
             costruisciCasette(proprietariDeiContratti, caselle);
         }
 
-        return new GiocatoreRisultato(this.posizione, this.portafoglio);
-    }
+        System.out.println("Il giocatore ha un portafoglio di " + this.portafoglio);
 
-    // metodo di test
-    public int aggiornaPortafoglio() {
-        this.portafoglio += 1;
-        System.out.println("Il portafoglio ora è di " + this.portafoglio + " euro");
-        return this.portafoglio;
+        return new GiocatoreRisultato(this.posizione, this.portafoglio);
     }
 
     public int aggiornaPosizione(int risultatoDado) {
@@ -169,8 +164,12 @@ public class Giocatore {
                 this.portafoglio -= affitto;
                 System.out.println(
                         "Il giocatore ha pagato un affitto di " + affitto + " euro al proprietario del terreno");
-                Giocatore proprietario = proprietariDeiContratti.get(nomeProprieta);
-                proprietario.setPortafoglio(proprietario.getPortafoglio() + affitto);
+                // implementare trasferimento di denaro ad altro giocatore proprietario del
+                // contratto
+                /*
+                 * Giocatore proprietario = proprietariDeiContratti.get(nomeProprieta);
+                 * proprietario.setPortafoglio(proprietario.getPortafoglio() + affitto);
+                 */
             }
         }
 

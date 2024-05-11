@@ -15,14 +15,8 @@ public class JpaGiocatore {
     @Column(name = "nome")
     private String nome;
 
-    // rimossa temporaneamente unique a fini di test
-    @Column(name = "segnalino")
+    @Column(name = "segnalino", unique = true)
     private Segnalini segnalini;
-
-    /*
-     * @Column(name = "segnalino", unique = true)
-     * private Segnalini segnalini;
-     */
 
     @Column(name = "portafoglio")
     private Integer portafoglio;

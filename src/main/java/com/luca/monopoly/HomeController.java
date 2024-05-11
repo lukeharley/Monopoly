@@ -120,24 +120,29 @@ public class HomeController {
 
         Map<String, Object> response = new HashMap<>();
 
-        if (giocatoreCorrente.getPortafoglio() > 0) {
+        int risultatoDado = giocatoreService.ottieniRisultatoDado();
+        GiocatoreRisultato giocatoreRisultato = giocatoreService.ottieniNuovaPosizioneENuovoPortafoglio(
+                risultatoDado, proprietariDeiContratti, caselle, contratti, imprevisti,
+                probabilita, giocatoreCorrente);
 
-            int risultatoDado = giocatoreService.ottieniRisultatoDado();
-            GiocatoreRisultato giocatoreRisultato = giocatoreService.ottieniNuovaPosizioneENuovoPortafoglio(
-                    risultatoDado, proprietariDeiContratti, caselle, contratti, imprevisti,
-                    probabilita, giocatoreCorrente);
+        response.put("result", "Dadi lanciati con successo!");
+        response.put("risultatoDado", risultatoDado);
+        response.put("posizione", giocatoreRisultato.getNuovaPosizione());
+        response.put("portafoglio", giocatoreRisultato.getNuovoPortafoglio());
 
-            response.put("result", "Dadi lanciati con successo!");
-            response.put("risultatoDado", risultatoDado);
-            response.put("posizione", giocatoreRisultato.getNuovaPosizione());
-            response.put("portafoglio", giocatoreRisultato.getNuovoPortafoglio());
-
-        } else {
+        if (giocatoreRisultato.getNuovoPortafoglio() < 0) {
+            giocatoreCorrente.setInBancarotta(true);
             System.out.println("Il giocatore corrente è in bancarotta. L'altro giocatore ha vinto!");
         }
 
         return ResponseEntity.ok(response);
 
+    }
+
+    @PostMapping("/resettaPartita")
+    public ResponseEntity<String> resettaPartita() {
+        giocatoreService.elimina60Giocatori(1, 60);
+        return ResponseEntity.ok("Giocatori correttamente eliminati!");
     }
 
 }

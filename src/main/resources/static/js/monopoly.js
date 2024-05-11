@@ -36,3 +36,10 @@ function aggiornaInterfaccia(data) {
    
     
 }
+
+function resettaPartita() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/resettaPartita", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send();
+}

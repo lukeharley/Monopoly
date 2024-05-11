@@ -13,12 +13,20 @@ import com.luca.monopoly.domain.Casella;
 import com.luca.monopoly.domain.giocatore.Giocatore;
 import com.luca.monopoly.domain.giocatore.GiocatoreRisultato;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
+import jakarta.transaction.Transactional;
+
 @Service
 public class GiocatoreService {
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     private Giocatore giocatore;
 
-    private GiocatoreService() {
+    public GiocatoreService() {
         giocatore = new Giocatore("", Segnalini.CANE, 1500, 0);
     }
 
@@ -36,6 +44,18 @@ public class GiocatoreService {
                 proprietariDeiContratti, caselle, contratti, imprevisti, probabilita, giocatoreCorrente);
 
         return giocatoreRisultato;
+    }
+
+    @Transactional
+    public void elimina60Giocatori(int startId, int endId) {
+        Query eliminaGiocatoriQuery = entityManager
+                .createNativeQuery("DELETE FROM giocatore WHERE id BETWEEN :startId AND :endId");
+        eliminaGiocatoriQuery.setParameter("startId", startId);
+        eliminaGiocatoriQuery.setParameter("endId", endId);
+        eliminaGiocatoriQuery.executeUpdate();
+
+        Query resettaAutoIncrementoQuery = entityManager.createNativeQuery("ALTER TABLE giocatore AUTO_INCREMENT = 1");
+        resettaAutoIncrementoQuery.executeUpdate();
     }
 
 }
