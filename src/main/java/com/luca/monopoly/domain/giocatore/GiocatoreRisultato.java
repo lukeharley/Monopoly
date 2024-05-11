@@ -4,10 +4,13 @@ public class GiocatoreRisultato {
 
     private int nuovaPosizione;
     private int nuovoPortafoglio;
+    private boolean inBancarotta;
 
-    public GiocatoreRisultato(int nuovaPosizione, int nuovoPortafoglio) {
+    public GiocatoreRisultato(int nuovaPosizione, int nuovoPortafoglio, boolean inBancarotta) {
         this.nuovaPosizione = nuovaPosizione;
         this.nuovoPortafoglio = nuovoPortafoglio;
+        this.inBancarotta = inBancarotta;
+
     }
 
     public int getNuovaPosizione() {
@@ -24,6 +27,14 @@ public class GiocatoreRisultato {
 
     public void setNuovoPortafoglio(int nuovoPortafoglio) {
         this.nuovoPortafoglio = nuovoPortafoglio;
+    }
+
+    public boolean isInBancarotta() {
+        return inBancarotta;
+    }
+
+    public void setInBancarotta(boolean inBancarotta) {
+        this.inBancarotta = inBancarotta;
     }
 
 }

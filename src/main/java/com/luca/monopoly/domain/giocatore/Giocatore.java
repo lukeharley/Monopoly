@@ -112,7 +112,15 @@ public class Giocatore {
 
         System.out.println("Il giocatore ha un portafoglio di " + this.portafoglio);
 
-        return new GiocatoreRisultato(this.posizione, this.portafoglio);
+        if (this.portafoglio < 0) {
+            this.setInBancarotta(true);
+            // implementare cambio turno
+            // giocatoreCorrente.setInBancarotta(true);
+            System.out.println("Il giocatore corrente è in bancarotta. L'altro giocatore ha vinto!");
+            interrompiPartita();
+        }
+
+        return new GiocatoreRisultato(this.posizione, this.portafoglio, this.inBancarotta);
     }
 
     public int aggiornaPosizione(int risultatoDado) {
@@ -329,6 +337,11 @@ public class Giocatore {
 
         final Random r = new Random();
         return r.nextInt(valoreMassimo - valoreMinimo + 1) + valoreMinimo;
+    }
+
+    public void interrompiPartita() {
+        this.portafoglio = 0;
+        this.posizione = 0;
     }
 
     @Override

@@ -21,6 +21,7 @@ function aggiornaInterfaccia(data) {
     console.log("Il risultato del dado è " + data.risultatoDado); 
     console.log("La nuova posizione è " + data.posizione); 
     console.log("Il nuovo portafoglio è " + data.portafoglio); 
+    console.log(data.bancarotta);
 
     var caselleTabellone = document.querySelectorAll(".casella > div");
     caselleTabellone.forEach(function(casella) {
@@ -33,6 +34,12 @@ function aggiornaInterfaccia(data) {
 
     var portafoglio = document.querySelector(".portafoglio > b");
     portafoglio.textContent = data.portafoglio + "€";
+
+    if (data.bancarotta) {
+        alert("Il giocatore corrente è in bancarotta. L'altro giocatore ha vinto!");
+        var pulsanteLancioDadi = document.getElementById("lancio-dadi-button");
+        pulsanteLancioDadi.classList.add("disabled");
+    }
    
     
 }
@@ -42,4 +49,7 @@ function resettaPartita() {
     xhr.open("POST", "/resettaPartita", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send();
+
+    var pulsanteLancioDadi = document.getElementById("lancio-dadi-button");
+    pulsanteLancioDadi.classList.remove("disabled");
 }

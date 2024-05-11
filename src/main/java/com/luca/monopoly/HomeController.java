@@ -129,11 +129,7 @@ public class HomeController {
         response.put("risultatoDado", risultatoDado);
         response.put("posizione", giocatoreRisultato.getNuovaPosizione());
         response.put("portafoglio", giocatoreRisultato.getNuovoPortafoglio());
-
-        if (giocatoreRisultato.getNuovoPortafoglio() < 0) {
-            giocatoreCorrente.setInBancarotta(true);
-            System.out.println("Il giocatore corrente è in bancarotta. L'altro giocatore ha vinto!");
-        }
+        response.put("bancarotta", giocatoreRisultato.isInBancarotta());
 
         return ResponseEntity.ok(response);
 
