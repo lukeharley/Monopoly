@@ -22,12 +22,14 @@ function aggiornaInterfaccia(data) {
     console.log("La nuova posizione è " + data.posizione); 
     console.log("Il nuovo portafoglio è " + data.portafoglio); 
 
-    var caselleTabellone = document.querySelectorAll(".border1");
+    var caselleTabellone = document.querySelectorAll(".casella > div");
     caselleTabellone.forEach(function(casella) {
         casella.classList.remove("segnalino");
     });
     
     var posizione = data.posizione; 
-    var casellaOccupata = document.getElementById("casella_" + posizione);
+    var casellaOccupata = document.getElementById("casella_" + posizione).children[1];
     casellaOccupata.classList.add("segnalino");
+   
+    
 }
