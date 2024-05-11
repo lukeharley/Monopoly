@@ -9,9 +9,11 @@ h1 {
 }
 
 .posizioneSegnalino {
-    background-color: blue; 
-    width: 20px; 
-    height: 20px; 
+    background-image: url("/images/segnalini/scarpone.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    width:100px;
+    height:50px;
     position: absolute; 
     top: 10px; 
     left: 10px; 

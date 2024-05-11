@@ -118,6 +118,7 @@ public class Giocatore {
             // giocatoreCorrente.setInBancarotta(true);
             System.out.println("Il giocatore corrente è in bancarotta. L'altro giocatore ha vinto!");
             interrompiPartita();
+            return new GiocatoreRisultato(0, 0, true);
         }
 
         return new GiocatoreRisultato(this.posizione, this.portafoglio, this.inBancarotta);

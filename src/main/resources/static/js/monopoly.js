@@ -36,9 +36,9 @@ function aggiornaInterfaccia(data) {
     portafoglio.textContent = data.portafoglio + "€";
 
     if (data.bancarotta) {
-        alert("Il giocatore corrente è in bancarotta. L'altro giocatore ha vinto!");
         var pulsanteLancioDadi = document.getElementById("lancio-dadi-button");
         pulsanteLancioDadi.classList.add("disabled");
+        alert("Il giocatore corrente è in bancarotta. L'altro giocatore ha vinto!");
     }
    
     
@@ -51,5 +51,5 @@ function resettaPartita() {
     xhr.send();
 
     var pulsanteLancioDadi = document.getElementById("lancio-dadi-button");
-    pulsanteLancioDadi.classList.remove("disabled");
+    pulsanteLancioDadi.classList.add("disabled");
 }

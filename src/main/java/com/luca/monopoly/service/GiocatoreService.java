@@ -43,6 +43,10 @@ public class GiocatoreService {
         GiocatoreRisultato giocatoreRisultato = giocatore.aggiornaPosizioneEPortafoglio(risultatoDado,
                 proprietariDeiContratti, caselle, contratti, imprevisti, probabilita, giocatoreCorrente);
 
+        if (giocatoreRisultato.isInBancarotta()) {
+            /// interrompi partita e resetta tutto
+        }
+
         return giocatoreRisultato;
     }
 
@@ -56,6 +60,8 @@ public class GiocatoreService {
 
         Query resettaAutoIncrementoQuery = entityManager.createNativeQuery("ALTER TABLE giocatore AUTO_INCREMENT = 1");
         resettaAutoIncrementoQuery.executeUpdate();
+
+        entityManager.close();
     }
 
 }
