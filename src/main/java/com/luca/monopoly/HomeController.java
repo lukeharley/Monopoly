@@ -32,10 +32,19 @@ public class HomeController {
     @GetMapping("/")
     public String getHome(Model model) {
 
+        List<GiocatoreView> giocatori = new ArrayList<>();
+        for (JpaGiocatore jpaGiocatore : jpaGiocatoreRepository.findAll()) {
+            GiocatoreView giocatoreView = new GiocatoreView();
+            giocatoreView.setNome(jpaGiocatore.getNome());
+            giocatoreView.setPortafoglio(jpaGiocatore.getPortafoglio());
+            giocatoreView.setSegnalino(jpaGiocatore.getSegnalino().getNome());
+
+            giocatori.add(giocatoreView);
+        }
+        model.addAttribute("giocatori", giocatori);
+
         model.addAttribute("form", new HomeForm());
         model.addAttribute("dadi", monopolyService.getMonopoly().getDadi().size());
-        model.addAttribute("portafoglioPrimoGiocatoreAggiunto",
-                new Giocatore("", Segnalini.CANE, 1500, 0).getPortafoglio());
 
         List<SelectOptionView> segnalini = new ArrayList<>();
 

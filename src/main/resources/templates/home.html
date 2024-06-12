@@ -61,18 +61,20 @@
         </div>
 
         <div class="row mt-5 mb-5">
-            <div class="col-sm-4">
+
                 <th:block th:each="giocatore : ${giocatori}">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Giocatore [(${giocatoreStat.index + 1})]</h5>
-                            <p class="card-text nome" th:utext="'Nome: <b>' + ${giocatore.nome} + '</b>'"></p>
-                            <p class="card-text portafoglio" th:utext="'Portafoglio: <b>' + ${giocatore.portafoglio} + '€</b>'"></p>
-                            <p class="card-text segnalino" th:utext="'Segnalino: <b>' + ${giocatore.segnalino} + '</b>'"></p>
+                    <div class="col-sm-4 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Giocatore [(${giocatoreStat.index + 1})]</h5>
+                                <p class="card-text nome" th:utext="'Nome: <b>' + ${giocatore.nome} + '</b>'"></p>
+                                <p class="card-text portafoglio" th:utext="'Portafoglio: <b>' + ${giocatore.portafoglio} + '€</b>'"></p>
+                                <p class="card-text segnalino" th:utext="'Segnalino: <b>' + ${giocatore.segnalino} + '</b>'"></p>
+                            </div>
                         </div>
                     </div>
                 </th:block>
-            </div>
+
         </div>
 
         <button type="button" class="btn btn-success" id="lancio-dadi-button" th:onclick="lanciaDadi();">Lancia dadi <span><img th:src="@{/images/dadi.png}" style="width:50px;"/></span></button>
