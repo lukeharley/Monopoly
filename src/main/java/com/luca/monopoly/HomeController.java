@@ -73,13 +73,19 @@ public class HomeController {
         List<Casella> caselle = monopolyService.getMonopoly().getTabellone().getCaselle();
         // Collections.reverse(caselle);
 
+        List<GiocatoreView> giocatori = new ArrayList<>();
+
+        GiocatoreView giocatoreView = new GiocatoreView();
+        giocatoreView.setNome(form.getNome());
+        giocatoreView.setPortafoglio(giocatore.getPortafoglio());
+        giocatoreView.setSegnalino(segnalino.getNome());
+
+        giocatori.add(giocatoreView);
+
         model.addAttribute("form", form);
         model.addAttribute("dadi", monopolyService.getMonopoly().getDadi().size());
         model.addAttribute("caselle", caselle);
-        model.addAttribute("giocatore", giocatore);
-        model.addAttribute("nomeGiocatoreAggiunto", form.getNome());
-        model.addAttribute("segnalinoScelto", segnalino.getNome());
-        model.addAttribute("portafoglioPrimoGiocatoreAggiunto", giocatore.getPortafoglio());
+        model.addAttribute("giocatori", giocatori);
 
         List<SelectOptionView> segnalini = new ArrayList<>();
 
