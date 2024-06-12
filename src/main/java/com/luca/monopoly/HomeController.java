@@ -1,13 +1,8 @@
 package com.luca.monopoly;
 
 import com.luca.monopoly.domain.*;
-import com.luca.monopoly.domain.giocatore.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.luca.monopoly.domain.giocatore.Giocatore;
+import com.luca.monopoly.domain.giocatore.GiocatoreRisultato;
 import com.luca.monopoly.repository.JpaGiocatore;
 import com.luca.monopoly.repository.JpaGiocatoreRepository;
 import com.luca.monopoly.service.GiocatoreService;
@@ -17,6 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -58,23 +58,20 @@ public class HomeController {
         Segnalini segnalino = Segnalini.values()[form.getSegnalino()];
         Giocatore giocatore = new Giocatore("", segnalino, 1500, 0);
 
-        /*
-         * JpaGiocatore giocatoreEsistente =
-         * jpaGiocatoreRepository.findBySegnalini(segnalino);
-         * if (giocatoreEsistente != null) {
-         * model.addAttribute("segnalinoSelezionato",
-         * "Il segnalino selezionato è già stato scelto.");
-         * 
-         * }
-         */
 
-        JpaGiocatore jpaGiocatore = new JpaGiocatore();
-        jpaGiocatore.setNome(form.getNome());
-        jpaGiocatore.setSegnalini(segnalino);
-        jpaGiocatore.setPortafoglio(giocatore.getPortafoglio());
-        jpaGiocatore.setPosizione(giocatore.getPosizione());
+        JpaGiocatore giocatoreEsistente = jpaGiocatoreRepository.findBySegnalino(segnalino);
+        if (giocatoreEsistente != null) {
+            model.addAttribute("segnalinoSelezionato", "Il segnalino selezionato è già stato scelto.");
+        } else {
+            JpaGiocatore jpaGiocatore = new JpaGiocatore();
+            jpaGiocatore.setNome(form.getNome());
+            jpaGiocatore.setSegnalino(segnalino);
+            jpaGiocatore.setPortafoglio(giocatore.getPortafoglio());
+            jpaGiocatore.setPosizione(giocatore.getPosizione());
 
-        jpaGiocatoreRepository.save(jpaGiocatore);
+            jpaGiocatoreRepository.save(jpaGiocatore);
+        }
+
 
         List<Casella> caselle = new Monopoly().getTabellone().getCaselle();
         // Collections.reverse(caselle);
@@ -137,7 +134,7 @@ public class HomeController {
 
     @PostMapping("/resettaPartita")
     public ResponseEntity<String> resettaPartita() {
-        giocatoreService.elimina60Giocatori(1, 60);
+        giocatoreService.eliminaGiocatori();
         return ResponseEntity.ok("Giocatori correttamente eliminati!");
     }
 

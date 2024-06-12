@@ -16,7 +16,7 @@ public class JpaGiocatore {
     private String nome;
 
     @Column(name = "segnalino", unique = true)
-    private Segnalini segnalini;
+    private Segnalini segnalino;
 
     @Column(name = "portafoglio")
     private Integer portafoglio;
@@ -30,14 +30,6 @@ public class JpaGiocatore {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Segnalini getSegnalini() {
-        return segnalini;
-    }
-
-    public void setSegnalini(Segnalini segnalini) {
-        this.segnalini = segnalini;
     }
 
     public Integer getId() {
@@ -64,4 +56,11 @@ public class JpaGiocatore {
         this.posizione = posizione;
     }
 
+    public Segnalini getSegnalino() {
+        return segnalino;
+    }
+
+    public void setSegnalino(Segnalini segnalino) {
+        this.segnalino = segnalino;
+    }
 }
