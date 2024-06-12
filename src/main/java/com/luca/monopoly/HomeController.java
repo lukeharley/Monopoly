@@ -83,13 +83,14 @@ public class HomeController {
         // Collections.reverse(caselle);
 
         List<GiocatoreView> giocatori = new ArrayList<>();
+        for (JpaGiocatore jpaGiocatore : jpaGiocatoreRepository.findAll()) {
+            GiocatoreView giocatoreView = new GiocatoreView();
+            giocatoreView.setNome(jpaGiocatore.getNome());
+            giocatoreView.setPortafoglio(jpaGiocatore.getPortafoglio());
+            giocatoreView.setSegnalino(jpaGiocatore.getSegnalino().getNome());
 
-        GiocatoreView giocatoreView = new GiocatoreView();
-        giocatoreView.setNome(form.getNome());
-        giocatoreView.setPortafoglio(giocatore.getPortafoglio());
-        giocatoreView.setSegnalino(segnalino.getNome());
-
-        giocatori.add(giocatoreView);
+            giocatori.add(giocatoreView);
+        }
 
         model.addAttribute("form", form);
         model.addAttribute("dadi", monopolyService.getMonopoly().getDadi().size());
