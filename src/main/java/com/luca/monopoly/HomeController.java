@@ -1,11 +1,12 @@
 package com.luca.monopoly;
 
-import com.luca.monopoly.domain.*;
+import com.luca.monopoly.domain.Casella;
+import com.luca.monopoly.domain.Segnalini;
 import com.luca.monopoly.domain.giocatore.Giocatore;
-import com.luca.monopoly.domain.giocatore.GiocatoreRisultato;
 import com.luca.monopoly.repository.JpaGiocatore;
 import com.luca.monopoly.repository.JpaGiocatoreRepository;
 import com.luca.monopoly.service.GiocatoreService;
+import com.luca.monopoly.service.MonopolyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,29 +15,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class HomeController {
 
+    @Autowired
     private GiocatoreService giocatoreService;
 
-    private Monopoly monopoly = new Monopoly();
+    @Autowired
+    private MonopolyService monopolyService;
 
     @Autowired
     private JpaGiocatoreRepository jpaGiocatoreRepository;
-
-    public HomeController(GiocatoreService partitaService) {
-        this.giocatoreService = partitaService;
-    }
 
     @GetMapping("/")
     public String getHome(Model model) {
 
         model.addAttribute("form", new HomeForm());
-        model.addAttribute("dadi", new Monopoly().getDadi().size());
+        model.addAttribute("dadi", monopolyService.getMonopoly().getDadi().size());
         model.addAttribute("portafoglioPrimoGiocatoreAggiunto",
                 new Giocatore("", Segnalini.CANE, 1500, 0).getPortafoglio());
 
@@ -73,11 +70,11 @@ public class HomeController {
         }
 
 
-        List<Casella> caselle = new Monopoly().getTabellone().getCaselle();
+        List<Casella> caselle = monopolyService.getMonopoly().getTabellone().getCaselle();
         // Collections.reverse(caselle);
 
         model.addAttribute("form", form);
-        model.addAttribute("dadi", new Monopoly().getDadi().size());
+        model.addAttribute("dadi", monopolyService.getMonopoly().getDadi().size());
         model.addAttribute("caselle", caselle);
         model.addAttribute("giocatore", giocatore);
         model.addAttribute("nomeGiocatoreAggiunto", form.getNome());
@@ -96,46 +93,10 @@ public class HomeController {
 
     }
 
-    @PostMapping("/lanciaDadi")
-    public ResponseEntity<Map<String, Object>> lanciaDadi() {
-
-        List<Giocatore> giocatori = monopoly.getGiocatori();
-
-        /*
-         * Giocatore giocatore1 = giocatori.get(0);
-         * Giocatore giocatore2 = giocatori.get(1);
-         */
-
-        Giocatore giocatoreCorrente = giocatori.get(0);
-
-        Tabellone tabellone = monopoly.getTabellone();
-        List<Casella> caselle = tabellone.getCaselle();
-        List<Contratto> contratti = tabellone.getContratti();
-        Map<String, Giocatore> proprietariDeiContratti = tabellone.getProprietariDeiContratti();
-        List<Probabilita> probabilita = tabellone.getProbabilita();
-        List<Imprevisto> imprevisti = tabellone.getImprevisti();
-
-        Map<String, Object> response = new HashMap<>();
-
-        int risultatoDado = giocatoreService.ottieniRisultatoDado();
-        GiocatoreRisultato giocatoreRisultato = giocatoreService.ottieniNuovaPosizioneENuovoPortafoglio(
-                risultatoDado, proprietariDeiContratti, caselle, contratti, imprevisti,
-                probabilita, giocatoreCorrente);
-
-        response.put("result", "Dadi lanciati con successo!");
-        response.put("risultatoDado", risultatoDado);
-        response.put("posizione", giocatoreRisultato.getNuovaPosizione());
-        response.put("portafoglio", giocatoreRisultato.getNuovoPortafoglio());
-        response.put("bancarotta", giocatoreRisultato.isInBancarotta());
-
-        return ResponseEntity.ok(response);
-
-    }
-
-    @PostMapping("/resettaPartita")
-    public ResponseEntity<String> resettaPartita() {
+    @GetMapping("/resettaPartita")
+    public String resettaPartita() {
         giocatoreService.eliminaGiocatori();
-        return ResponseEntity.ok("Giocatori correttamente eliminati!");
+        return "redirect:/";
     }
 
 }

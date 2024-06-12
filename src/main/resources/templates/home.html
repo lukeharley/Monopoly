@@ -76,7 +76,7 @@
         </div>
 
         <button type="button" class="btn btn-success" id="lancio-dadi-button" th:onclick="lanciaDadi();">Lancia dadi <span><img th:src="@{/images/dadi.png}" style="width:50px;"/></span></button>
-        <button type="button" class="btn btn-danger" id="reset-button" th:onclick="resettaPartita();">Resetta partita</button>
+        <a class="btn btn-danger" id="reset-button" href="/resettaPartita">Resetta partita</a>
 
         <div class="container tabellone"></div>
             <div class="grid mt-5">

@@ -43,13 +43,3 @@ function aggiornaInterfaccia(data) {
    
     
 }
-
-function resettaPartita() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/resettaPartita", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send();
-
-    var pulsanteLancioDadi = document.getElementById("lancio-dadi-button");
-    pulsanteLancioDadi.classList.add("disabled");
-}
